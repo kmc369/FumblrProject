@@ -22,7 +22,7 @@
 
 * `userId` references `users` table
 
-## `comments`
+## `notes`
 
 | column name   | data type | details               |
 |---------------|-----------|-----------------------|
@@ -41,10 +41,10 @@
 | column name   | data type | details                        |
 |---------------|-----------|--------------------------------|
 | id            | integer   | not null, primary key          |
-| userId        | integer   | not null,          foreign key |
+| userId        | integer   | not null, foreign key          | 
 | postId        | integer   | foreign key                    |
-| commentId     | integer   | foreign key                    |
+| noteId        | integer   | foreign key                    |
 
 * `userId` references `users` table
 * `postId` references `posts` table
-* `commentId` references `comments` table
+* `noteId` references `notes` table
