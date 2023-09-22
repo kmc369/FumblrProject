@@ -48,4 +48,3 @@
 * `userId` references `users` table
 * `postId` references `posts` table
 
-s
