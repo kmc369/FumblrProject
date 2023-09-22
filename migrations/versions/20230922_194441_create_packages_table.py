@@ -1,8 +1,8 @@
 """create packages table
 
-Revision ID: 67d1a1a49550
+Revision ID: bcd937086f60
 Revises: 
-Create Date: 2023-09-22 18:05:19.545350
+Create Date: 2023-09-22 19:44:41.343931
 
 """
 from alembic import op
@@ -12,7 +12,7 @@ environment = os.getenv("FLASK_ENV")
 SCHEMA = os.environ.get("SCHEMA")
 
 # revision identifiers, used by Alembic.
-revision = '67d1a1a49550'
+revision = 'bcd937086f60'
 down_revision = None
 branch_labels = None
 depends_on = None
