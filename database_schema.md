@@ -43,8 +43,8 @@
 | id            | integer   | not null, primary key          |
 | userId        | integer   | not null, foreign key          | 
 | postId        | integer   | foreign key                    |
-| noteId        | integer   | foreign key                    |
+
 
 * `userId` references `users` table
 * `postId` references `posts` table
-* `noteId` references `notes` table
+

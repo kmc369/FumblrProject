@@ -5,8 +5,8 @@ class Note(db.Model):
     __tablename__ = 'notes'
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(255), nullable=False)
-    user_id = db.Column(db.String(255), db.ForeignKey("users.id"), nullable=False)
-    post_id = db.Column(db.String(255), db.ForeignKey("posts.id"))
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey("text_posts.id"))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 

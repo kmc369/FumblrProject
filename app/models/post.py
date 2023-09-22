@@ -6,12 +6,17 @@ class TextPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     text_content = db.Column(db.String(1000))
-    user_id = db.Column(db.String(255), db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
+    #relationships 
     user = db.relationship("User", back_populates="posts")
     notes = db.relationship("Note", back_populates="posts")
+    
+    
+    
+    likes = db.relationship("Like",back_populates="posts")
 
     def to_dict(self):
         return {
