@@ -20,7 +20,7 @@ def get_notes_by_post_Id(id):
         notes_list.append(note_dict)
     return notes_list
 
-@notes_bp.route("/notes/<int:id>",methods= ["GET","POST"])
+@notes_bp.route("/post/<int:id>/notes",methods= ["GET","POST"])
 def post_note(id):
     new_note = Note(
     content = content,
