@@ -3,7 +3,7 @@ from flask_login import login_required
 from app.models import Note, db
 from app.forms import NoteForm
 
-
+##ADD YOURE ERROR CHECKS 
 
 notes_bp = Blueprint('text_notes', __name__)
 
@@ -20,6 +20,26 @@ def get_notes_by_post_Id(id):
         note_dict = note.to_dict()
         notes_list.append(note_dict)
     return notes_list
+
+@notes_bp.route("/notes/<int:id>", methods=["PUT"])
+def edit_note(id):
+
+    edit_note = Note.query.get(id)
+    if edit_note is None:
+        return "Note not found", 404
+
+
+   
+    data = request.get_json()
+
+
+    if 'content' in data:
+        edit_note.content = data['content']
+       
+    db.session.commit()
+
+    return edit_note.to_dict()
+
 
 @notes_bp.route("/post/<int:id>/notes",methods= ["POST"])
 def post_note(id):
