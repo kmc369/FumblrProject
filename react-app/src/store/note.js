@@ -73,9 +73,9 @@ export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) =>{
     }
 }
 
-export const EditCommentThunk = (data,current_post_id) => async (dispatch) =>{
+export const EditCommentThunk = (data,current_note_id) => async (dispatch) =>{
     console.log("The data from the thunk",data)
-    const response = await fetch(`/api/notes/${current_post_id}`,{
+    const response = await fetch(`/api/notes/${current_note_id}`,{
         method:"PUT",
         headers:{
             "Content-Type": "application/json",
@@ -85,7 +85,7 @@ export const EditCommentThunk = (data,current_post_id) => async (dispatch) =>{
     })
     if (response.ok){
         const data = await response.json()
-        dispatch(EditComments(data,current_post_id))
+        dispatch(EditComments(data,current_note_id))
         return data
     }
     else{

@@ -9,13 +9,13 @@ import * as NoteActions from '../../store/note'
 
 
 function EditNote(){
-// const dispatch = useDispatch()
-// const user = useSelector((state)=>state.session.user)
+const dispatch = useDispatch()
+const user = useSelector((state)=>state.session.user)
+
 // const old_content = useSelector((state)=>state.singlePost.comment)
 // console.log(old_content)
-const {comment_id} = useParams()
-const comment_id_int = parseInt(comment_id, 10);
-
+const {note_id} = useParams()
+const note_id_int = parseInt(note_id, 10);
 const [content ,setContent] = useState("")
 
 
@@ -24,13 +24,15 @@ const handleSubmit = async (e)=>{
 
     const formData = {
         content:content,
-        user_id:1,
+        user_id:user.id,
         post_id:2
 
     }
-    console.log("form data is ",formData)
 
 
+
+
+    dispatch(NoteActions.EditCommentThunk(formData,note_id_int))
 }
 
 
