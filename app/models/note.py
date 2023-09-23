@@ -1,4 +1,4 @@
-from .db import db,environment,SCHEMA
+from .db import db,environment,SCHEMA,add_prefix_for_prod
 from datetime import datetime
 
 class Note(db.Model):
@@ -8,13 +8,19 @@ class Note(db.Model):
         
     id = db.Column(db.Integer, primary_key=True)
     content = db.Column(db.String(255), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     post_id = db.Column(db.Integer, db.ForeignKey("text_posts.id"))
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
 
     user = db.relationship("User", back_populates="notes")
     posts = db.relationship("TextPost", back_populates="notes")
+    
+    def add_prefix_for_prod(attr):
+        if environment == "production":
+            return f"{SCHEMA}.{attr}"
+        else:
+            return attr
 
     def to_dict(self):
         return {

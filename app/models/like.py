@@ -1,4 +1,4 @@
-from .db import db,environment,SCHEMA
+from .db import db,environment,SCHEMA,add_prefix_for_prod
 
 
 class Like(db.Model):
@@ -7,11 +7,17 @@ class Like(db.Model):
         __table_args__ = {'schema': SCHEMA}
         
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("users.id"), nullable=False)
-    post_id = db.Column(db.Integer, db.ForeignKey("text_posts.id"), nullable=False)
+    user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
+    post_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("text_posts.id")), nullable=False)
     
     user = db.relationship("User", back_populates="likes")
     posts = db.relationship("TextPost", back_populates="likes")
+    
+    def add_prefix_for_prod(attr):
+        if environment == "production":
+            return f"{SCHEMA}.{attr}"
+        else:
+            return attr
     
     def to_dict(self):
         return {
