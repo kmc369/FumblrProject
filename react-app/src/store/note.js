@@ -15,18 +15,19 @@ export const CreateNote = (note) => {
 
 
 export const createNoteThunk =(note) => async (dispatch)=>{
-    const  {content,user_id,post_id} = note
+    // const  {content,user_id,post_id} = note
+    const { content, user_id, post_id } = note
     const response = await fetch(`/api/post/${post_id}/notes`,{
         method:"POST",
         headers:{
             "Content-Type": "application/json",
         },
-        body:JSON.stringify({note})
+        body: JSON.stringify({ content, user_id, post_id }),
     })
 
     if(response.ok){
         const data = await response.json()
-        dispatch(CreateNote(data,post_id))
+        dispatch(CreateNote(data))
         return data
     }
     else{
@@ -40,12 +41,11 @@ export default function noteReducer(state=initialState,action){
 
     switch(action.type){
         case CREATE_NOTE:{
-            const newState = { ...state };
-            const singlePostCopy = { ...newState.singlePost[action.payload.note.post_id] };            newState.singlePost.push(action.payload.note)
-            
-            singlePostCopy.comments.push(action.payload.note);
+        
+            const newState = { ...state, singlePost: { ...state.singlePost } }; // { allSpots: {}, spotDetails: {} }
 
-            newState.singlePost[action.payload.note.post_id] = singlePostCopy;
+            newState.singlePost[action.payload.post_id] = action.payload;
+      
 
             return newState
         }

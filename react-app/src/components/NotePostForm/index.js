@@ -4,6 +4,7 @@ import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useSelector } from 'react-redux';
 import {useParams } from 'react-router-dom'
+import * as NoteActions from '../../store/note'
 
 
 
@@ -23,7 +24,7 @@ function NoteForm(){
 const handleSubmit = async (e)=>{
     e.preventDefault();
     
-    console.log(post_id)
+  
     const new_note = {
         content:content,
         user_id:sessionUser.id,
@@ -33,7 +34,7 @@ const handleSubmit = async (e)=>{
     }
     console.log(new_note)
 
-    // await dispatch
+    await dispatch(NoteActions.createNoteThunk(new_note))
     setContent("")
    
 
