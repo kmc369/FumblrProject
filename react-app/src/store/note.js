@@ -9,13 +9,10 @@ export const CreateNote = (note) => {
     }
 }
 
-export const GetPostComments = (note,current_post_id) => {
+export const GetPostComments = (data) => {
     return {
         type: GET_NOTE_OF_POST,
-        payload:{
-                note,
-                current_post_id
-            }
+        payload:data
 
     }
 
@@ -48,14 +45,14 @@ export const createNoteThunk =(note) => async (dispatch)=>{
     }
 }
 
-export const getCommentsOfPostThunk = (note,current_post_id) => async (dispatch) =>{
-    const { content, user_id, post_id } = note
-    const response = await fetch(`/api/post/${post_id}/notes/get`,{
+export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) =>{
+  
+    const response = await fetch(`/api/post/${current_post_id}/notes/get`,{
         method:"GET"
     })
     if (response.ok){
         const data = await response.json()
-        dispatch(GetPostComments(data,current_post_id))
+        dispatch(GetPostComments(data))
         return data
     }
     else{
