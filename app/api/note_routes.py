@@ -9,7 +9,7 @@ notes_bp = Blueprint('text_notes', __name__)
 
 
 
-@notes_bp.route("/post/<int:id>/notes")
+@notes_bp.route("/post/<int:id>/notes/get",methods= ["GET"])
 def get_notes_by_post_Id(id):
     """
     all the notes for a specific post 
@@ -21,7 +21,7 @@ def get_notes_by_post_Id(id):
         notes_list.append(note_dict)
     return notes_list
 
-@notes_bp.route("/post/<int:id>/notes",methods= ["GET","POST"])
+@notes_bp.route("/post/<int:id>/notes",methods= ["POST"])
 def post_note(id):
     
     """create a note on the post """
