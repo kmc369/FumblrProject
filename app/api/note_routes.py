@@ -31,7 +31,7 @@ def edit_note(id):
 
    
     data = request.get_json()
-    print("the data is ",data)
+
 
     if 'content' in data:
         edit_note.content = data['content']

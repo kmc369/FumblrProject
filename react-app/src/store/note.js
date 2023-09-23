@@ -1,6 +1,6 @@
 const CREATE_NOTE = 'create/note'
 const GET_NOTE_OF_POST = 'Get/PostComments'
-
+const EDIT_COMMENT = "/edit/comment"
 
 export const CreateNote = (note) => {
     return {
@@ -13,6 +13,19 @@ export const GetPostComments = (data) => {
     return {
         type: GET_NOTE_OF_POST,
         payload:data
+
+    }
+
+}
+
+export const EditComments = (data,comment_id) => {
+    return {
+        type: EDIT_COMMENT ,
+        payload:{
+            data,
+            comment_id
+
+        }
 
     }
 
@@ -60,6 +73,27 @@ export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) =>{
     }
 }
 
+export const EditCommentThunk = (data,current_post_id) => async (dispatch) =>{
+    console.log("The data from the thunk",data)
+    const response = await fetch(`/api/notes/${current_post_id}`,{
+        method:"PUT",
+        headers:{
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data)
+
+    })
+    if (response.ok){
+        const data = await response.json()
+        dispatch(EditComments(data,current_post_id))
+        return data
+    }
+    else{
+        return "NO"
+    }
+}
+
+
 const initialState = {allPost:{}, singlePost:{}}
 export default function noteReducer(state=initialState,action){
 
@@ -72,6 +106,12 @@ export default function noteReducer(state=initialState,action){
         case GET_NOTE_OF_POST :{
               const newState = {...state,singlePost:{...state.singlePost}}
               newState.singlePost.comment = action.payload
+            return newState
+        }
+        case EDIT_COMMENT:{
+            const newState = {...state,singlePost:{...state.singlePost}}
+            newState.singlePost.comment[action.payload.comment_id] = action.payload.data
+         
             return newState
         }
         default:

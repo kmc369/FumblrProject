@@ -32,7 +32,7 @@ const handleSubmit = async (e)=>{
     
 
     }
-    console.log(new_note)
+    // console.log(new_note)
 
     await dispatch(NoteActions.createNoteThunk(new_note))
     setContent("")
