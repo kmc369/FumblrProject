@@ -30,6 +30,7 @@ class TextPost(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
+            "title": self.title,
             "text_content": self.text_content,
             'user_id': self.user_id,
             'created_at': self.created_at,
