@@ -17,7 +17,7 @@ class TextPost(db.Model):
     user = db.relationship("User", back_populates="posts")
     notes = db.relationship("Note", back_populates="posts")
     
-    
+
     
     likes = db.relationship("Like",back_populates="posts")
     

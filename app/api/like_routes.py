@@ -14,6 +14,7 @@ def count_like(post_id):
     return len(post.likes)
 
 
+
 @likes_bp.route('/post/<int:post_id>', methods=['GET'])
 def get_num_likes(post_id):
     """
