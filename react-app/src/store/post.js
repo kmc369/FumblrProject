@@ -138,7 +138,7 @@ const postsReducer = (state = initialState, action) => {
         case LOAD_POSTS:
             postNewState.allPosts = {}
             const postsArr = Object.values(action.posts.Posts)
-            postsArr.map(post => postNewState.allPosts[post.id])
+            postsArr.map(post => postNewState.allPosts[post.id] = post)
             return postNewState
         case CREATE_POST:
             postNewState["allPosts"] = {...postNewState.allPosts}
