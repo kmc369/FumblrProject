@@ -9,6 +9,7 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllNotes from "./components/GetAllNotes";
 import EditNote from "./components/EditNote";
+import LikeButton from "./components/Likes";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -44,7 +45,11 @@ function App() {
           <Route exact path="/post/:post_id/notes" >
             <NotePostForm />
           </Route>
-          
+
+          {/* hard coded test route, remove after integrating likes into post feature */}
+          <Route exact path="/like" >
+            <LikeButton post_id={1} user_id={1} />
+          </Route>
         </Switch>
       )}
     </>
