@@ -45,6 +45,12 @@ def get_note(id):
     """get a single note by id"""
     note = Note.query.get(id)
     return note.to_dict()
+
+
+@notes_bp.route("/delete/note/<int:id>",methods=["DELETE"])
+def delete_note(id):
+    pass
+    
     
 
 
