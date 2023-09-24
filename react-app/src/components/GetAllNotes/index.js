@@ -25,7 +25,7 @@ if (Object.values(all_notes).length === 0) {
 }
 
 const values = Object.values(all_notes);
-console.log("the values are ", values)
+// console.log("the values are ", values)
 return (
    
   <>

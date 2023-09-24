@@ -49,7 +49,14 @@ def get_note(id):
 
 @notes_bp.route("/delete/note/<int:id>",methods=["DELETE"])
 def delete_note(id):
-    pass
+    """deleting a comment by comment id"""
+    note = Note.query.get(id)
+    if note is None:
+        return jsonify(error="Note not found"), 404
+    db.session.delete(note)
+    db.session.commit()
+    return "Successfully Deleted"
+    
     
     
 
