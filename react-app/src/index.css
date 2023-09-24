@@ -8,8 +8,9 @@
         ; */
 
         display: flex;
-       justify-content: center;
+        justify-content: center;
         border:3px solid red;
+      
     
      
        
@@ -17,6 +18,8 @@
     }
 body{
     background-color: black;
+
+
    
  
 }
