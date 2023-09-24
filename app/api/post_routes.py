@@ -18,7 +18,7 @@ def all_posts():
     for post in all_posts:
         post_dict = post.to_dict()
         post_lists.append(post_dict)
-    return post_lists
+    return {"Posts": post_lists}
     
 @post_bp.route('/user_posts/<int:id>')
 # @login_required
@@ -35,7 +35,7 @@ def user_textposts(id):
         post_dict = post.to_dict()
         # print(post_dict)
         post_list.append(post_dict)
-    return post_list
+    return { "Posts": post_list}
 
 @post_bp.route("/posts/<int:id>")
 def post_details(id):
@@ -64,12 +64,12 @@ def new_post_textpost():
         new_post = TextPost(
             title = form.data["title"],
             text_content = form.data['text_content'],
-            user_id = form.data['user_id'],
+            user_id = form.data['user_id'], #change to have user id come in from the session
         )
         
         db.session.add(new_post)
         db.session.commit()
-        return new_post.to_dict()
+        return new_post.to_dict(), 201
     return form_validation_error(form.errors)
     
     
@@ -83,15 +83,15 @@ def update_textpost(id):
     post_to_update = TextPost.query.get(id)
     if post_to_update is None:
         return {"error": "Post not found"}, 404
-    form = TextPost()
-    form['csrf_token'].data = request.cookies['csrf_token']
-    if form.validate_on_submit():
-        post_to_update.title = form.data["title"]
-        post_to_update.text_content = form.data['text_content']
-        post_to_update.user_id = form.data['user_id']
-        db.session.commit()
-        return post_to_update.to_dict()
-    return form_validation_error(form.errors)
+    update_data = request.get_json()
+    if update_data["title"]:
+        post_to_update.title = update_data["title"]
+    if update_data["text_content"]:
+        post_to_update.text_content = update_data['text_content']
+    if update_data["user_id"]:
+        post_to_update.user_id = update_data['user_id']
+    db.session.commit()
+    return post_to_update.to_dict()
 
 
 @post_bp.route("/posts/<int:id>/delete", methods=["DELETE"])

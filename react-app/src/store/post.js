@@ -43,6 +43,89 @@ export const actionDeletePost = (postId) => {
 };
 
 //THUNKS
+export const loadPostsThunk = (data) => async (dispatch, getState) => {
+    const response = await fetch("/api/text_posts/");
+    if(response.ok){
+        const posts = await response.json();
+        dispatch(actionLoadPosts(posts));
+        return posts;
+    } else {
+        const errors = await response.json();
+        return errors;
+    }
+};
+
+export const loadSpecificPostThunk = (data) => async (dispatch, getState) => {
+    const res = await fetch(`/api/text_posts/posts/${data}`);
+    if(res.ok) {
+        const post = await res.json();
+        dispatch(actionLoadSpecificPost(post));
+        return post;
+    } else {
+        const errors = await res.json();
+        return errors;
+    }
+
+};
+
+export const loadUserPostsThunk = (data) => async (dispatch, getState) => {
+    const res = await fetch(`/api/text_posts/user_posts/${data}`);
+    if(res.ok) {
+        const posts = await res.json();
+        dispatch(actionLoadPosts(posts));
+    } else {
+        const errors = await res.json();
+        return errors;
+    }
+};
+
+export const createPostThunk = (data) => async (dispatch, getState) => {
+    const res = await fetch('/api/text_posts/new_post', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+    });
+    if(res.ok) {
+        const post = await res.json();
+        dispatch(actionCreateNewPost(post));
+        return post;
+    } else {
+        const errors = await res.json();
+        return errors.errors; 
+    }
+};
+
+export const updatePostThunk = (data) => async (dispatch, getState) => {
+    const res = await fetch(`/api/text_posts/posts/${data}/update`, {
+        method: 'PUT',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(data),
+    });
+    if(res.ok) {
+        const updatedPost = await res.json();
+        dispatch(actionUpdatePost(updatedPost));
+        return updatedPost;
+    } else {
+        const errors = await res.json();
+        return errors.errors; 
+    }
+};
+
+export const deletePostThunk = data => async (dispatch, getState) => {
+    const res = await fetch(`/api/text_posts/posts/${data}/delete`, {
+        method: 'DELETE',
+        headers: {'Content-Type': 'application/json'}
+    });
+    if(res.ok) {
+        dispatch(actionDeletePost(data))
+    } else {
+        const errors = await res.json();
+        return errors;
+    }
+}
+
+
+
 
 //REDUCER
 const initialState = {
