@@ -40,6 +40,19 @@ def edit_note(id):
 
     return edit_note.to_dict()
 
+@notes_bp.route("/note/<int:id>", methods=["GET"])
+def get_note(id):
+    """get a single note by id"""
+    note = Note.query.get(id)
+    return note.to_dict()
+
+
+@notes_bp.route("/delete/note/<int:id>",methods=["DELETE"])
+def delete_note(id):
+    pass
+    
+    
+
 
 @notes_bp.route("/post/<int:id>/notes",methods= ["POST"])
 def post_note(id):
@@ -60,6 +73,10 @@ def post_note(id):
         return new_note.to_dict()
     ## fix the error 
     return {'error'}
+
+
+
+
 
 
 

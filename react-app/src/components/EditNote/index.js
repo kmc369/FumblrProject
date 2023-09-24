@@ -11,28 +11,50 @@ import * as NoteActions from '../../store/note'
 function EditNote(){
 const dispatch = useDispatch()
 const user = useSelector((state)=>state.session.user)
-
-// const old_content = useSelector((state)=>state.singlePost.comment)
 // console.log(old_content)
 const {note_id} = useParams()
 const note_id_int = parseInt(note_id, 10);
+const [comment, setComment] = useState("");
 const [content ,setContent] = useState("")
 
 
-const handleSubmit = async (e)=>{
-    e.preventDefault()
 
+// dispatch(NoteActions.getCommentsOfPostThunk(1))
+useEffect(() => {
+
+    const fetchData = async () => {
+      const commentData = await dispatch(NoteActions.getCommentByIdThunk(note_id_int));
+      setComment(commentData);
+      setContent(commentData.content)
+    
+    };
+    
+    fetchData(); // Call the async function immediately
+  }, [note_id_int]);
+
+const handleSubmit = async (e)=>{
+    console.log("the new content is ",content)
+    
+    e.preventDefault()
+    
     const formData = {
         content:content,
-        user_id:user.id,
-        post_id:2
-
+        user_id:comment.user_id,
+        post_id:comment.post_id
+     
+        
     }
 
+    console.log("the form data is ",formData)
 
+     dispatch(NoteActions.EditCommentThunk(formData,note_id_int))
+    setContent("")
+  
+    
+    
+    
 
-
-    dispatch(NoteActions.EditCommentThunk(formData,note_id_int))
+    
 }
 
 

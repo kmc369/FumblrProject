@@ -1,6 +1,7 @@
 const CREATE_NOTE = 'create/note'
 const GET_NOTE_OF_POST = 'Get/PostComments'
 const EDIT_COMMENT = "/edit/comment"
+const GET_COMMENTS = "get/Comments"
 
 export const CreateNote = (note) => {
     return {
@@ -16,6 +17,13 @@ export const GetPostComments = (data) => {
 
     }
 
+}
+
+export const GetComments = (data) =>{
+    return {
+        type:GET_COMMENTS,
+        payload:data
+    }
 }
 
 export const EditComments = (data,comment_id) => {
@@ -34,7 +42,20 @@ export const EditComments = (data,comment_id) => {
 
 
 
+export const getCommentByIdThunk=(comment_id) =>async (dispatch)=>{
 
+    const response = await fetch(`/api/note/${comment_id}`,{
+        method:"GET"
+    })
+    if (response.ok){
+        const data = await response.json()
+        dispatch(GetComments(data))
+        return data
+    }
+    else{
+        return "NO"
+    }
+}
 
 export const createNoteThunk =(note) => async (dispatch)=>{
     // const  {content,user_id,post_id} = note
@@ -73,14 +94,14 @@ export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) =>{
     }
 }
 
-export const EditCommentThunk = (data,current_note_id) => async (dispatch) =>{
-    console.log("The data from the thunk",data)
+export const EditCommentThunk = (notedata,current_note_id) => async (dispatch) =>{
+   
     const response = await fetch(`/api/notes/${current_note_id}`,{
         method:"PUT",
         headers:{
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(data)
+        body: JSON.stringify(notedata)
 
     })
     if (response.ok){
@@ -112,6 +133,11 @@ export default function noteReducer(state=initialState,action){
             const newState = {...state,singlePost:{...state.singlePost}}
             newState.singlePost.comment[action.payload.comment_id] = action.payload.data
          
+            return newState
+        }
+        case GET_COMMENTS:{
+            const newState = {...state,singlePost:{...state.singlePost}}
+            newState.singlePost.comment = action.payload
             return newState
         }
         default:
