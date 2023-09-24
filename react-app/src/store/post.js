@@ -133,15 +133,28 @@ const initialState = {
     singlePost: {}
 }
 const postsReducer = (state = initialState, action) => {
+    const postNewState = {...state}
     switch(action.type) {
         case LOAD_POSTS:
-            return state
+            postNewState.allPosts = {}
+            const postsArr = Object.values(action.posts.Posts)
+            postsArr.map(post => postNewState.allPosts[post.id])
+            return postNewState
         case CREATE_POST:
-            return state
-        case DELETE_POST:
-            return state
+            postNewState["allPosts"] = {...postNewState.allPosts}
+            postNewState.allPosts[action.post.id] = action.post
+            postNewState.singlePost = action.post
+            return postNewState
         case UPDATE_POST: 
-            return state
+            postNewState["allPosts"] = {...postNewState.allPosts}
+            // postNewState["singlePost"] = {...postNewState.singlePost}
+            postNewState.allPosts[action.updatedPost.id] = action.updatedPost
+            postNewState.singlePost = action.updatedPost
+            return postNewState
+        case DELETE_POST:
+            postNewState["allPosts"] = {...postNewState.allPosts}
+            delete postNewState.allPosts[action.postId]
+            return postNewState
         default:
             return state;
     }

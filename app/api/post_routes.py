@@ -30,7 +30,7 @@ def user_textposts(id):
     posts_by_user = TextPost.query.filter_by(user_id=id).all()
     post_list = []
     if not posts_by_user:
-        return not_found_error(404)
+        return post_not_found_error(404)
     for post in posts_by_user:
         post_dict = post.to_dict()
         # print(post_dict)
@@ -45,7 +45,7 @@ def post_details(id):
     """
     post_by_id = TextPost.query.get(id)
     if post_by_id is None:
-        return not_found_error(404)
+        return post_not_found_error(404)
     post_dict = post_by_id.to_dict()
     return post_dict
 
@@ -82,7 +82,7 @@ def update_textpost(id):
     """
     post_to_update = TextPost.query.get(id)
     if post_to_update is None:
-        return {"error": "Post not found"}, 404
+        return post_not_found_error(404)
     update_data = request.get_json()
     if update_data["title"]:
         post_to_update.title = update_data["title"]
@@ -103,19 +103,19 @@ def delete_textposts(id):
     """
     post_to_delete = TextPost.query.get(id)
     if post_to_delete is None:
-        return not_found_error(404)
+        return post_not_found_error(404)
     db.session.delete(post_to_delete)
     db.session.commit()
     return {"message": "Post has been successfully deleted"}
 
 @post_bp.errorhandler(404)
-def not_found_error(error_dict):
+def post_not_found_error(error_dict):
     """
     This error handler is used when a requested resource is not found (404 error).
     It returns a JSON response with a 404 status code and a message indicating that 
     the requested resource could not be found.
     """
-    return {"message": "Not Found"}, 404
+    return {"message": "Post not found"}, 404
 
 @post_bp.errorhandler(400)
 def form_validation_error(error):
@@ -125,7 +125,7 @@ def form_validation_error(error):
     with an error message and detailed form errors.
     """
     form_error_response = {
-        "error": "Form validation failed",
+        "message": "Form validation failed",
         "errors": error.description 
     }
     return form_error_response, 400
