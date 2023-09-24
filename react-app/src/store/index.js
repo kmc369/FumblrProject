@@ -9,7 +9,7 @@ const rootReducer = combineReducers({
   post: postsReducer,
   note: noteReducer,
 });
-
+ 
 
 let enhancer;
 
