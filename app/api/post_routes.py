@@ -24,7 +24,7 @@ def all_posts():
 # @login_required
 def user_textposts(id):
     """
-    Retrieve User's Text Posts:
+    Retrieve User's Posts:
     This route retrieves all posts created by a specific user based on their user ID and returns them as a JSON list.
     """
     posts_by_user = TextPost.query.filter_by(user_id=id).all()
@@ -41,7 +41,7 @@ def user_textposts(id):
 def post_details(id):
     """
     Retrieve Post Details by ID:
-    This route retrieves the details of a post by its unique ID and returns them as a JSON dictionary.
+    This route retrieves the details of a post by its ID and returns them as a JSON dictionary.
     """
     post_by_id = TextPost.query.get(id)
     if post_by_id is None:
@@ -53,8 +53,7 @@ def post_details(id):
 def new_post_textpost():
     """
     Create a New Text Post:
-    This route handles the creation of a new text post. It accepts both GET and POST requests.
-    - For GET requests, it renders a form for creating a new post.
+    This route handles the creation of a new post.
     - For POST requests, it validates the form data, creates a new TextPost object, and adds it to the database.
     - For any validation errors or any issues during post creation, it returns a JSON response with error messages and a 400 status code.
     """
@@ -78,7 +77,7 @@ def new_post_textpost():
 def update_textpost(id):
     """
     Update an Existing Text Post:
-    This route handles the updating of an existing text post identified by its post's ID.
+    This route handles the updating of an existing post identified by its post's ID.
     It accepts a PUT request with the necessary form data to update the post.
     """
     post_to_update = TextPost.query.get(id)
@@ -99,7 +98,7 @@ def update_textpost(id):
 def delete_textposts(id):
     """
     Delete a Text Post:
-    This route handles the deletion of a text post identified by its post's ID.
+    This route handles the deletion of a post identified by its post's ID.
     It accepts a DELETE request to remove the post from the database.
     """
     post_to_delete = TextPost.query.get(id)
@@ -112,16 +111,21 @@ def delete_textposts(id):
 @post_bp.errorhandler(404)
 def not_found_error(error_dict):
     """
-    This error handler is triggered when a requested resource is not found (HTTP 404 error).
-    It returns a JSON response with a 404 status code and a message indicating that the requested
-    resource could not be found.
+    This error handler is used when a requested resource is not found (404 error).
+    It returns a JSON response with a 404 status code and a message indicating that 
+    the requested resource could not be found.
     """
     return {"message": "Not Found"}, 404
 
 @post_bp.errorhandler(400)
 def form_validation_error(error):
+    """
+    This error handler is used to handle form validation errors (400 Bad Request). 
+    It takes the form validation errors and constructs a JSON response
+    with an error message and detailed form errors.
+    """
     form_error_response = {
         "error": "Form validation failed",
-        "errors": error.description  # Access the form errors passed as the 'description' attribute
+        "errors": error.description 
     }
     return form_error_response, 400
