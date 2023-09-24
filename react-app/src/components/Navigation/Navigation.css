@@ -1,7 +1,4 @@
-/* .profile-dropdown {
-  position: absolute;
 
-} */
 
 .hidden {
   display: none;
@@ -38,14 +35,24 @@
 }
 
 .posttype{
-  border:2px solid gold;
+
   display: flex;
   flex-direction: row;
   height: 25%;
+  gap:10px;
+  background-color: rgb(44, 44, 44);
+
  
 }
 .Navicons{
   color:#fff;
+  text-align: center;
+
+}
+.allnavicon{
+  font-size: 35px;
+  margin-bottom: 5px;
+ 
 }
 
 .sidebarandnav{
@@ -53,4 +60,5 @@
   flex-direction: row;
   gap:40px;
   justify-content: space-between;
+  margin-top: 10px;;
 }

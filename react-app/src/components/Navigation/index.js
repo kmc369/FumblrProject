@@ -56,31 +56,39 @@ function Navigation({ isLoaded }){
         <div className="posttype">
         {/* background-color: rgb(44, 44, 44); */}
         <div className="Navicons">
-        <i class="fa-solid fa-font"><span>Text</span></i>
+        <i class="fa-solid fa-font allnavicon" style={{color:"#fff"}}></i>
+		<span>Text</span>
+        </div>
+
+
+        <div className="Navicons">
+        <i class="fa-solid fa-camera allnavicon" style={{color:"red"}}></i>
+		<span>Photo</span>
         </div>
 
         <div className="Navicons">
-        <i class="fa-solid fa-camera"><span>Photo</span></i>
+        <i class="fa-solid fa-quote-left allnavicon" style={{color:"orange"}}></i>
+		<span>Quote</span>
         </div>
 
         <div className="Navicons">
-        <i class="fa-solid fa-quote-left"><span>Quote</span></i>
+        <i class="fa-solid fa-link allnavicon" style={{color:"limegreen"}}></i>
+		<span>Link</span>
         </div>
 
         <div className="Navicons">
-        <i class="fa-solid fa-link"><span>Link</span></i>
+        <i class="fa-solid fa-comment-sms allnavicon" style={{color:"lightblue"}}></i>
+		<span>Chat</span>
         </div>
 
         <div className="Navicons">
-        <i class="fa-solid fa-comment-sms"><span>Chat</span></i>
+        <i class="fa-solid fa-headphones allnavicon"style={{color:"purple"}}></i>
+		<span>Audio</span>
         </div>
 
         <div className="Navicons">
-        <i class="fa-solid fa-headphones"><span>Audio</span></i>
-        </div>
-
-        <div className="Navicons">
-        <i class="fa-solid fa-video"><span>video</span></i>
+        <i class="fa-solid fa-video allnavicon"style={{color:"pink"}}></i>
+		<span>video</span>
         </div>
 
         </div>
