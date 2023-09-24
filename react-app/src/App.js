@@ -7,6 +7,7 @@ import NotePostForm from "./components/NotePostForm"
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllNotes from "./components/GetAllNotes";
+import EditNote from "./components/EditNote";
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -24,6 +25,9 @@ function App() {
           </Route>
           <Route exact path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route exact path="/notes/:note_id">
+            <EditNote />
           </Route>
           <Route exact path="/post/:post_id/notes/get" >
             <GetAllNotes />
