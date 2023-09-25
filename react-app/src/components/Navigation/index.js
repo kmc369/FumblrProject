@@ -9,9 +9,12 @@ function Navigation({ isLoaded }){
 
 	return (
 
+
+		<>
+	
 		<div className="sidebarandnav">
         <div className="sidebar-container">
-            <h1 className="tumblr-header">tumblr</h1>
+            <h1 className="tumblr-header">Fumblr</h1>
             <div className="iconsandtext">
             <i class="fa-solid fa-house"><span className="icontext">Home</span></i>
             </div>
@@ -38,7 +41,7 @@ function Navigation({ isLoaded }){
             </div>
 
             <div className="iconsandtext">
-            <i class="fa-solid fa-user"><span className="icontext">Acoount</span></i>
+            <i class="fa-solid fa-user"><span className="icontext">Acount</span></i>
             </div>
 
             <div className="iconsandtext">
@@ -53,72 +56,92 @@ function Navigation({ isLoaded }){
             
         </div>
 
-		<div className='followingandicons'>
+	<div className='followingandicons'>
 
-		<div className='following'>
-			<div className='followingtag'>Following</div>
-			<div className='foryou'>For you</div>
-			<div className='yourtags'>Your tags</div>
+				<div className='following'>
+					<div className='followingtag'>Following</div>
+					<div className='foryou'>For you</div>
+					<div className='yourtags'>Your tags</div>
+				</div>
+
+			<div className="posttype">
+			
+					<div className="Navicons">
+					<i class="fa-solid fa-font allnavicon" style={{color:"#fff"}}></i>
+					<span>Text</span>
+					</div>
+
+
+					<div className="Navicons">
+					<i class="fa-solid fa-camera allnavicon" style={{color:"red"}}></i>
+					<span>Photo</span>
+					</div>
+
+					<div className="Navicons">
+					<i class="fa-solid fa-quote-left allnavicon" style={{color:"orange"}}></i>
+					<span>Quote</span>
+					</div>
+
+					<div className="Navicons">
+					<i class="fa-solid fa-link allnavicon" style={{color:"limegreen"}}></i>
+					<span>Link</span>
+					</div>
+
+					<div className="Navicons">
+					<i class="fa-solid fa-comment-sms allnavicon" style={{color:"lightblue"}}></i>
+					<span>Chat</span>
+					</div>
+
+					<div className="Navicons">
+					<i class="fa-solid fa-headphones allnavicon"style={{color:"purple"}}></i>
+					<span>Audio</span>
+					</div>
+
+					<div className="Navicons">
+					<i class="fa-solid fa-video allnavicon"style={{color:"pink"}}></i>
+					<span>video</span>
+					</div>
+			</div>
+
+
 		</div>
+	<label className='search-container'>
 
-        <div className="posttype">
-        {/* background-color: rgb(44, 44, 44); */}
-        <div className="Navicons">
-        <i class="fa-solid fa-font allnavicon" style={{color:"#fff"}}></i>
-		<span>Text</span>
-        </div>
-
-
-        <div className="Navicons">
-        <i class="fa-solid fa-camera allnavicon" style={{color:"red"}}></i>
-		<span>Photo</span>
-        </div>
-
-        <div className="Navicons">
-        <i class="fa-solid fa-quote-left allnavicon" style={{color:"orange"}}></i>
-		<span>Quote</span>
-        </div>
-
-        <div className="Navicons">
-        <i class="fa-solid fa-link allnavicon" style={{color:"limegreen"}}></i>
-		<span>Link</span>
-        </div>
-
-        <div className="Navicons">
-        <i class="fa-solid fa-comment-sms allnavicon" style={{color:"lightblue"}}></i>
-		<span>Chat</span>
-        </div>
-
-        <div className="Navicons">
-        <i class="fa-solid fa-headphones allnavicon"style={{color:"purple"}}></i>
-		<span>Audio</span>
-        </div>
-
-        <div className="Navicons">
-        <i class="fa-solid fa-video allnavicon"style={{color:"pink"}}></i>
-		<span>video</span>
-        </div>
-
-        </div>
-
-		</div>
+			<i className="fa-solid fa-magnifying-glass" style={{color:"rgb(165, 165, 165)"}}></i>
+			<input id='search-input'
+			
+			placeholder='search Fumblr'>
+			
+			</input>
+	</label>
 
 
 
 
-		<div className='nav-container'>
-		<ul >
-			<li>
-				<NavLink exact to="/">Home</NavLink>
-			</li>
-			{isLoaded && (
-				<li>
-					<ProfileButton user={sessionUser} />
-				</li>
-			)}
-		</ul>
-		</div>
+
 	</div>
+
+	<div className='homeanduser-container'>
+		<ul className='homeanduser'>
+				<li>
+					<NavLink className= "houselink" exact to="/"> <i class="fa-solid fa-house" ></i></NavLink>
+				</li>
+				{isLoaded && (
+					<li>
+						<ProfileButton user={sessionUser} />
+					</li>
+				)}
+		</ul>
+
+
+
+
+	</div>
+
+
+	</>
+	
+
 	);
 }
 
