@@ -110,7 +110,7 @@ function Navigation({ isLoaded }){
 			</div>
 
 
-			{<Posts />}
+			{<Posts />} 
 
 
 </div>
