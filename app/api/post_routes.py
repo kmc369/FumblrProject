@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify, request #jsonify???? Do we need to use to send all responses with jsonify? 
 from flask_login import login_required
-from app.models import TextPost, db
+from app.models import TextPost, db, User
 from ..forms import PostForm
 
 
@@ -13,7 +13,7 @@ def all_posts():
     Retrieve All Posts:
     This route retrieves all posts from the database and returns them as a JSON list.
     """
-    all_posts = TextPost.query.all()
+    all_posts = TextPost.query.join(User).filter(User.id == TextPost.user_id).all()
     post_lists = []
     for post in all_posts:
         post_dict = post.to_dict()

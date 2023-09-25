@@ -12,7 +12,7 @@ notes_bp = Blueprint('text_notes', __name__)
 @notes_bp.route("/post/<int:id>/notes/get",methods= ["GET"])
 def get_notes_by_post_Id(id):
     """
-    all the notes for a specific post 
+    all the notes for a specific post d
     """
     all_notes = Note.query.filter_by(post_id=id).all()
     notes_list = []
@@ -20,7 +20,7 @@ def get_notes_by_post_Id(id):
         note_dict = note.to_dict()
         notes_list.append(note_dict)
     return notes_list
-#hello
+
 @notes_bp.route("/notes/<int:id>", methods=["PUT"])
 def edit_note(id):
 

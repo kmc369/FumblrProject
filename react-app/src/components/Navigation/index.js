@@ -1,8 +1,11 @@
 import React from 'react';
-import { NavLink } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
+import SearchBar from '../Search';
+import OpenModalButton from '../OpenModalButton';
+import NewPost from '../NewPost'
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -70,7 +73,7 @@ function Navigation({ isLoaded }){
 			
 					<div className="Navicons">
 					<i class="fa-solid fa-font allnavicon" style={{color:"#fff"}}></i>
-					<span>Text</span>
+					<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
 					</div>
 
 
@@ -113,13 +116,13 @@ function Navigation({ isLoaded }){
 </div>
 	<div className='search-div-container'>
 	<label className='search-container'>
-
-			<i className="fa-solid fa-magnifying-glass" style={{color:"rgb(165, 165, 165)"}}></i>
+			<SearchBar/>
+			{/* <i className="fa-solid fa-magnifying-glass" style={{color:"rgb(165, 165, 165)"}}></i>
 			<input id='search-input'
 			
 			placeholder='search Fumblr'>
 			
-			</input>
+			</input> */}
 	</label>
 	</div>
 

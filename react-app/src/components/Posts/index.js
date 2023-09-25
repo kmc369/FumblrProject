@@ -7,10 +7,9 @@ import { loadPostsThunk } from '../../store/post'
 const Posts = () => {
     const allPosts = [];
     const postsData = useSelector(state => state.post.allPosts);
-    console.log(postsData)
     const dispatch = useDispatch();
     Object.values(postsData)?.map(post => allPosts.push(post));
-    console.log(allPosts)
+
 
     useEffect(() => {
         dispatch(loadPostsThunk());
@@ -18,7 +17,24 @@ const Posts = () => {
 
 
     return (
-        <h1>All Posts Component!!</h1>
+        // <h1 className='heading_posts'>All Posts Component!!</h1>
+        <>
+        <div className='all-posts-container'>
+            {allPosts.map(post => (
+                <div className='post' key={post.id}>
+                    <div className='user-username'>
+                        {post.user.username}
+                    </div>
+                    <div className='post-title'>
+                        {post.title}
+                    </div>
+                    <div className='post-textContent'>
+                        {post.text_content}
+                    </div>
+                </div>
+            ))}
+        </div>
+        </>
     )
 
 }

@@ -34,6 +34,11 @@ class TextPost(db.Model):
             "text_content": self.text_content,
             'user_id': self.user_id,
             'created_at': self.created_at,
-            'updated_at': self.updated_at
+            'updated_at': self.updated_at,
+            'user': {
+                "id": self.user.id,
+                "username": self.user.username,
+                "email": self.user.email
+            }
         } 
     

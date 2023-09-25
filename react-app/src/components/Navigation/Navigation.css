@@ -199,7 +199,7 @@ justify-content: right;
   border:1px solid gold;
   
 }
-.search-container{
+.search-container form{
 
   display: flex;
   flex-direction: row;
@@ -219,6 +219,7 @@ justify-content: right;
   background-color: rgb(44, 44, 44);
   outline: none;
   width:120px;
+  color: white;
 }
 .fa-magnifying-glass{
   margin-top: 5px;
