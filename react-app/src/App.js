@@ -37,7 +37,7 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path='/' component={Posts}/>
+          {/* <Route exact path='/' component={Posts}/> */}
           <Route exact path='/posts/new' component={NewPost}/>
           <Route exact path='/posts/current-user' component={CurrentUserPosts}/>
           <Route exact path='/posts/:postId' component={SpecificPost}/>
