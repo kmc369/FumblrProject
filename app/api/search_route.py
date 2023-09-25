@@ -14,3 +14,20 @@ def search_user_posts(user):
     #     post_dict = post.to_dict()
     #     post_lists.append(post_dict)
     return redirect(f'/api/text_posts/user_posts/{searched_user.id}')
+
+
+@search_bp.route("/<searchItem>", methods=["GET"])
+def search_posts(searchItem):
+    searched_post = TextPost.query.filter(or_(TextPost.title.ilike(
+        f"%{searchItem}%"), TextPost.text_content.ilike(f"%{searchItem}%"))).all()
+    if searched_post is None:
+        return jsonify(error="Post could not be found"), 404
+
+    post_lists = [post.to_dict() for post in searched_post]
+
+    response_data = {
+        "users": None,
+        "posts": post_lists
+    }
+
+    return jsonify(response_data)
