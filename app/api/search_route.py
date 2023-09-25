@@ -32,4 +32,9 @@ def search_posts(searchItem):
      }
 
         return jsonify(response_data)
-    return redirect(f'/api/text_posts/user_posts/{searched_user.id}')
+    user_posts = TextPost.query.filter(TextPost.user_id == searched_user.id).all()
+    user_lists = []
+    for post in user_posts:
+        post_dict = post.to_dict()
+        user_lists.append(post_dict)
+    return {"posts":user_lists}
