@@ -9,7 +9,12 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllNotes from "./components/GetAllNotes";
 import EditNote from "./components/EditNote";
+<<<<<<< HEAD
 import LikeButton from "./components/Likes";
+=======
+import Posts from "./components/Posts";
+
+>>>>>>> 7ee9300 (progress)
 
 function App() {
   const dispatch = useDispatch();
@@ -32,11 +37,15 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
+<<<<<<< HEAD
 
           <Route exact path="/delete/note" >
             <DeleteNote />
           </Route>
 
+=======
+          <Route exact path="/all-posts" component={Posts} />
+>>>>>>> 7ee9300 (progress)
           <Route exact path="/notes/:note_id">
             <EditNote />
           </Route>
