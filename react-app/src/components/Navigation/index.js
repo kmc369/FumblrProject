@@ -71,7 +71,7 @@ function Navigation({ isLoaded }){
 			
 					<div className="Navicons">
 					<i class="fa-solid fa-font allnavicon" style={{color:"#fff"}}></i>
-					<span>Text</span>
+					<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
 					</div>
 
 
