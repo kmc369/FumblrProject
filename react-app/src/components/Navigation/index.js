@@ -114,7 +114,6 @@ function Navigation({ isLoaded }){
 			<Posts /> 
 			</Route>
 
-
 </div>
 	<div className='search-div-container'>
 	<label className='search-container'>
