@@ -49,8 +49,8 @@ function Navigation({ isLoaded }){
             </div>
 
 
-            <div className="iconsandtext">
-            <i class="fa-solid fa-right-from-bracket"><span className="icontext">Logout</span></i>
+            <div className="iconsandtext" id="logoutIcon">
+            <i class="fa-solid fa-right-from-bracket"><span  className="icontext" >Logout</span></i>
             </div>
 
             
@@ -62,9 +62,11 @@ function Navigation({ isLoaded }){
 					<div className='followingtag'>Following</div>
 					<div className='foryou'>For you</div>
 					<div className='yourtags'>Your tags</div>
-				</div>
+		</div>
 
-			<div className="posttype">
+	
+	<div className="posttype">	
+			
 			
 					<div className="Navicons">
 					<i class="fa-solid fa-font allnavicon" style={{color:"#fff"}}></i>
@@ -97,17 +99,19 @@ function Navigation({ isLoaded }){
 					<span>Audio</span>
 					</div>
 
-					<div className="Navicons">
+					<div className="Navicons video">
 					<i class="fa-solid fa-video allnavicon"style={{color:"pink"}}></i>
 					<span>video</span>
 					</div>
+					
 			</div>
 
 
 			{/* WHEN THE GET ALL POST ROUTE FOR RANDOM POST IS COMPLETE THIS IS WHERE IT WILL GO  */}
 
 
-		</div>
+</div>
+	<div className='search-div-container'>
 	<label className='search-container'>
 
 			<i className="fa-solid fa-magnifying-glass" style={{color:"rgb(165, 165, 165)"}}></i>
@@ -117,12 +121,9 @@ function Navigation({ isLoaded }){
 			
 			</input>
 	</label>
-
-
-
-
-
 	</div>
+
+</div>
 
 	<div className='homeanduser-container'>
 		<ul className='homeanduser'>
