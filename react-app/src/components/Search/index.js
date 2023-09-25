@@ -21,18 +21,20 @@ const SearchBar = () => {
     return (
         <div>
             <form onSubmit={handleSearch}>
-                <input
+            <i className="fa-solid fa-magnifying-glass" style={{color:"rgb(165, 165, 165)"}}></i>
+                <input id='search-input'
                     type="text"
                     value={searchItem}
                     onChange={(e) => setsearchItem(e.target.value)}
                     placeholder="Search Fumblr"
                 />
-                <button type="submit">Search</button>
+                {/* <button type="submit">Search</button> */}
             </form>
             <div>
                 {posts && posts.map(post => (
                     <div key={post.id} onClick={() => handlePostClick(post.id)}>
                         <h3>{post.title}</h3>
+                        <p>{post.user.username}</p>
                         <p>{post.text_content}</p>
                     </div>
                 ))}

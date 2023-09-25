@@ -19,7 +19,7 @@ search_bp = Blueprint('search', __name__)
 @search_bp.route("/<searchItem>", methods=["GET"])
 def search_posts(searchItem):
     searched_user = User.query.filter(User.username.like(f"%{searchItem}%")).first()
-    searched_post = TextPost.query.filter(or_(TextPost.title.ilike(
+    searched_post = TextPost.query.join(User).filter(or_(TextPost.title.ilike(
         f"%{searchItem}%"), TextPost.text_content.ilike(f"%{searchItem}%"))).all()
     if searched_user is None:
         post_lists = [post.to_dict() for post in searched_post]
