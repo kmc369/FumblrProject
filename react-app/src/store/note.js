@@ -9,7 +9,6 @@ export const DeleteNote = (comment_id)=>{
     return{
         type:DELETE_COMMENT,
         payload:comment_id
-
     }
 }
 
@@ -29,18 +28,15 @@ export const GetPostComments = (data) => {
 
 }
 
-<<<<<<< HEAD
 export const GetComments = (data) =>{
     return {
-        type:GET_COMMENTS,
-        payload:data
+        type: GET_COMMENTS,
+        payload: data
     }
 }
 
-export const EditComments = (data,comment_id) => {
-=======
+
 export const EditComments = (data, comment_id) => {
->>>>>>> bb2e632 (likes store and component added)
     return {
         type: EDIT_COMMENT,
         payload: {
@@ -52,9 +48,6 @@ export const EditComments = (data, comment_id) => {
     }
 
 }
-
-<<<<<<< HEAD
-
 
 export const deleteCommentThunk=(comment_id) =>async (dispatch)=>{
 
@@ -71,26 +64,38 @@ export const deleteCommentThunk=(comment_id) =>async (dispatch)=>{
     }
 }
 
+export const deleteCommentThunk = (comment_id) => async (dispatch) => {
 
-export const getCommentByIdThunk=(comment_id) =>async (dispatch)=>{
-
-    const response = await fetch(`/api/note/${comment_id}`,{
-        method:"GET"
+    const response = await fetch(`api/delete/note/${comment_id}`, {
+        method: "DELETE"
     })
-    if (response.ok){
+    if (response.ok) {
         const data = await response.json()
-        dispatch(GetComments(data))
+        dispatch(DeleteNote(comment_id))
         return data
     }
-    else{
+    else {
         return "NO"
     }
 }
 
-export const createNoteThunk =(note) => async (dispatch)=>{
-=======
+
+export const getCommentByIdThunk = (comment_id) => async (dispatch) => {
+
+    const response = await fetch(`/api/note/${comment_id}`, {
+        method: "GET"
+    })
+    if (response.ok) {
+        const data = await response.json()
+        dispatch(GetComments(data))
+        return data
+    }
+    else {
+        return "NO"
+    }
+}
+
 export const createNoteThunk = (note) => async (dispatch) => {
->>>>>>> bb2e632 (likes store and component added)
     // const  {content,user_id,post_id} = note
     const { content, user_id, post_id } = note
     const response = await fetch(`/api/post/${post_id}/notes`, {
@@ -127,19 +132,11 @@ export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) => {
     }
 }
 
-<<<<<<< HEAD
-export const EditCommentThunk = (notedata,current_note_id) => async (dispatch) =>{
-   
-    const response = await fetch(`/api/notes/${current_note_id}`,{
-        method:"PUT",
-        headers:{
-=======
-export const EditCommentThunk = (data, current_note_id) => async (dispatch) => {
-    console.log("The data from the thunk", data)
+export const EditCommentThunk = (notedata, current_note_id) => async (dispatch) => {
+
     const response = await fetch(`/api/notes/${current_note_id}`, {
         method: "PUT",
         headers: {
->>>>>>> bb2e632 (likes store and component added)
             "Content-Type": "application/json",
         },
         body: JSON.stringify(notedata)
@@ -176,16 +173,14 @@ export default function noteReducer(state = initialState, action) {
 
             return newState
         }
-        case GET_COMMENTS:{
-            const newState = {...state,singlePost:{...state.singlePost}}
+        case GET_COMMENTS: {
+            const newState = { ...state, singlePost: { ...state.singlePost } }
             newState.singlePost.comment = action.payload
             return newState
         }
         case DELETE_COMMENT:{
             const newState = {...state,singlePost:{...state.singlePost}}
             delete newState.note.singlePost.comment[action.payload.comment_id]
-           
-
             return newState
         }
         default:

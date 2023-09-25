@@ -2,23 +2,14 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import sessionReducer from "./session"
 import noteReducer from "./note"
-<<<<<<< HEAD
-import postsReducer from './post';
-
-const rootReducer = combineReducers({
-  session: sessionReducer,
-  post: postsReducer,
-  note: noteReducer,
-=======
 import likeReducer from './like';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   note: noteReducer,
   like: likeReducer,
->>>>>>> bb2e632 (likes store and component added)
 });
- 
+
 
 let enhancer;
 

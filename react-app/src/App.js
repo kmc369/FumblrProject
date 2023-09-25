@@ -22,21 +22,27 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+         
+          
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
+
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
           <Route exact path="/delete/note" >
             <DeleteNote />
           </Route>
+
           <Route exact path="/notes/:note_id">
             <EditNote />
           </Route>
+
           {/* <Route exact path="/post/:post_id/notes/get" >
             <GetAllNotes />
           </Route> */}
+
           <Route exact path="/post/:post_id/notes" >
             <NotePostForm />
           </Route>
