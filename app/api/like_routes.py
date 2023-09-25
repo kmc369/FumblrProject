@@ -14,7 +14,6 @@ def count_like(post_id):
     return len(post.likes)
 
 
-
 @likes_bp.route('/post/<int:post_id>', methods=['GET'])
 def get_num_likes(post_id):
     """
@@ -35,7 +34,15 @@ def like_post(post_id):
             liked = True if Like.query.filter_by(
                 user_id=user_id, post_id=post_id).first() else False  # set liked to False as default. only set liked to be True, when database query is successful to get matched row for user_id and post_id
         # return likes as dict to contain "count" (number of likes) and "user_liked" (if current user likes it or not )
-        return jsonify(status='success', likes={'count': count_like(post_id), 'user_liked': liked})
+
+        """
+        Route to get all likes for a given post.
+        """
+        post = TextPost.query.get_or_404(post_id)  # Get the post or return 404
+        likes = post.likes  # Assuming 'likes' is the relationship name on TextPost to Like model
+        # Collect usernames from each like, assuming 'user' is the relationship name on Like to User model
+        usernames = [like.user.username for like in likes]
+        return jsonify(status='success', likes={'count': count_like(post_id), 'user_liked': liked, "usernames": usernames})
 
     elif function == 'addLike':
         # to validate if current post exists searched by post_id
