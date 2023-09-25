@@ -5,7 +5,7 @@
 }
 
 .iconsandtext{
-  color:rgb(165, 165, 165); ;
+  color:rgb(165, 165, 165); 
   margin-left: 13px;
 }
 
@@ -17,23 +17,21 @@
 .tumblr-header{
   color:#fff;
   text-align: center;
+  margin-top: 25px;
+ 
 }
 
 .sidebar-container{
   display: flex;
   gap: 25px;
   flex-direction: column;
-  border-right: 1px solid rgb(165, 165, 165);
+  border-right: 1px solid rgb(165, 165, 165 ,0.3);
   height:100%; 
   width:25%;
   cursor: pointer;
   
 }
-.nav-container{
-  /* border:4px solid pink; */
-  height: 25%;
 
-}
 
 .posttype{
 
@@ -73,14 +71,30 @@
   flex-direction: row;
   /* gap:40px; */
   justify-content: space-between;
-  margin-top: 50px;
+  /* margin-top: 50px; */
+
   width: 70%;
+   
   /* border:2px solid purple; */
   
 }
 
 .followingtag{
-  margin-left: 13px;;
+ 
+ 
+  height:90%;
+  width:20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+.foryou,.yourtags{
+  height:90%;
+  width:20%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .following{
@@ -90,15 +104,78 @@
   justify-content: flex-start;
   gap:30px;
   width:100%;
+  font-weight: bold;
   /* border:1px solid limegreen; */
-  height:15%;
+  font-family: Arial, Helvetica, sans-serif;
+  height:10%;
   font-size: 20px;
   align-items: center;
   cursor: pointer;
   border-bottom:0.5px solid rgb(165, 165, 165,0.4); 
 }
 
+.followingtag:hover, .foryou:hover, .yourtags:hover {
+background-color: rgb(41, 41, 41) ;
+}
+.followingtag:active, .foryou:active,.yourtags:active{
+  border-bottom: 3px solid rgb(0, 110, 255);
+}
+
 .followingandicons{
   width: 85%;
+  border-right: 1px solid rgb(247, 247, 247);
+  cursor: pointer;
+}
+
+.nav-container{
+  border:4px solid pink;
+  height: 20%;
+  width:10%;
+
+
+}
+
+.homeanduser-container{
+border:3px solid red;
+height:10%;
+width:15%;
+}
+.homeanduser{
+
+  display: flex;
+  flex-direction: row;
+  border:1px solid pink;
+  gap:20px;
+  width:50%;
+}
+
+
+.houselink{
+  color:rgb(165, 165, 165);
+  font-size: 25px;;
+}
+
+.search-container{
+
+  display: flex;
+  flex-direction: row;
+  height:7%;
+  width:29%;
+  background-color: rgb(44, 44, 44);
+  border: 1px solid rgb(165, 165, 165,0.3);
+  border-radius: 4px;
+  margin-left: 10px;
+}
+
+#search-input{
+  border:none;
+  background-color: rgb(44, 44, 44);
+  font-size: 18px;
+  outline: none;
+}
+.fa-magnifying-glass{
+  margin-top: 10px;
+  margin-left: 5px;
+  margin-right: 10px;;
 }
 
