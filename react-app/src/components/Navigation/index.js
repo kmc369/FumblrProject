@@ -7,6 +7,7 @@ import SearchBar from '../Search';
 import OpenModalButton from '../OpenModalButton';
 import NewPost from '../NewPost'
 import Posts from '../Posts';
+import SearchResults from '../SearchResults';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -111,7 +112,10 @@ function Navigation({ isLoaded }){
 			</div>
 
 			<Route exact path='/'>
-			<Posts /> 
+				<Posts /> 
+			</Route>
+			<Route exact path='/search/:searchItem'>
+				<SearchResults/>
 			</Route>
 
 
