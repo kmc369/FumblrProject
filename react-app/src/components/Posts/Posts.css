@@ -1,0 +1,12 @@
+.heading_posts {
+    color: white;
+}
+
+body {
+    /* background-color: white; */
+    color: white;
+}
+
+.post {
+    border: dashed red 1px;
+}
