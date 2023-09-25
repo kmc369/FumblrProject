@@ -19,7 +19,7 @@ function Navigation({ isLoaded }){
 	
 		<div className="sidebarandnav">
         <div className="sidebar-container">
-            <h1 className="tumblr-header">Fumblr</h1>
+            <NavLink exact to="/"><h1 className="tumblr-header">Fumblr</h1></NavLink>
             <div className="iconsandtext">
             <i class="fa-solid fa-house"><span className="icontext">Home</span></i>
             </div>

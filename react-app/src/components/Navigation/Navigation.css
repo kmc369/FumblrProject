@@ -22,6 +22,10 @@
  
 }
 
+.sidebar-container a{
+  text-decoration: none;
+}
+
 .sidebar-container{
   display: flex;
   gap: 25px;
