@@ -4,10 +4,9 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import SearchBar from '../Search';
-
 import OpenModalButton from '../OpenModalButton';
 import NewPost from '../NewPost'
-
+import Posts from '../Posts';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -112,7 +111,7 @@ function Navigation({ isLoaded }){
 			</div>
 
 
-			{/* WHEN THE GET ALL POST ROUTE FOR RANDOM POST IS COMPLETE THIS IS WHERE IT WILL GO  */}
+			{<Posts />} 
 
 
 </div>
