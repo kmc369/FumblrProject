@@ -1,0 +1,103 @@
+.noteTextBox{
+    height:600px;
+    width:500px;
+    position: absolute;
+    top:100px;
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(44, 44, 44);
+    gap:15px;
+   
+}
+
+#label-form{
+
+    /* border:0.8px solid  rgb(119, 119, 119); */
+   
+    justify-content: space-between;
+    border-radius: 30px; 
+    text-align: center;
+    background-color: rgb(44, 44, 44);
+    display: flex;
+    height:80%;
+    width: 85%;
+    border: 1px solid rgb(165, 165, 165);
+   
+  
+
+
+
+}
+input.comment-input {
+    background-color: rgb(44, 44, 44);
+    border:none;
+    width:80%;
+    border-radius: 30px;
+    outline: none;
+    font-size: 17px;
+    margin-left: 5px;
+
+
+   
+}
+
+#note-button {
+    background-color: rgb(44, 44, 44);
+    border: 0px;
+    width: 20%;
+    border-radius: 30px;
+    height:90%;
+    font-size: 15px;
+    margin-right: 5px;
+    
+
+}
+.input-container{
+    margin-top: 10px;
+    height:15%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+   
+    
+}
+
+.comment-items{
+    border: 1px solid rgb(165, 165, 165);
+    height: 20%;
+    border-radius: 10px;
+    width: fit-content;
+    padding:15px;
+  
+   
+
+
+}
+.comments-container{
+  
+    height: 98%;
+    color:#fff;
+    display: flex;
+    flex-direction: column;
+    gap:15px;
+    width: 85%;
+    margin:0 auto;
+
+    
+
+}
+
+.manage-note{
+  width: fit-content;
+  height: fit-content;
+
+ 
+}
+.manage-and-comment{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+    height:80%;
+  
+}

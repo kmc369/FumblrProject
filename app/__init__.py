@@ -4,9 +4,10 @@ from flask_cors import CORS
 from flask_migrate import Migrate
 from flask_wtf.csrf import CSRFProtect, generate_csrf
 from flask_login import LoginManager
-from .models import db, User,TextPost,Like,Note
+from .models import db, User, TextPost, Like, Note
 from .api.user_routes import user_routes
 from .api.auth_routes import auth_routes
+from .api import notes_bp, post_bp, search_bp, likes_bp
 from .seeds import seed_commands
 from .config import Config
 
@@ -29,6 +30,11 @@ app.cli.add_command(seed_commands)
 app.config.from_object(Config)
 app.register_blueprint(user_routes, url_prefix='/api/users')
 app.register_blueprint(auth_routes, url_prefix='/api/auth')
+app.register_blueprint(post_bp, url_prefix='/api/text_posts')
+app.register_blueprint(search_bp, url_prefix='/api/search')
+app.register_blueprint(notes_bp, url_prefix='/api')
+app.register_blueprint(likes_bp, url_prefix='/api/likes')
+
 db.init_app(app)
 Migrate(app, db)
 
@@ -68,9 +74,9 @@ def api_help():
     Returns all API routes and their doc strings
     """
     acceptable_methods = ['GET', 'POST', 'PUT', 'PATCH', 'DELETE']
-    route_list = { rule.rule: [[ method for method in rule.methods if method in acceptable_methods ],
-                    app.view_functions[rule.endpoint].__doc__ ]
-                    for rule in app.url_map.iter_rules() if rule.endpoint != 'static' }
+    route_list = {rule.rule: [[method for method in rule.methods if method in acceptable_methods],
+                              app.view_functions[rule.endpoint].__doc__]
+                  for rule in app.url_map.iter_rules() if rule.endpoint != 'static'}
     return route_list
 
 

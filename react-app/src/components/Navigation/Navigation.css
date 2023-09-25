@@ -1,7 +1,242 @@
-.profile-dropdown {
-  position: absolute;
-}
+
 
 .hidden {
   display: none;
 }
+
+.iconsandtext{
+  color:rgb(165, 165, 165); 
+  margin-left: 13px;
+}
+
+.icontext{
+  margin-left: 20px;
+  font-family:Arial, Helvetica, sans-serif;
+
+}
+
+.tumblr-header{
+  color:#fff;
+  text-align: center;
+  margin-top: 13px;
+ 
+}
+
+.sidebar-container{
+  display: flex;
+  gap: 25px;
+  flex-direction: column;
+  border-right: 1px solid rgb(165, 165, 165 ,0.3);
+  height:100%; 
+  width:25%;
+  cursor: pointer;
+  
+}
+
+
+/* 
+SIDE BAR ICONS ABOVE */
+
+
+
+.posttype{
+
+  display: flex;
+  flex-direction: row;
+  height: 10%;
+  border-radius: 10px;
+  gap:13px;
+  background-color: rgb(44, 44, 44);
+ 
+  cursor: pointer;
+  width:fit-content;
+  height: fit-content;
+  margin:0 auto;
+  margin-top: 15px;;
+  border:2px solid red;
+
+  
+
+ 
+
+ 
+}
+
+.video{
+  margin-right: 5px;
+}
+.Navicons{
+  color:#fff;
+  text-align: center;
+  margin-top: 10px;;
+  display: flex;
+  flex-direction: column;
+  width:20%;
+  gap:3px;
+  border:2px solid white;
+
+
+}
+.allnavicon{
+  font-size: 35px;
+  margin-bottom: 5px;
+ 
+}
+
+
+
+
+
+/* LIGHT GREY BACKGROUND AND ALL THE FANCY ICONS ABOVE */
+
+
+/* THE FOLLOWING AND ITS EFFECTS BELOW */
+.following{
+  color:rgb(165, 165, 165); 
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  gap:2%;
+  height: 10%;;
+  width:100%;
+  font-weight: bold;
+  font-family: Arial, Helvetica, sans-serif;
+
+
+  align-items: center;
+  cursor: pointer;
+  border-bottom:0.5px solid rgb(165, 165, 165,0.4); 
+}
+
+.followingtag:hover, .foryou:hover, .yourtags:hover {
+background-color: rgb(41, 41, 41) ;
+}
+.followingtag:active, .foryou:active,.yourtags:active{
+  border-bottom: 3px solid rgb(0, 110, 255);
+}
+
+.followingandicons{
+  width: 85%;
+  border-right: 1px solid rgb(165, 165, 165 ,0.3);
+  cursor: pointer;
+}
+
+.nav-container{
+  border:4px solid pink;
+  height: 20%;
+  width:10%;
+
+
+}
+
+.followingtag,.foryou,.yourtags{
+ 
+  height:90%;
+  width:25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+
+/* THE SIDE BAR CONTAINER FOR EVERTHING  BELOW*/
+
+.sidebarandnav{
+  display: flex;
+  flex-direction: row;
+  /* gap:40px; */
+  justify-content: space-between;
+  /* margin-top: 50px; */
+
+  width: fit-content;
+   
+  border:2px solid purple;
+  
+}
+
+
+
+/* THE SIDEBAR AND THE USER  */
+
+
+
+
+
+
+.homeanduser-container{
+
+height:10%;
+width:15%;
+display: flex;
+justify-content: right;
+}
+.homeanduser{
+
+  display: flex;
+  flex-direction: row;
+  border:1px solid pink;
+  gap:20px;
+  width:70%;
+}
+
+
+.houselink{
+  color:rgb(165, 165, 165);
+  font-size: 20px;
+  border:1px solid red;
+}
+.profile-button{
+  background-color:rgb(165, 165, 165);
+  font-size: 17px;
+  border:1px solid purple;
+}
+
+
+/* THE SEARCH FEATURE */
+
+.search-div-container{
+  border:1px solid gold;
+  
+}
+.search-container{
+
+  display: flex;
+  flex-direction: row;
+  height:5.5%;
+  width:fit-content;
+  background-color: rgb(44, 44, 44);
+  border: 1px solid rgb(165, 165, 165,0.3);
+  border-radius: 4px;
+  margin-left: 10px;
+  margin-top: 9px;
+  border:2px solid green;
+  margin-right: 10px;;
+}
+
+#search-input{
+  border:none;
+  background-color: rgb(44, 44, 44);
+  outline: none;
+  width:120px;
+}
+.fa-magnifying-glass{
+  margin-top: 5px;
+  margin-left: 5px;
+  margin-right: 10px;
+  
+}
+
+#authDropDown{
+  border:2px solid limegreen;
+  background-color: rgb(44, 44, 44);
+  
+}
+
+
+.loginButton{
+  background-color: rgb(44, 44, 44);
+
+  
+}
+

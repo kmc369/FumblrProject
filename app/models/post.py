@@ -17,7 +17,7 @@ class TextPost(db.Model):
     user = db.relationship("User", back_populates="posts")
     notes = db.relationship("Note", back_populates="posts")
     
-    
+
     
     likes = db.relationship("Like",back_populates="posts")
     
@@ -30,7 +30,8 @@ class TextPost(db.Model):
     def to_dict(self):
         return {
             'id': self.id,
-            'content': self.content,
+            "title": self.title,
+            "text_content": self.text_content,
             'user_id': self.user_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at
