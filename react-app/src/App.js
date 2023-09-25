@@ -8,6 +8,9 @@ import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 import GetAllNotes from "./components/GetAllNotes";
 import EditNote from "./components/EditNote";
+import Posts from "./components/Posts";
+
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -26,6 +29,7 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path="/all-posts" component={Posts} />
           <Route exact path="/notes/:note_id">
             <EditNote />
           </Route>
