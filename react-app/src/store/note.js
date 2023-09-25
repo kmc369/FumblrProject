@@ -49,20 +49,20 @@ export const EditComments = (data, comment_id) => {
 
 }
 
-export const deleteCommentThunk=(comment_id) =>async (dispatch)=>{
+// export const deleteCommentThunk=(comment_id) =>async (dispatch)=>{
 
-    const response = await fetch(`api/delete/note/${comment_id}`,{
-        method:"DELETE"
-    })
-    if (response.ok){
-        const data = await response.json()
-        dispatch(DeleteNote(comment_id))
-        return data
-    }
-    else{
-        return "NO"
-    }
-}
+//     const response = await fetch(`api/delete/note/${comment_id}`,{
+//         method:"DELETE"
+//     })
+//     if (response.ok){
+//         const data = await response.json()
+//         dispatch(DeleteNote(comment_id))
+//         return data
+//     }
+//     else{
+//         return "NO"
+//     }
+// }
 
 export const deleteCommentThunk = (comment_id) => async (dispatch) => {
 
