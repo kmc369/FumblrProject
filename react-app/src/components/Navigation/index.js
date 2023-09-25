@@ -53,6 +53,14 @@ function Navigation({ isLoaded }){
             
         </div>
 
+		<div className='followingandicons'>
+
+		<div className='following'>
+			<div className='followingtag'>Following</div>
+			<div className='foryou'>For you</div>
+			<div className='yourtags'>Your tags</div>
+		</div>
+
         <div className="posttype">
         {/* background-color: rgb(44, 44, 44); */}
         <div className="Navicons">
@@ -92,6 +100,8 @@ function Navigation({ isLoaded }){
         </div>
 
         </div>
+
+		</div>
 
 
 
