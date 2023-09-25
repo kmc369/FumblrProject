@@ -14,6 +14,7 @@
   font-family:Arial, Helvetica, sans-serif;
 
 }
+
 .tumblr-header{
   color:#fff;
   text-align: center;
@@ -33,23 +34,36 @@
 }
 
 
+/* 
+SIDE BAR ICONS ABOVE */
+
+
+
 .posttype{
 
   display: flex;
   flex-direction: row;
-  height: 20%;
-  border-radius: 10px;;
-  gap:10px;
+  height: 10%;
+  border-radius: 10px;
+  gap:13px;
   background-color: rgb(44, 44, 44);
-  margin-top: 20px;
+ 
   cursor: pointer;
-  width:80%;
+  width:fit-content;
+  height: fit-content;
   margin:0 auto;
   margin-top: 15px;;
+  border:2px solid red;
+
+  
 
  
 
  
+}
+
+.video{
+  margin-right: 5px;
 }
 .Navicons{
   color:#fff;
@@ -57,7 +71,10 @@
   margin-top: 10px;;
   display: flex;
   flex-direction: column;
-  width:25%;
+  width:20%;
+  gap:3px;
+  border:2px solid white;
+
 
 }
 .allnavicon{
@@ -66,49 +83,26 @@
  
 }
 
-.sidebarandnav{
-  display: flex;
-  flex-direction: row;
-  /* gap:40px; */
-  justify-content: space-between;
-  /* margin-top: 50px; */
 
-  width: 70%;
-   
-  /* border:2px solid purple; */
-  
-}
 
-.followingtag{
- 
- 
-  height:90%;
-  width:20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
- 
-}
-.foryou,.yourtags{
-  height:90%;
-  width:20%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
 
+
+/* LIGHT GREY BACKGROUND AND ALL THE FANCY ICONS ABOVE */
+
+
+/* THE FOLLOWING AND ITS EFFECTS BELOW */
 .following{
   color:rgb(165, 165, 165); 
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  gap:30px;
+  gap:2%;
+  height: 10%;;
   width:100%;
   font-weight: bold;
-  /* border:1px solid limegreen; */
   font-family: Arial, Helvetica, sans-serif;
-  height:10%;
-  font-size: 20px;
+
+
   align-items: center;
   cursor: pointer;
   border-bottom:0.5px solid rgb(165, 165, 165,0.4); 
@@ -134,6 +128,41 @@ background-color: rgb(41, 41, 41) ;
 
 
 }
+
+.followingtag,.foryou,.yourtags{
+ 
+  height:90%;
+  width:25%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+ 
+}
+
+
+/* THE SIDE BAR CONTAINER FOR EVERTHING  BELOW*/
+
+.sidebarandnav{
+  display: flex;
+  flex-direction: row;
+  /* gap:40px; */
+  justify-content: space-between;
+  /* margin-top: 50px; */
+
+  width: fit-content;
+   
+  border:2px solid purple;
+  
+}
+
+
+
+/* THE SIDEBAR AND THE USER  */
+
+
+
+
+
 
 .homeanduser-container{
 
@@ -164,28 +193,38 @@ justify-content: right;
 }
 
 
+/* THE SEARCH FEATURE */
+
+.search-div-container{
+  border:1px solid gold;
+  
+}
 .search-container{
 
   display: flex;
   flex-direction: row;
-  height:7%;
-  width:29%;
+  height:5.5%;
+  width:fit-content;
   background-color: rgb(44, 44, 44);
   border: 1px solid rgb(165, 165, 165,0.3);
   border-radius: 4px;
   margin-left: 10px;
+  margin-top: 9px;
+  border:2px solid green;
+  margin-right: 10px;;
 }
 
 #search-input{
   border:none;
   background-color: rgb(44, 44, 44);
-  font-size: 18px;
   outline: none;
+  width:120px;
 }
 .fa-magnifying-glass{
-  margin-top: 10px;
+  margin-top: 5px;
   margin-left: 5px;
-  margin-right: 10px;;
+  margin-right: 10px;
+  
 }
 
 #authDropDown{
