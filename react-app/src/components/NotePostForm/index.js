@@ -5,6 +5,7 @@ import { useModal } from "../../context/Modal";
 import { useSelector } from 'react-redux';
 import {useParams } from 'react-router-dom'
 import * as NoteActions from '../../store/note'
+import { openDeleteModal } from "../DeleteNote";
 
 import DeleteNote from "../DeleteNote";
 
@@ -19,6 +20,7 @@ function NoteForm(){
     const post_id_int = parseInt(post_id, 10);
     const [content,setContent] = useState("")
     const [postComments,setPostComments] = useState({})
+    const [change ,setChange] = useState(false)
 
 
     const handleSubmit = async (e)=>{
@@ -35,16 +37,17 @@ function NoteForm(){
     // console.log(new_note)
 
     await dispatch(NoteActions.createNoteThunk(new_note))
+    setChange(false)
     await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
     setContent("")
-   
+   //missing a rerender here
 
 }
 
     useEffect(()=>{
         async function fetchData() {
             const getCommentsOfPost = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
-       
+            
         setPostComments(getCommentsOfPost); 
       }
       fetchData();
@@ -94,13 +97,11 @@ function NoteForm(){
                 </div>
                 ))}
             </div>
-                <div className="manage-note">
-                {values.map((comment,index)=>(
-                    
-                    <DeleteNote comment={comment}/>
-                
-                ))}
-                </div>
+            <div className="manage-note">
+                    {values.map((comment, index) => (
+                    <DeleteNote comment={comment}  key={index} />
+                        ))}
+                    </div>
             </div>
 
 
