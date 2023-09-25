@@ -57,21 +57,15 @@ export function DropdownItem({ text}) {
             {/* {text} */}
        
             <OpenModalButton
-              
+                    id={`${text}`}
                     modalComponent={<DeleteNotePopUp/>}
                     buttonText={text}
+                    
                     
             />
        
         </li>
    
-        //   <li className="dropdownItem" id={`${text}`} onClick={()=>{
-        //     <OpenModalButton modalComponent={<deleteNotePopUp/>} />
-        
-          
-        //   }}>
-        //     {text}
-        //   </li>
       
     );
   }
