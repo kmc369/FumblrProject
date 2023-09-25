@@ -4,8 +4,11 @@ import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import SearchBar from '../Search';
-// import OpenModalButton from '../OpenModalButton';
-// import NewPost from "../NewPost"
+
+import OpenModalButton from '../OpenModalButton';
+import NewPost from '../NewPost'
+
+
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
