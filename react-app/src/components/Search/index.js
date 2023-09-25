@@ -11,7 +11,8 @@ const SearchBar = () => {
 
     const handleSearch = (e) => {
         e.preventDefault();
-        dispatch(searchPostsThunk(searchItem));
+        //dispatch(searchPostsThunk(searchItem));
+        history.push(`/search/${searchItem}`)
     };
 
     const handlePostClick = (postId) => {
@@ -30,7 +31,7 @@ const SearchBar = () => {
                 />
                 {/* <button type="submit">Search</button> */}
             </form>
-            <div>
+            {/* <div>
                 {posts && posts.map(post => (
                     <div key={post.id} onClick={() => handlePostClick(post.id)}>
                         <h3>{post.title}</h3>
@@ -38,7 +39,7 @@ const SearchBar = () => {
                         <p>{post.text_content}</p>
                     </div>
                 ))}
-            </div>
+            </div> */}
         </div>
     );
 };
