@@ -10,7 +10,11 @@ import Navigation from "./components/Navigation";
 import GetAllNotes from "./components/GetAllNotes";
 import EditNote from "./components/EditNote";
 import LikeButton from "./components/Likes";
-
+import Posts from "./components/Posts";
+import SpecificPost from './components/SpecificPost'
+import EditPost from './components/EditPost'
+import CurrentUserPosts from './components/CurrentUserPosts'
+import NewPost from './components/NewPost'
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -31,6 +35,11 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
+          <Route exact path='/' component={Posts}/>
+          <Route exact path='/posts/new' component={NewPost}/>
+          <Route exact path='/posts/current-user' component={CurrentUserPosts}/>
+          <Route exact path='/posts/:postId' component={SpecificPost}/>
+          <Route exact path='/posts/:postId/edit' component={EditPost}/>
           <Route exact path="/delete/note" >
             <DeleteNote />
           </Route>
