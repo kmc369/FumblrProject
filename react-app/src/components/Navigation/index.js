@@ -104,6 +104,9 @@ function Navigation({ isLoaded }){
 			</div>
 
 
+			{/* WHEN THE GET ALL POST ROUTE FOR RANDOM POST IS COMPLETE THIS IS WHERE IT WILL GO  */}
+
+
 		</div>
 	<label className='search-container'>
 
@@ -127,8 +130,8 @@ function Navigation({ isLoaded }){
 					<NavLink className= "houselink" exact to="/"> <i class="fa-solid fa-house" ></i></NavLink>
 				</li>
 				{isLoaded && (
-					<li>
-						<ProfileButton user={sessionUser} />
+					<li >
+						<ProfileButton  user={sessionUser} />
 					</li>
 				)}
 		</ul>
