@@ -1,6 +1,8 @@
 const DeleteNotePopUp = ()=>{
  
     return (
+
+      //if 
         <div>
            <div className="delete-spot">
           <h2>Confirm Delete</h2>

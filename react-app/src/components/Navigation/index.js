@@ -7,6 +7,7 @@ import SearchBar from '../Search';
 import OpenModalButton from '../OpenModalButton';
 import NewPost from '../NewPost'
 import Posts from '../Posts';
+
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
 
