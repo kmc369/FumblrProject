@@ -15,6 +15,8 @@ import SpecificPost from './components/SpecificPost'
 import EditPost from './components/EditPost'
 import CurrentUserPosts from './components/CurrentUserPosts'
 import NewPost from './components/NewPost'
+import SearchBar from "./components/Search";
+
 function App() {
   const dispatch = useDispatch();
   const [isLoaded, setIsLoaded] = useState(false);
@@ -58,6 +60,9 @@ function App() {
           {/* hard coded test route, remove after integrating likes into post feature */}
           <Route exact path="/like" >
             <LikeButton post_id={1} user_id={1} />
+          </Route>
+          <Route exact path="/search" >
+            <SearchBar />
           </Route>
         </Switch>
       )}

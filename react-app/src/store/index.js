@@ -3,11 +3,13 @@ import thunk from 'redux-thunk';
 import sessionReducer from "./session"
 import noteReducer from "./note"
 import likeReducer from './like';
+import searchReducer from './search';
 
 const rootReducer = combineReducers({
   session: sessionReducer,
   note: noteReducer,
   like: likeReducer,
+  search: searchReducer
 });
 
 
