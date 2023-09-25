@@ -29,7 +29,7 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-          <Route exact path="/all-posts" component={Posts} />
+          {/* <Route exact path="/all-posts" component={Posts} /> */}
           <Route exact path="/notes/:note_id">
             <EditNote />
           </Route>
