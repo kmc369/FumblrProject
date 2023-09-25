@@ -110,8 +110,9 @@ function Navigation({ isLoaded }){
 					
 			</div>
 
-
-			{<Posts />} 
+			<Route exact path='/'>
+			<Posts /> 
+			</Route>
 
 
 </div>
