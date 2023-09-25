@@ -18,7 +18,7 @@ def all_posts():
     for post in all_posts:
         post_dict = post.to_dict()
         post_lists.append(post_dict)
-    return {"Posts": post_lists}
+    return jsonify({"Posts": post_lists})
     
 @post_bp.route('/user_posts/<int:id>')
 # @login_required
@@ -35,7 +35,7 @@ def user_textposts(id):
         post_dict = post.to_dict()
         # print(post_dict)
         post_list.append(post_dict)
-    return { "Posts": post_list}
+    return jsonify({ "Posts": post_list})
 
 @post_bp.route("/posts/<int:id>")
 def post_details(id):
@@ -47,7 +47,7 @@ def post_details(id):
     if post_by_id is None:
         return post_not_found_error(404)
     post_dict = post_by_id.to_dict()
-    return post_dict
+    return jsonify(post_dict)
 
 @post_bp.route("/new_post", methods=["POST"])
 def new_post_textpost():
@@ -69,7 +69,7 @@ def new_post_textpost():
         
         db.session.add(new_post)
         db.session.commit()
-        return new_post.to_dict(), 201
+        return jsonify(new_post.to_dict(), 201)
     return form_validation_error(form.errors)
     
     
@@ -91,7 +91,7 @@ def update_textpost(id):
     if update_data["user_id"]:
         post_to_update.user_id = update_data['user_id']
     db.session.commit()
-    return post_to_update.to_dict()
+    return jsonify(post_to_update.to_dict())
 
 
 @post_bp.route("/posts/<int:id>/delete", methods=["DELETE"])
@@ -106,7 +106,7 @@ def delete_textposts(id):
         return post_not_found_error(404)
     db.session.delete(post_to_delete)
     db.session.commit()
-    return {"message": "Post has been successfully deleted"}
+    return jsonify({"message": "Post has been successfully deleted"})
 
 @post_bp.errorhandler(404)
 def post_not_found_error(error_dict):
@@ -115,7 +115,7 @@ def post_not_found_error(error_dict):
     It returns a JSON response with a 404 status code and a message indicating that 
     the requested resource could not be found.
     """
-    return {"message": "Post not found"}, 404
+    return jsonify({"message": "Post not found"}, 404)
 
 @post_bp.errorhandler(400)
 def form_validation_error(error):
@@ -128,4 +128,4 @@ def form_validation_error(error):
         "message": "Form validation failed",
         "errors": error.description 
     }
-    return form_error_response, 400
+    return jsonify(form_error_response, 400)

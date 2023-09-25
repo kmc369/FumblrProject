@@ -5,11 +5,10 @@ const GET_COMMENTS = "get/Comments"
 const DELETE_COMMENT = "delete/comment"
 
 
-export const DeleteNote = (comment_id) => {
-    return {
-        type: DELETE_COMMENT,
-        payload: comment_id
-
+export const DeleteNote = (comment_id)=>{
+    return{
+        type:DELETE_COMMENT,
+        payload:comment_id
     }
 }
 
@@ -29,12 +28,13 @@ export const GetPostComments = (data) => {
 
 }
 
-export const GetComments = (data) => {
+export const GetComments = (data) =>{
     return {
         type: GET_COMMENTS,
         payload: data
     }
 }
+
 
 export const EditComments = (data, comment_id) => {
     return {
@@ -49,7 +49,20 @@ export const EditComments = (data, comment_id) => {
 
 }
 
+export const deleteCommentThunk=(comment_id) =>async (dispatch)=>{
 
+    const response = await fetch(`api/delete/note/${comment_id}`,{
+        method:"DELETE"
+    })
+    if (response.ok){
+        const data = await response.json()
+        dispatch(DeleteNote(comment_id))
+        return data
+    }
+    else{
+        return "NO"
+    }
+}
 
 export const deleteCommentThunk = (comment_id) => async (dispatch) => {
 
@@ -165,11 +178,9 @@ export default function noteReducer(state = initialState, action) {
             newState.singlePost.comment = action.payload
             return newState
         }
-        case DELETE_COMMENT: {
-            const newState = { ...state, singlePost: { ...state.singlePost } }
+        case DELETE_COMMENT:{
+            const newState = {...state,singlePost:{...state.singlePost}}
             delete newState.note.singlePost.comment[action.payload.comment_id]
-
-
             return newState
         }
         default:

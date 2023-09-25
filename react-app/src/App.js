@@ -17,7 +17,6 @@ function App() {
   useEffect(() => {
     dispatch(authenticate()).then(() => setIsLoaded(true));
   }, [dispatch]);
-
   return (
     <>
       <Navigation isLoaded={isLoaded} />
@@ -32,7 +31,6 @@ function App() {
           <Route exact path="/signup">
             <SignupFormPage />
           </Route>
-
           <Route exact path="/delete/note" >
             <DeleteNote />
           </Route>
@@ -48,8 +46,6 @@ function App() {
           <Route exact path="/post/:post_id/notes" >
             <NotePostForm />
           </Route>
-
-
           {/* hard coded test route, remove after integrating likes into post feature */}
           <Route exact path="/like" >
             <LikeButton post_id={1} user_id={1} />
@@ -59,5 +55,4 @@ function App() {
     </>
   );
 }
-
-export default App;
+export default App; 
