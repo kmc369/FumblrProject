@@ -41,29 +41,29 @@ const post_id = useParams()
 
 export function EditNotePopUp ({comment}){
   const dispatch = useDispatch()
-const user = useSelector((state)=>state.session.user)
-
+//   const user = useSelector((state)=>state.session.user)
+  const {closeModal} = useModal()
 const note_id  = comment.id
 
-const [content ,setContent] = useState("")
+const [content ,setContent] = useState(comment.content)
 
 
 
-// dispatch(NoteActions.getCommentsOfPostThunk(1))
-useEffect(() => {
+// // dispatch(NoteActions.getCommentsOfPostThunk(1))
+// useEffect(() => {
 
-    const fetchData = async () => {
-      const commentData = await dispatch(NoteActions.getCommentByIdThunk(note_id));
+//     const fetchData = async () => {
+//       const commentData = await dispatch(NoteActions.getCommentByIdThunk(note_id));
  
-      setContent(commentData.content)
+//       setContent(commentData.content)
     
-    };
+//     };
     
-    fetchData(); // Call the async function immediately
-  }, [note_id]);
+//     fetchData(); // Call the async function immediately
+//   }, [note_id]);
 
-const handleSubmit = async (e)=>{
-    console.log("the new content is ",content)
+function handleSubmit(e){
+
     
     e.preventDefault()
     
@@ -74,23 +74,19 @@ const handleSubmit = async (e)=>{
      
         
     }
-
-    console.log("the form data is ",formData)
-
-     dispatch(NoteActions.EditCommentThunk(formData,note_id))
+    dispatch(NoteActions.EditCommentThunk(formData,note_id))
     setContent("")
+    closeModal()
   
-    
-    
-    
-
-    
+      
 }
+
+
   return(
 
     <>
   
-    <div className="EditForm" onSubmit={handleSubmit}>
+    <div className="EditForm">
       <h1 className="editNoteheader">Edit Note</h1>
         <form className="editFormData">
             <textarea className="textForEditNote"
@@ -100,7 +96,7 @@ const handleSubmit = async (e)=>{
                 type='text'
             />
         </form>
-            <button className="Save" type="submit">Reply</button>
+            <button className="Save" type="submit" onClick={handleSubmit} >Reply</button>
     </div>
 
     </>
