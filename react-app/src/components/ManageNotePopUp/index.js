@@ -1,15 +1,32 @@
-import "./EditNote.css"
 import React, { useEffect, useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import { useSelector } from 'react-redux';
 import {useParams } from 'react-router-dom'
+import './ManageNotePopUp.css'
 import * as NoteActions from '../../store/note'
 
+const DeleteNotePopUp = ()=>{
+ 
+    return (
 
-function EditNote(){
-const dispatch = useDispatch()
+      
+        <div>
+           <div className="delete-note-container">
+          <h3 className="confirmDelete"> Confirm Delete</h3>
+          <p className="delete-message"> Are you sure you want to delete this post?</p>
+          <div className="buttonItems">
+            <div><button className='confirm'  type='submit'  >Delete</button></div>
+            <div><button className='deny' >Cancel</button></div>
+          </div>
+        </div>
+        </div>
+      )
+}
+
+export function EditNotePopUp (){
+  const dispatch = useDispatch()
 const user = useSelector((state)=>state.session.user)
 // console.log(old_content)
 const {note_id} = useParams()
@@ -56,27 +73,26 @@ const handleSubmit = async (e)=>{
 
     
 }
+  return(
 
+    <>
+    <h1>hello from Edit Note</h1>
+    <div className="EditForm" onSubmit={handleSubmit}>
+        <form>
+            <textarea 
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+                required
+                type='text'
+            />
+            <button type="submit">Reply</button>
+        </form>
+    </div>
 
-
-    return(
-        <>
-        <h1>hello from Edit Note</h1>
-        <div className="EditForm" onSubmit={handleSubmit}>
-            <form>
-                <textarea 
-                    value={content}
-                    onChange={(e) => setContent(e.target.value)}
-                    required
-                    type='text'
-                />
-                <button type="submit">Reply</button>
-            </form>
-        </div>
-
-        </>
-    )
-
+    </>
+  )
 }
 
-export default EditNote
+
+
+export default DeleteNotePopUp

@@ -12,6 +12,9 @@ color:rgb(142, 141, 141);
   
   
 }
+#modal-content{
+   background-color: none;;
+}
 
 .dropdown-menu{
     box-shadow: 4px 3px 4px black;
@@ -62,8 +65,33 @@ ul{
 }
 
 #Delete {
-    color: red;
+    color: rgb(220, 33, 33);
+    background-color: rgb(44, 44, 44); ;
+    border:none;
+    margin-left: 25px;
+    cursor:pointer;
+    font-family: Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 17px;
    
+}
+#Delete:hover{
+    background-color: rgb(74, 74, 74);
+}
+
+#Edit{
+
+    background-color: rgb(44, 44, 44); ;
+    border:none;
+    color:#fff;
+    cursor:pointer;
+    font-family: Helvetica, sans-serif;
+    font-weight: bolder;
+    font-size: 17px;
+
+}
+#Edit:hover{
+    background-color: rgb(74, 74, 74);
 }
 
 .dropdownItem:hover {
