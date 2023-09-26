@@ -5,19 +5,26 @@ import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 import { createPostThunk } from '../../store/post';
 import { useModal } from '../../context/Modal';
 
-const NewPost = () => {
+const NewPost = ({ type }) => {
+    const postType = type
+    // console.log(postType)
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [postContent, setPostContent] = useState("")
+    const [postTitle, setPostTitle] = useState("")
+    const [secondContent, setSecondContent] = useState("")
+    const [userId, setUserId] = useState(1)
     const [errors, setErrors] = useState({})
 
     const validationForPost = () => {
-
+        const validationErrors = {};
+        if(postContent.length < 1 && postTitle.length < 1) validationErrors.content = "Post must have at a title or a body of at least 1 character."
+        return validationErrors
     }
     
     const isDisabled = () => {
-        // const validationErrors = validationForPost();
-        // return (Object.values(validationErrors).length) ? true : false 
+        const validationErrors = validationForPost();
+        return (Object.values(validationErrors).length) ? true : false 
     }
 
     const handleSubmit = async e => {
@@ -27,9 +34,14 @@ const NewPost = () => {
         if(Object.values(validationErrors).length) setErrors(validationErrors);
 
         const newPost = {
-
+            title: postTitle,
+            text_content: postContent,
+            second_content: secondContent,
+            post_type: postType,
+            user_id: userId
         }
         await dispatch(createPostThunk(newPost))
+        console.log("created post")
         return (closeModal())
     };
     
@@ -38,8 +50,16 @@ const NewPost = () => {
 
     return (
         <div className="newPost-modal">
+            {/* need to add in the username of user who is logged in and posting. See Tumblr website */}
             <div>
-                Title (still need to work on it)
+                <textarea 
+                value={postTitle}
+                onChange={e => setPostTitle(e.target.value)}
+                placeholder="Title"
+                className="post-title"
+                rows='6'
+                cols='32'
+                />
             </div>
             <div>
                 <textarea 
@@ -50,6 +70,9 @@ const NewPost = () => {
                 rows='6'
                 cols='32'
                 />
+            </div>
+            <div>
+                <button className='close-newPost-modal' onClick={closeModal}>Close</button>
             </div>
             <div>
                 <button className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Post Now</button>

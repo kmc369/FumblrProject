@@ -88,7 +88,7 @@ export const createPostThunk = (data) => async (dispatch, getState) => {
     });
     if(res.ok) {
         const post = await res.json();
-        dispatch(actionCreateNewPost(post));
+        dispatch(actionCreateNewPost(post)); 
         return post;
     } else {
         const errors = await res.json();
