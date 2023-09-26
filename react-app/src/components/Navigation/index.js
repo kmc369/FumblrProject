@@ -76,23 +76,23 @@ function Navigation({ isLoaded }) {
 						<div className="Navicons">
 
 							<i class="fa-solid fa-font allnavicon" style={{ color: "#fff" }}></i>
-							<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
+							<OpenModalButton buttonText={`Text`} modalComponent={<NewPost type="text"/>} />
 						</div>
 
 
 						<div className="Navicons">
 							<i class="fa-solid fa-camera allnavicon" style={{ color: "red" }}></i>
-							<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
+							<OpenModalButton buttonText={`Photo`} modalComponent={<NewPost type="photo"/>} />
 						</div>
 
 						<div className="Navicons">
 							<i class="fa-solid fa-quote-left allnavicon" style={{ color: "orange" }}></i>
-							<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
+							<OpenModalButton buttonText={`Quote`} modalComponent={<NewPost type="quote"/>} />
 						</div>
 
 						<div className="Navicons">
 							<i class="fa-solid fa-link allnavicon" style={{ color: "limegreen" }}></i>
-							<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
+							<OpenModalButton buttonText={`Link`} modalComponent={<NewPost type="link"/>} />
 						</div>
 
 						<div className="Navicons">
@@ -159,3 +159,5 @@ function Navigation({ isLoaded }) {
 }
 
 export default Navigation;
+
+			
