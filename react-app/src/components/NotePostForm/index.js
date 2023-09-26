@@ -17,7 +17,7 @@ function NoteForm(){
     const sessionUser = useSelector(state => state.session.user);
     const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
 
-
+    console.log("the blak is ",blak)
    
     const {post_id} = useParams()
     const post_id_int = parseInt(post_id, 10);
@@ -42,7 +42,7 @@ function NoteForm(){
     await dispatch(NoteActions.createNoteThunk(new_note))
     setChange(false)
     const post = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
-
+    console.log("total post are",post)
     
     setContent("")
    //missing a rerender here
@@ -58,9 +58,12 @@ function NoteForm(){
       fetchData();
     }, [dispatch, post_id]);
 
-    const values= Object.values(blak)
-  
-    if(Object.values(blak).length===0 ){
+    
+    
+    if(blak===undefined){
+        return null
+    }
+    if(blak.length===0){
       
         return null
       }
@@ -93,7 +96,7 @@ function NoteForm(){
         
             <div className="manage-and-comment">
             <div className="comments-container">
-                {values.map((comment, index) => (
+                {blak.map((comment, index) => (
                 <div className="comment-items" key={index} id={`item${index}`}>
                   
                     {comment.content}
@@ -104,7 +107,8 @@ function NoteForm(){
                 ))}
             </div>
             <div className="manage-note">
-                    {values.map((comment, index) => (
+                    {blak.map((comment, index) => (
+                    
                     <DeleteNote comment={comment}  key={index} />
                         ))}
                     </div>

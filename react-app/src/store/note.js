@@ -111,7 +111,7 @@ export const createNoteThunk = (note) => async (dispatch) => {
 }
 
 export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) => {
-    console.log("curren post is from thiosdf" ,current_post_id)
+   
     const response = await fetch(`/api/post/${current_post_id}/notes/get`, {
         method: "GET"
     })
@@ -156,7 +156,7 @@ export default function noteReducer(state = initialState, action) {
             return newState
         }
         case GET_NOTE_OF_POST: {
-            const newState = { ...state, singlePost: { ...state.singlePost.comment } }
+            const newState = { ...state, singlePost: { ...state.singlePost} }
             newState.singlePost.comment = action.payload.data
             return newState
         }
