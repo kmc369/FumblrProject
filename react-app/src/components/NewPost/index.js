@@ -5,13 +5,12 @@ import { createPostThunk } from '../../store/post';
 import { useModal } from '../../context/Modal';
 
 const NewPost = ({ type }) => {
-    const postType = type
-    // console.log(postType)
     const dispatch = useDispatch();
     const { closeModal } = useModal();
     const [postContent, setPostContent] = useState("")
     const [postTitle, setPostTitle] = useState("")
     const [secondContent, setSecondContent] = useState("")
+    const [postType, setPostType] = useState(type)
     const [userId, setUserId] = useState(1)
     const [errors, setErrors] = useState({})
 
