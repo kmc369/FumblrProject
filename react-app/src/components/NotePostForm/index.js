@@ -5,9 +5,9 @@ import { useModal } from "../../context/Modal";
 import { useSelector } from 'react-redux';
 import {useParams } from 'react-router-dom'
 import * as NoteActions from '../../store/note'
-import { openDeleteModal } from "../DeleteNote";
+// import { openDeleteModal } from "../DeleteNote";
 
-import DeleteNote from "../DeleteNote";
+import DeleteNote from "../ManageNote";
 
 import "./NoteForm.css"
 
