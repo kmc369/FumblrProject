@@ -13,7 +13,7 @@ const LikeButton = ({ post_id, user_id, usernames }) => {
     useEffect(() => {
         dispatch(fetchLikesThunk(post_id, user_id, usernames));    //update store state when rendered the first time
     }, [dispatch]);
-    console.log("im username", username)
+    // console.log("im username", username)
     const handleLike = () => {      //based on like store state, add or remove like accordingly when click the button
         if (isLiked) {
             dispatch(removeLikeThunk(post_id, user_id));
