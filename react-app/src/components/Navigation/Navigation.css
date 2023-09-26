@@ -235,8 +235,28 @@ justify-content: right;
 #authDropDown{
   border:2px solid limegreen;
   background-color: rgb(44, 44, 44);
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
   
 }
+
+#authDropDown button{
+  width: 65px;
+  height: 35px;
+  border-radius: 7px;
+  border: none;
+  margin: 10px;
+}
+#authDropDown button:first-child{
+  background-color: #00cf35;
+  
+}
+#authDropDown button:last-child{
+  background-color: #00b8ff;
+  
+}
+
 
 
 .loginButton{
