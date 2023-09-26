@@ -81,6 +81,7 @@ export const loadUserPostsThunk = (data) => async (dispatch, getState) => {
 };
 
 export const createPostThunk = (data) => async (dispatch, getState) => {
+    // console.log("data", data)
     const res = await fetch('/api/text_posts/new_post', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
