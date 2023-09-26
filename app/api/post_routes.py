@@ -33,9 +33,9 @@ def user_textposts(id):
         return post_not_found_error(404)
     for post in posts_by_user:
         post_dict = post.to_dict()
-        # print(post_dict)
+        print(post_dict)
         post_list.append(post_dict)
-    return jsonify({ "Posts": post_list})
+    return jsonify({"Posts": post_list})
 
 @post_bp.route("/posts/<int:id>")
 def post_details(id):

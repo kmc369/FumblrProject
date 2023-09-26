@@ -74,9 +74,9 @@ export const loadUserPostsThunk = (data) => async (dispatch, getState) => {
     if(res.ok) {
         const posts = await res.json();
         dispatch(actionLoadPosts(posts));
-    } else {
+    }else{
         const errors = await res.json();
-        return errors;
+        return errors.errors; 
     }
 };
 
