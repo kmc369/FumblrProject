@@ -47,15 +47,22 @@ def get_note(id):
     return note.to_dict()
 
 
-@notes_bp.route("/delete/note/<int:id>",methods=["DELETE"])
-def delete_note(id):
+@notes_bp.route("/delete/note/<int:comment_id>",methods=["DELETE"])
+def delete_note(comment_id):
     """deleting a comment by comment id"""
-    note = Note.query.get(id)
+    note = Note.query.get(comment_id)
     if note is None:
         return jsonify(error="Note not found"), 404
+    post_id = note.post_id
+    print("ths post id is ",post_id)
     db.session.delete(note)
     db.session.commit()
-    return "Successfully Deleted"
+    note_list = []
+    notes = Note.query.filter(Note.post_id == post_id).all()
+    for singleNote in notes:
+        note_list.append(singleNote.to_dict())
+
+    return note_list
     
     
     
