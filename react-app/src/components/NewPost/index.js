@@ -1,7 +1,6 @@
 import './NewPost.css';
 import  { useDispatch, useSelector } from 'react-redux';
 import { useEffect , useState} from 'react';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 import { createPostThunk } from '../../store/post';
 import { useModal } from '../../context/Modal';
 

@@ -71,7 +71,7 @@ def new_post_textpost():
         
         db.session.add(new_post)
         db.session.commit()
-        return jsonify(new_post.to_dict(), 201, {'Content-Type': 'application/json'})
+        return jsonify(new_post.to_dict(), 201)
     return form_validation_error(form.errors)
     
     
