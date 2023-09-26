@@ -4,14 +4,26 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { fetchLikesThunk, addLikeThunk, removeLikeThunk } from '../../store/like';
 
 
-const LikeButton = ({ post_id, user_id, usernames }) => {
+const LikeButton = ({ post_id, user_id }) => {
+    const [isLiked, setisLiked] = useState(false);
     const dispatch = useDispatch();
     const likesCount = useSelector(state => state.like.likes.count);    //number of likes from store state
-    const isLiked = useSelector(state => state.like.likes.user_liked);  //if current user likes the post or not, from store state
-    const username = useSelector(state => state.like.likes.usernames);
+    const users = useSelector(state => state.like.likes.users);
 
     useEffect(() => {
-        dispatch(fetchLikesThunk(post_id, user_id, usernames));    //update store state when rendered the first time
+        if (Array.isArray(users)) {
+            const current_user = users.filter(user => user[0] == user_id);
+            if (current_user.length > 0) {
+                setisLiked(true);
+            }
+            else {
+                setisLiked(false);
+            }
+        }
+    }, [users]);
+
+    useEffect(() => {
+        dispatch(fetchLikesThunk(post_id, user_id));    //update store state when rendered the first time
     }, [dispatch]);
     // console.log("im username", username)
     const handleLike = () => {      //based on like store state, add or remove like accordingly when click the button
@@ -31,10 +43,10 @@ const LikeButton = ({ post_id, user_id, usernames }) => {
                 </button>
             </div>
             <div className="user-liked-the-post">
-                {username && username.length > 0 ? (
+                {users && users.length > 0 ? (
                     <ul style={{ color: 'white' }}>
-                        {username.map((username, index) => (
-                            <li key={index}>{username}</li>
+                        {users.map((user, index) => (
+                            <li key={index}>{user[1]}</li>
                         ))}
                     </ul>
                 ) : (

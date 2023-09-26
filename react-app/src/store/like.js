@@ -20,16 +20,10 @@ export const unlikePost = (likes) => ({
 });
 
 //thunks
-export const fetchLikesThunk = (post_id, user_id, usernames) => async (dispatch) => {      //get number of likes and if current user likes the post or not
+export const fetchLikesThunk = (post_id, user_id) => async (dispatch) => {      //get number of likes and if current user likes the post or not
     try {
-        const response = await fetch(`/api/likes/post/${post_id}`, {
-            method: 'POST',     //use POST to pass current user_id and functionality information by request body
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ function: 'fetchLikes', user_id: user_id, usernames: usernames }),     //pass function and user_id to backend
-        });
-        // console.log("im data", response)
+        const response = await fetch(`/api/likes/post/${post_id}`);
         const data = await response.json();
-
         dispatch(countLikes(data.likes));
     } catch (error) {
         console.error(error);
@@ -41,7 +35,7 @@ export const addLikeThunk = (post_id, user_id) => async (dispatch) => {     //ad
         const response = await fetch(`/api/likes/post/${post_id}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ function: 'addLike', user_id: user_id }),       //pass function and user_id to backend
+            body: JSON.stringify({ user_id: user_id }),       //pass function and user_id to backend
         });
         const data = await response.json();
         dispatch(likePost(data.likes));
