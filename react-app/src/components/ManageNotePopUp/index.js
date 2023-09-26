@@ -22,6 +22,11 @@ const post_id = useParams()
     const newCommets = dispatch(NoteActions.getCommentsOfPostThunk(post_id))
 
   }
+
+  function handleCancel(e){
+    e.preventDefault();
+    closeModal()
+  }
   
     return (
 
@@ -32,7 +37,7 @@ const post_id = useParams()
           <p className="delete-message"> Are you sure you want to delete this post?</p>
           <div className="buttonItems">
             <div><button className='confirm'  type='submit' onClick={handleDelete} >Delete</button></div>
-            <div><button className='deny' >Cancel</button></div>
+            <div><button className='deny' onClick={handleCancel}>Cancel</button></div>
           </div>
         </div>
         </div>
@@ -49,18 +54,6 @@ const [content ,setContent] = useState(comment.content)
 
 
 
-// // dispatch(NoteActions.getCommentsOfPostThunk(1))
-// useEffect(() => {
-
-//     const fetchData = async () => {
-//       const commentData = await dispatch(NoteActions.getCommentByIdThunk(note_id));
- 
-//       setContent(commentData.content)
-    
-//     };
-    
-//     fetchData(); // Call the async function immediately
-//   }, [note_id]);
 
 function handleSubmit(e){
 
