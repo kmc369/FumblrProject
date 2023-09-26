@@ -9,6 +9,8 @@ class TextPost(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     title = db.Column(db.String(255), nullable=False)
     text_content = db.Column(db.String(1000))
+    second_content = db.Column(db.String(2000), nullable=True)
+    post_type = db.Column(db.String(100), nullable=False)
     user_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod("users.id")), nullable=False)
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
     updated_at = db.Column(db.DateTime, default=datetime.utcnow, onupdate=datetime.utcnow)
@@ -32,6 +34,8 @@ class TextPost(db.Model):
             'id': self.id,
             "title": self.title,
             "text_content": self.text_content,
+            "second_content": self.second_content,
+            "post_type": self.post_type,
             'user_id': self.user_id,
             'created_at': self.created_at,
             'updated_at': self.updated_at,

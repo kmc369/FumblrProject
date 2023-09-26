@@ -73,7 +73,8 @@ function Navigation({ isLoaded }){
 	<div className="posttype">	
 			
 			
-					<div className="Navicons">
+	<div className="Navicons">
+		
 					<i class="fa-solid fa-font allnavicon" style={{color:"#fff"}}></i>
 					<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
 					</div>
@@ -81,17 +82,17 @@ function Navigation({ isLoaded }){
 
 					<div className="Navicons">
 					<i class="fa-solid fa-camera allnavicon" style={{color:"red"}}></i>
-					<span>Photo</span>
+					<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
 					</div>
 
 					<div className="Navicons">
 					<i class="fa-solid fa-quote-left allnavicon" style={{color:"orange"}}></i>
-					<span>Quote</span>
+					<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
 					</div>
 
 					<div className="Navicons">
 					<i class="fa-solid fa-link allnavicon" style={{color:"limegreen"}}></i>
-					<span>Link</span>
+					<OpenModalButton buttonText={`Text`} modalComponent={<NewPost />} />
 					</div>
 
 					<div className="Navicons">

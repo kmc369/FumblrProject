@@ -5,19 +5,26 @@ def seed_post():
     post1 = TextPost(
         title = 'Hello World',
         text_content="Today was a great day world",
-        user_id =1
+        user_id =1,
+        # second_content=""
+        post_type="text"
     )
     
     post2 = TextPost(
         title = 'Greys Anatomy',
         text_content="We love doctor mc dreamy",
-        user_id =2
+        user_id =2,
+        # second_content=""
+        post_type="text"
+
     )
     
     post3 = TextPost(
         title = 'Greys Anatomy',
         text_content="We love doctor mc dreamy",
-        user_id =2
+        user_id =2,
+        # second_content="",
+        post_type="text"
     )
     db.session.add(post1)
     db.session.add(post2)
