@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, Route, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import SearchBar from '../Search';
@@ -9,10 +9,18 @@ import NewPost from '../NewPost'
 import Posts from '../Posts';
 import SearchResults from '../SearchResults';
 import CurrentUserPosts from '../CurrentUserPosts';
+import { logout } from '../../store/session';
 // import AccountDropdown from './accountDropDown';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
+	const dispatch = useDispatch()
+	const history = useHistory()
+	const handleLogout = (e) => {
+		e.preventDefault();
+		dispatch(logout());
+		history.push('/')
+	  };
 
 	return (
 
@@ -54,10 +62,11 @@ function Navigation({ isLoaded }) {
 						<i class="fa-solid fa-gear"><span className="icontext">Settings</span></i>
 					</div>
 
-
-					<div className="iconsandtext" id="logoutIcon">
+					{sessionUser &&
+					<div className="iconsandtext" id="logoutIcon" onClick={handleLogout}>
 						<i class="fa-solid fa-right-from-bracket"><span className="icontext" >Logout</span></i>
 					</div>
+					}
 
 
 				</div>
