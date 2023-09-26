@@ -11,6 +11,7 @@ const NewPost = ({ type }) => {
     const [postTitle, setPostTitle] = useState("")
     const [secondContent, setSecondContent] = useState("")
     const [postType, setPostType] = useState(type)
+    console.log(postType)
     const [userId, setUserId] = useState(1)
     const [errors, setErrors] = useState({})
 
