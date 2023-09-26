@@ -101,7 +101,7 @@ function Navigation({ isLoaded }) {
 						<div className="Navicons">
 							<i class="fa-solid fa-comment-sms allnavicon" style={{ color: "lightblue" }}></i>
 							<span>Chat</span>
-						</div>
+						</div> 
 
 						<div className="Navicons">
 							<i class="fa-solid fa-headphones allnavicon" style={{ color: "purple" }}></i>
