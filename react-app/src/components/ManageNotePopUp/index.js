@@ -25,13 +25,12 @@ const DeleteNotePopUp = ()=>{
       )
 }
 
-export function EditNotePopUp (){
+export function EditNotePopUp ({comment}){
   const dispatch = useDispatch()
 const user = useSelector((state)=>state.session.user)
-// console.log(old_content)
-const {note_id} = useParams()
-const note_id_int = parseInt(note_id, 10);
-const [comment, setComment] = useState("");
+
+const note_id  = comment.id
+
 const [content ,setContent] = useState("")
 
 
@@ -40,14 +39,14 @@ const [content ,setContent] = useState("")
 useEffect(() => {
 
     const fetchData = async () => {
-      const commentData = await dispatch(NoteActions.getCommentByIdThunk(note_id_int));
-      setComment(commentData);
+      const commentData = await dispatch(NoteActions.getCommentByIdThunk(note_id));
+ 
       setContent(commentData.content)
     
     };
     
     fetchData(); // Call the async function immediately
-  }, [note_id_int]);
+  }, [note_id]);
 
 const handleSubmit = async (e)=>{
     console.log("the new content is ",content)
@@ -64,7 +63,7 @@ const handleSubmit = async (e)=>{
 
     console.log("the form data is ",formData)
 
-     dispatch(NoteActions.EditCommentThunk(formData,note_id_int))
+     dispatch(NoteActions.EditCommentThunk(formData,note_id))
     setContent("")
   
     
