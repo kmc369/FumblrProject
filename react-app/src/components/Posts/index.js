@@ -1,7 +1,6 @@
 import './Posts.css';
 import  { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
-import { NavLink } from 'react-router-dom/cjs/react-router-dom';
 import { loadPostsThunk } from '../../store/post'
 
 const Posts = () => {

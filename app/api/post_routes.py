@@ -64,7 +64,9 @@ def new_post_textpost():
         new_post = TextPost(
             title = form.data["title"],
             text_content = form.data['text_content'],
-            user_id = form.data['user_id'], #change to have user id come in from the session
+            user_id = form.data['user_id'],
+            post_type = form.data['post_type'],
+            second_content = form.data['second_content']
         )
         
         db.session.add(new_post)
