@@ -18,7 +18,6 @@ function NoteForm(){
     const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
 
    
-   
     const {post_id} = useParams()
     const post_id_int = parseInt(post_id, 10);
     const [content,setContent] = useState("")
@@ -95,6 +94,7 @@ function NoteForm(){
            
         
             <div className="manage-and-comment">
+               
             <div className="comments-container">
                 {blak.map((comment, index) => (
                 <div className="comment-items" key={index} id={`item${index}`}>
