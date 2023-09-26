@@ -27,7 +27,7 @@ export const fetchLikesThunk = (post_id, user_id, usernames) => async (dispatch)
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ function: 'fetchLikes', user_id: user_id, usernames: usernames }),     //pass function and user_id to backend
         });
-        console.log("im data", response)
+        // console.log("im data", response)
         const data = await response.json();
 
         dispatch(countLikes(data.likes));
@@ -63,6 +63,7 @@ export const removeLikeThunk = (post_id, user_id) => async (dispatch) => {
         console.error(error);
     }
 };
+
 
 //reducer
 
