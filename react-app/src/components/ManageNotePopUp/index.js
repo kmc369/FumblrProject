@@ -41,11 +41,11 @@ const post_id = useParams()
 
 export function EditNotePopUp ({comment}){
   const dispatch = useDispatch()
-  const user = useSelector((state)=>state.session.user)
+//   const user = useSelector((state)=>state.session.user)
   const {closeModal} = useModal()
 const note_id  = comment.id
 
-const [content ,setContent] = useState("")
+const [content ,setContent] = useState(comment.content)
 
 
 
@@ -64,7 +64,6 @@ const [content ,setContent] = useState("")
 
 function handleSubmit(e){
 
-    console.log("the new content is ",content)
     
     e.preventDefault()
     
@@ -97,7 +96,7 @@ function handleSubmit(e){
                 type='text'
             />
         </form>
-            <button className="Save" type="submit"  onClick={handleSubmit}>Reply</button>
+            <button className="Save" type="submit" onClick={handleSubmit} >Reply</button>
     </div>
 
     </>

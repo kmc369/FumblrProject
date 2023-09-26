@@ -128,13 +128,14 @@ export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) => {
 }
 
 export const EditCommentThunk = (notedata, current_note_id) => async (dispatch) => {
-
+    const {content,post_id,user_id} = notedata
+    console.log("note data form thunk", content)
     const response = await fetch(`/api/notes/${current_note_id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(notedata)
+        body: JSON.stringify({ content, user_id, post_id })
 
     })
     if (response.ok) {
@@ -163,11 +164,21 @@ export default function noteReducer(state = initialState, action) {
             return newState
         }
         case EDIT_COMMENT: {
-            const newState = { ...state, singlePost: { ...state.singlePost } }
-            newState.singlePost.comment[action.payload.comment_id] = action.payload.data
-
-            return newState
-        }
+            const { comment_id, data } = action.payload;
+          
+            const newState = { ...state,singlePost: {...state.singlePost,
+                comment: state.singlePost.comment.map((comment) => {
+                  if (comment.id === comment_id) {
+                    return { ...comment, ...data };
+                  } else {
+                    return comment;
+                  }
+                }),
+              },
+            };
+          
+            return newState;
+          }
         case GET_COMMENTS: {
             const newState = { ...state, singlePost: { ...state.singlePost } }
             newState.singlePost.comment = action.payload
