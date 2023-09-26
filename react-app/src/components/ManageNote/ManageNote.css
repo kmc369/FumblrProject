@@ -29,8 +29,8 @@ color:rgb(142, 141, 141);
 
 .dropdown-menu ul li{
     padding:10px 0;
-    /* text-align: center; */
-    border-top: 1px solid rgba(242, 241, 241, 0.05);
+    text-align: center; 
+     border-top: 1px solid rgba(242, 241, 241, 0.05);
 }
 
 .dropdown-menu.active{
@@ -96,7 +96,7 @@ ul{
 
 .dropdownItem:hover {
     background-color: rgb(74, 74, 74);
-  }
+  } 
 
 
 

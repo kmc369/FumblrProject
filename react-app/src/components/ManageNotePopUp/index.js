@@ -7,8 +7,16 @@ import {useParams } from 'react-router-dom'
 import './ManageNotePopUp.css'
 import * as NoteActions from '../../store/note'
 
-const DeleteNotePopUp = ()=>{
- 
+const DeleteNotePopUp = ({comment})=>{
+const dispatch = useDispatch()
+const [reset,setReset] = useState(false)
+
+  function handleDelete(){
+    
+    dispatch(NoteActions.deleteCommentThunk(comment.id))
+    setReset(true)
+  }
+  
     return (
 
       
@@ -17,7 +25,7 @@ const DeleteNotePopUp = ()=>{
           <h3 className="confirmDelete"> Confirm Delete</h3>
           <p className="delete-message"> Are you sure you want to delete this post?</p>
           <div className="buttonItems">
-            <div><button className='confirm'  type='submit'  >Delete</button></div>
+            <div><button className='confirm'  type='submit' onClick={handleDelete}>Delete</button></div>
             <div><button className='deny' >Cancel</button></div>
           </div>
         </div>
@@ -75,17 +83,18 @@ const handleSubmit = async (e)=>{
   return(
 
     <>
-    <h1>hello from Edit Note</h1>
+  
     <div className="EditForm" onSubmit={handleSubmit}>
-        <form>
-            <textarea 
+      <h1 className="editNoteheader">Edit Note</h1>
+        <form className="editFormData">
+            <textarea className="textForEditNote"
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 required
                 type='text'
             />
-            <button type="submit">Reply</button>
         </form>
+            <button className="Save" type="submit">Reply</button>
     </div>
 
     </>
