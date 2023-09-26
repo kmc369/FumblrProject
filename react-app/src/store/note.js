@@ -59,11 +59,13 @@ export const EditComments = (data, comment_id) => {
 
 
 export const deleteCommentThunk = (comment_id) => async (dispatch) => {
+    console.log("the comment id is ",comment_id)
     const response = await fetch(`/api/delete/note/${comment_id}`, {
         method: "DELETE"
     })
     if (response.ok) {
         const data = await response.json()
+        console.log("the data coming back is ", data)
         dispatch(DeleteNote(comment_id,data))
         return data
     }
@@ -172,8 +174,14 @@ export default function noteReducer(state = initialState, action) {
             return newState
         }
         case DELETE_COMMENT:{
-            const newState = {...state,singlePost:{...state.singlePost}}
-            delete newState.note.singlePost.comment[action.payload.comment_id]
+            const newState = {...state}
+            // delete newState.singlePost[action.payload.comment_id]
+            newState.singlePost.comment = newState.singlePost.comment.filter(
+                (comment) => comment.id !== action.payload.comment_id
+              );
+              console.log("newState after deleting comment:", newState); // Debugging
+
+            
             return newState
         }
         default:

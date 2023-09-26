@@ -17,7 +17,7 @@ function NoteForm(){
     const sessionUser = useSelector(state => state.session.user);
     const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
 
-    console.log("the blak is ",blak)
+   
    
     const {post_id} = useParams()
     const post_id_int = parseInt(post_id, 10);
@@ -42,7 +42,7 @@ function NoteForm(){
     await dispatch(NoteActions.createNoteThunk(new_note))
     setChange(false)
     const post = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
-    console.log("total post are",post)
+  
     
     setContent("")
    //missing a rerender here

@@ -59,7 +59,7 @@ export function DropdownItem({ text, comment}) {
             {text==="Delete" && (
             <OpenModalButton
                     id={`${text}`}
-                    modalComponent={<DeleteNotePopUp comment={comment}/>}
+                    modalComponent={<DeleteNotePopUp comment={comment} />}
                     buttonText={text}
                 
                     

@@ -7,14 +7,20 @@ import {useParams } from 'react-router-dom'
 import './ManageNotePopUp.css'
 import * as NoteActions from '../../store/note'
 
-const DeleteNotePopUp = ({comment})=>{
-const dispatch = useDispatch()
-const [reset,setReset] = useState(false)
 
-  function handleDelete(){
-    
-    dispatch(NoteActions.deleteCommentThunk(comment.id))
-    setReset(true)
+
+const DeleteNotePopUp = ({comment})=>{
+const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
+const dispatch = useDispatch()
+const {closeModal} = useModal()
+const post_id = useParams()
+
+  function  handleDelete(e){
+    e.preventDefault();
+     dispatch(NoteActions.deleteCommentThunk(comment.id))
+    closeModal()
+    const newCommets = dispatch(NoteActions.getCommentsOfPostThunk(post_id))
+
   }
   
     return (
@@ -25,7 +31,7 @@ const [reset,setReset] = useState(false)
           <h3 className="confirmDelete"> Confirm Delete</h3>
           <p className="delete-message"> Are you sure you want to delete this post?</p>
           <div className="buttonItems">
-            <div><button className='confirm'  type='submit' onClick={handleDelete}>Delete</button></div>
+            <div><button className='confirm'  type='submit' onClick={handleDelete} >Delete</button></div>
             <div><button className='deny' >Cancel</button></div>
           </div>
         </div>
