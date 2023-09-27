@@ -1,11 +1,11 @@
 import './PostTile.css';
 import LikeButton from '../Likes/LikeButton';
 import LikeShow from '../Likes/LikeShow';
-import { useDispatch, useSelector } from 'react-redux';
-import { useState } from 'react';
+import { useDispatch, useSelector,dispatch } from 'react-redux';
+import { useEffect, useState } from 'react';
 import { FaShare, FaCommentDots, FaRetweet, FaEdit, FaTrash } from 'react-icons/fa';
-//import notes section here
-
+import NotePostForm from '../NotePostForm'
+import * as NoteActions from '../../store/note'
 
 const PostTile = ({ post }) => {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -14,7 +14,10 @@ const PostTile = ({ post }) => {
     let currentUserId = null;
     let likesCount = null;
     let notesCount = null;
+    const dispatch = useDispatch()
+    console.log("the current post it ",post)
 
+    
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -29,6 +32,16 @@ const PostTile = ({ post }) => {
         //notesCount = likesCount + commentCount
     }
 
+    useEffect(()=>{
+
+        const get_notes = async () =>{
+
+           const notes =  await dispatch(NoteActions.getCommentsOfPostThunk(post.id))
+           console.log("the notes are " , notes)
+        }
+
+        get_notes()
+    })
 
     return (
         <div className="post-modal">
@@ -60,7 +73,7 @@ const PostTile = ({ post }) => {
             </div>
 
 
-            {currentUserId == post.user_id &&
+            {currentUserId === post.user_id &&
                 <div className="post-operations">
                     <button className="icon-button"><FaTrash /></button>
                     <button className="icon-button"><FaEdit /></button>
@@ -77,9 +90,13 @@ const PostTile = ({ post }) => {
                 <div className="dropdown">
                     <div className="dropdown-label" onClick={toggleDropdown}>Notes{notesCount}</div>
                     {dropdownOpen && (
+                 
                         <div className="dropdown-options">
-                            <button className="option"><FaCommentDots />Embed Comments here</button>
+                           
+                            <button className="option"><FaCommentDots />  </button>
                             <LikeShow className="likes-show" post_id={post.id} />
+                            {<NotePostForm />}
+
                         </div>
                     )}
                 </div>
