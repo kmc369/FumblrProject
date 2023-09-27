@@ -23,7 +23,7 @@ const DeletePostModal = ()=>{
 
       function handleCancel(e){
         e.preventDefault();
-        console.log("hello")
+     
         closeModal()
       }
       
