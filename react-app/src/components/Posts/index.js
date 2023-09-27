@@ -17,7 +17,7 @@ const Posts = () => {
     }, [dispatch])
 
     const handlePostClick = (postId) => {
-        history.push(`/post/${postId}`);
+        history.push(`/posts/${postId}`);
     };
 
     return (

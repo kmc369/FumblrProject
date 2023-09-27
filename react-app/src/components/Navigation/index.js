@@ -135,7 +135,7 @@ function Navigation({ isLoaded }) {
 					<Route exact path='/user/:userId'>
 						<CurrentUserPosts/>
 					</Route>
-					<Route exact path='/post/:id'>
+					<Route exact path='/posts/:id'>
 						<SpecificPost/>
 					</Route>
 
