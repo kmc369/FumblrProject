@@ -74,20 +74,39 @@ export const loadUserPostsThunk = (data) => async (dispatch, getState) => {
     if(res.ok) {
         const posts = await res.json();
         dispatch(actionLoadPosts(posts));
-    } else {
+    }else{
         const errors = await res.json();
-        return errors;
+        return errors.errors; 
     }
 };
 
 export const createPostThunk = (data) => async (dispatch, getState) => {
-    // console.log("data", data)
-    const res = await fetch('/api/text_posts/new_post', {
-        method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify(data),
-    });
-    if(res.ok) {
+    const {title,text_content,second_content,post_type,user_id} = data
+  
+    let res;
+    if(data.post_type==="quote" || data.post_type==="link" || data.post_type==="text" ){
+            res = await fetch('/api/text_posts/new_post', {
+            method: 'POST',
+            headers: {'Content-Type': 'application/json'},
+            body: JSON.stringify({
+                title:title,
+                text_content:text_content,
+                user_id:user_id,
+                post_type:post_type,
+                second_content:second_content,
+            }),
+        });
+        }
+    else if(data.get("post_type")==="photo"){
+       
+          res = await fetch(`/api/text_posts/new_post/photo`, {
+            method: "POST",
+            body: data
+          });
+       
+    }
+  
+    if(res.ok && res) {
         const post = await res.json();
         dispatch(actionCreateNewPost(post)); 
         return post;

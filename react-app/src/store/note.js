@@ -5,10 +5,14 @@ const GET_COMMENTS = "get/Comments"
 const DELETE_COMMENT = "delete/comment"
 
 
-export const DeleteNote = (comment_id)=>{
+export const DeleteNote = (comment_id,data)=>{
     return{
         type:DELETE_COMMENT,
-        payload:comment_id
+        payload:{
+            comment_id,
+            data
+
+        }
     }
 }
 
@@ -19,13 +23,16 @@ export const CreateNote = (note) => {
     }
 }
 
-export const GetPostComments = (data) => {
+export const GetPostComments = (current_post_id,data) => {
     return {
         type: GET_NOTE_OF_POST,
-        payload: data
+        payload: 
+        {   current_post_id,
+            data
+
+        }
 
     }
-
 }
 
 export const GetComments = (data) =>{
@@ -49,29 +56,17 @@ export const EditComments = (data, comment_id) => {
 
 }
 
-// export const deleteCommentThunk=(comment_id) =>async (dispatch)=>{
 
-//     const response = await fetch(`api/delete/note/${comment_id}`,{
-//         method:"DELETE"
-//     })
-//     if (response.ok){
-//         const data = await response.json()
-//         dispatch(DeleteNote(comment_id))
-//         return data
-//     }
-//     else{
-//         return "NO"
-//     }
-// }
 
 export const deleteCommentThunk = (comment_id) => async (dispatch) => {
-
-    const response = await fetch(`api/delete/note/${comment_id}`, {
+    console.log("the comment id is ",comment_id)
+    const response = await fetch(`/api/delete/note/${comment_id}`, {
         method: "DELETE"
     })
     if (response.ok) {
         const data = await response.json()
-        dispatch(DeleteNote(comment_id))
+        console.log("the data coming back is ", data)
+        dispatch(DeleteNote(comment_id,data))
         return data
     }
     else {
@@ -118,13 +113,13 @@ export const createNoteThunk = (note) => async (dispatch) => {
 }
 
 export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) => {
-
+   
     const response = await fetch(`/api/post/${current_post_id}/notes/get`, {
         method: "GET"
     })
     if (response.ok) {
         const data = await response.json()
-        dispatch(GetPostComments(data))
+        dispatch(GetPostComments(current_post_id,data))
         return data
     }
     else {
@@ -133,13 +128,14 @@ export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) => {
 }
 
 export const EditCommentThunk = (notedata, current_note_id) => async (dispatch) => {
-
+    const {content,post_id,user_id} = notedata
+    console.log("note data form thunk", content)
     const response = await fetch(`/api/notes/${current_note_id}`, {
         method: "PUT",
         headers: {
             "Content-Type": "application/json",
         },
-        body: JSON.stringify(notedata)
+        body: JSON.stringify({ content, user_id, post_id })
 
     })
     if (response.ok) {
@@ -153,7 +149,7 @@ export const EditCommentThunk = (notedata, current_note_id) => async (dispatch) 
 }
 
 
-const initialState = { allPost: {}, singlePost: {} }
+const initialState = { singlePost: {} }
 export default function noteReducer(state = initialState, action) {
 
     switch (action.type) {
@@ -163,24 +159,40 @@ export default function noteReducer(state = initialState, action) {
             return newState
         }
         case GET_NOTE_OF_POST: {
-            const newState = { ...state, singlePost: { ...state.singlePost } }
-            newState.singlePost.comment = action.payload
+            const newState = { ...state, singlePost: { ...state.singlePost} }
+            newState.singlePost.comment = action.payload.data
             return newState
         }
         case EDIT_COMMENT: {
-            const newState = { ...state, singlePost: { ...state.singlePost } }
-            newState.singlePost.comment[action.payload.comment_id] = action.payload.data
-
-            return newState
-        }
+            const { comment_id, data } = action.payload;
+          
+            const newState = { ...state,singlePost: {...state.singlePost,
+                comment: state.singlePost.comment.map((comment) => {
+                  if (comment.id === comment_id) {
+                    return { ...comment, ...data };
+                  } else {
+                    return comment;
+                  }
+                }),
+              },
+            };
+          
+            return newState;
+          }
         case GET_COMMENTS: {
             const newState = { ...state, singlePost: { ...state.singlePost } }
             newState.singlePost.comment = action.payload
             return newState
         }
         case DELETE_COMMENT:{
-            const newState = {...state,singlePost:{...state.singlePost}}
-            delete newState.note.singlePost.comment[action.payload.comment_id]
+            const newState = {...state}
+            // delete newState.singlePost[action.payload.comment_id]
+            newState.singlePost.comment = newState.singlePost.comment.filter(
+                (comment) => comment.id !== action.payload.comment_id
+              );
+              console.log("newState after deleting comment:", newState); // Debugging
+
+            
             return newState
         }
         default:

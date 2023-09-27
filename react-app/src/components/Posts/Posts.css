@@ -10,3 +10,8 @@ body {
 .post {
     border: dashed red 1px;
 }
+
+.postimages{
+    width:150px;
+    height:75px;
+}

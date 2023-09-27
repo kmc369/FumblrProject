@@ -29,11 +29,10 @@ return (
             <i class="fa-solid fa-ellipsis"></i>
             </div>
             <div className={`dropdown-menu ${open? 'active':'inactive'}`}>
-
                 <ul>
                     {DropdownItems.map((item,index)=>(
-                      
-                       <DropdownItem text={item} key={index} />
+                    
+                       <DropdownItem text={item} key={index} comment={comment} />
                     
                     ))}
                    
@@ -49,7 +48,7 @@ return (
 
 }
 
-export function DropdownItem({ text}) {
+export function DropdownItem({ text, comment}) {
     const [open,setOpen] = useState(true)
    
   
@@ -60,7 +59,7 @@ export function DropdownItem({ text}) {
             {text==="Delete" && (
             <OpenModalButton
                     id={`${text}`}
-                    modalComponent={<DeleteNotePopUp/>}
+                    modalComponent={<DeleteNotePopUp comment={comment} />}
                     buttonText={text}
                 
                     
@@ -71,7 +70,7 @@ export function DropdownItem({ text}) {
             {text === "Edit" && (
                      <OpenModalButton
                      id={`${text}`}
-                     modalComponent={<EditNotePopUp/>}
+                     modalComponent={<EditNotePopUp comment={comment}/>}
                      buttonText={text}
                         
                      

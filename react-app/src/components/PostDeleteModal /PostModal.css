@@ -1,0 +1,37 @@
+.confirmDelete{
+    text-align: center;
+ 
+}
+
+
+.confirm{
+    background-color: rgb(0, 145, 255);
+    padding:10px;
+    border-radius: 8px;
+    border:none;
+    padding: 10px 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;;
+
+}
+.deny{
+    background-color: rgb(128, 128, 128);
+    padding:10px;
+    border-radius: 8px;
+    border:none;
+    padding: 10px 10px;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    font-size: 20px;;
+}
+
+.buttonItems{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 10px 10px;
+  
+}
+.delete-message{
+   font-family: Arial, Helvetica, sans-serif;
+    margin:15px;
+}

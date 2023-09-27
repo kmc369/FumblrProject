@@ -14,7 +14,7 @@ const SearchResults = () => {
     }, [dispatch, searchItem])
 
     const handlePostClick = (postId) => {
-        history.push(`/post/${postId}`);
+        history.push(`/posts/${postId}`);
     };
 
     return (

@@ -1,6 +1,6 @@
 import React from 'react';
-import { NavLink, Route } from 'react-router-dom';
-import { useSelector } from 'react-redux';
+import { NavLink, Route, useHistory } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import './Navigation.css';
 import SearchBar from '../Search';
@@ -8,10 +8,23 @@ import OpenModalButton from '../OpenModalButton';
 import NewPost from '../NewPost'
 import Posts from '../Posts';
 import SearchResults from '../SearchResults';
+import CurrentUserPosts from '../CurrentUserPosts';
+import QuoteForm from '../QuoteForm';
+import './NavIcons.css';
+import PhotoForm from '../PhotoForm';
+import { logout } from '../../store/session';
+import SpecificPost from '../SpecificPost';
 // import AccountDropdown from './accountDropDown';
 
 function Navigation({ isLoaded }) {
 	const sessionUser = useSelector(state => state.session.user);
+	const dispatch = useDispatch()
+	const history = useHistory()
+	const handleLogout = (e) => {
+		e.preventDefault();
+		dispatch(logout());
+		history.push('/')
+	  };
 
 	return (
 
@@ -22,7 +35,7 @@ function Navigation({ isLoaded }) {
 				<div className="sidebar-container">
 					<NavLink exact to="/"><h1 className="tumblr-header">Fumblr</h1></NavLink>
 					<div className="iconsandtext">
-						<i class="fa-solid fa-house"><span className="icontext">Home</span></i>
+						<NavLink exact to='/'><i class="fa-solid fa-house"><span className="icontext">Home</span></i></NavLink>
 					</div>
 
 					<div className="iconsandtext">
@@ -32,7 +45,6 @@ function Navigation({ isLoaded }) {
 					<div className="iconsandtext">
 						<i class="fa-solid fa-video"><span className="icontext">Live</span></i>
 					</div>
-
 
 					<div className="iconsandtext">
 						<i class="fa-solid fa-bolt"><span className="icontext">Activity</span></i>
@@ -45,21 +57,20 @@ function Navigation({ isLoaded }) {
 					<div className="iconsandtext">
 						<i class="fa-solid fa-envelope-circle-check"><span className="icontext">Inbox</span></i>
 					</div>
-
+					{sessionUser &&
 					<div className="iconsandtext">
-						<i class="fa-solid fa-user"><span className="icontext">Account
-							{/* <AccountDropdown /> */}
-						</span></i>
+						<NavLink exact to={`/user/${sessionUser.id}`}><i class="fa-solid fa-user"><span className="icontext">Account</span></i></NavLink>
 					</div>
-
+					}
 					<div className="iconsandtext">
 						<i class="fa-solid fa-gear"><span className="icontext">Settings</span></i>
 					</div>
 
-
-					<div className="iconsandtext" id="logoutIcon">
+					{sessionUser &&
+					<div className="iconsandtext" id="logoutIcon" onClick={handleLogout}>
 						<i class="fa-solid fa-right-from-bracket"><span className="icontext" >Logout</span></i>
 					</div>
+					}
 
 
 				</div>
@@ -72,31 +83,31 @@ function Navigation({ isLoaded }) {
 						<div className='yourtags'>Your tags</div>
 					</div>
 
-	
-	<div className="posttype">	
-			
-			
-	<div className="Navicons">
-		
-					<i class="fa-solid fa-font allnavicon" style={{color:"#fff"}}></i>
-					<OpenModalButton buttonText={`Text`} modalComponent={<NewPost type="text"/>} />
-					</div>
+
+					<div className="posttype">
 
 
-					<div className="Navicons">
-					<i class="fa-solid fa-camera allnavicon" style={{color:"red"}}></i>
-					<OpenModalButton buttonText={`Photo`} modalComponent={<NewPost type="photo"/>} />
-					</div>
+						<div className="Navicons">
 
-					<div className="Navicons">
-					<i class="fa-solid fa-quote-left allnavicon" style={{color:"orange"}}></i>
-					<OpenModalButton buttonText={`Quote`} modalComponent={<NewPost type="quote"/>} />
-					</div>
+							<i class="fa-solid fa-font allnavicon" style={{ color: "#fff" }}></i>
+							<OpenModalButton buttonText={`Text`} modalComponent={<NewPost type="text"/>} />
+						</div>
 
-					<div className="Navicons">
-					<i class="fa-solid fa-link allnavicon" style={{color:"limegreen"}}></i>
-					<OpenModalButton buttonText={`Link`} modalComponent={<NewPost type="link"/>} />
-					</div>
+
+						<div className="Navicons">
+							<i class="fa-solid fa-camera allnavicon" style={{ color: "red" }}></i>
+							<OpenModalButton buttonText={`Photo`} modalComponent={<PhotoForm type="photo"/>} />
+						</div>
+
+						<div className="Navicons">
+							<i class="fa-solid fa-quote-left allnavicon" style={{ color: "orange" }}></i>
+							<OpenModalButton buttonText={`Quote`} modalComponent={<QuoteForm type="quote"/>} />
+						</div>
+
+						<div className="Navicons">
+							<i class="fa-solid fa-link allnavicon" style={{ color: "limegreen" }}></i>
+							<OpenModalButton buttonText={`Link`} modalComponent={<NewPost type="link"/>} />
+						</div>
 
 						<div className="Navicons">
 							<i class="fa-solid fa-comment-sms allnavicon" style={{ color: "lightblue" }}></i>
@@ -121,6 +132,13 @@ function Navigation({ isLoaded }) {
 					<Route exact path='/search/:searchItem'>
 						<SearchResults />
 					</Route>
+					<Route exact path='/user/:userId'>
+						<CurrentUserPosts/>
+					</Route>
+					<Route exact path='/posts/:postId'>
+						<SpecificPost/>
+					</Route>
+
 
 				</div>
 				<div className='search-div-container'>
@@ -153,7 +171,6 @@ function Navigation({ isLoaded }) {
 
 
 			</div>
-
 
 		</>
 
