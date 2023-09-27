@@ -53,7 +53,7 @@ const LikeButton = ({ post_id }) => {
     if (users) {
         return (
             <div>
-                <button className='LikeButton' onClick={handleLike} style={{ color: isLiked ? 'red' : 'white' }}>
+                <button className='LikeButton' onClick={handleLike} style={{ color: isLiked ? 'red' : 'black' }}>
                     {isLiked ? <FaHeart /> : <FaRegHeart />}
                 </button>
                 {/* <div>test</div> */}

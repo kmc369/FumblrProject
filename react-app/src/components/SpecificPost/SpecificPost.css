@@ -1,7 +1,7 @@
 .post-modal {
     width: 500px;
     margin: 20px auto;
-    background-color: rgb(29, 34, 34);
+    background-color: white;
     border-radius: 5px;
 }
 
@@ -27,7 +27,7 @@
     border: none;
     cursor: pointer;
     outline: none;
-    color: white;
+    color: black;
     font-size: 16px;
 }
 

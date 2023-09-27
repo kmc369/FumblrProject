@@ -7,12 +7,13 @@ body {
     color: black;
 }
 
-.post {
+/* .post {
     border: dashed red 1px;
     background-color: white;
     margin-left: 30px;
     margin-right: 30px;
-}
+
+} */
 
 .postimages{
     width:150px;
@@ -27,5 +28,6 @@ body {
 
 .user-username{
     border-bottom: solid black 1px;
+    color: black;
     padding: 15px;
 }
