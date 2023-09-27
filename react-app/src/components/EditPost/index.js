@@ -11,9 +11,13 @@ const EditPost = () => {
     const { postId } = useParams();
     const currentUser = useSelector(state => state.session.user);
     const currentPost = useSelector(state => state.post.singlePost)
+    const postIdNum = Number(postId)
+
+    let postLoaded;
+    currentPost.id ? postLoaded = currentPost : postLoaded = 0
 
     useEffect(() => {
-        dispatch(loadSpecificPostThunk(postId))
+        dispatch(loadSpecificPostThunk(postIdNum))
     }, [dispatch])
 
     return (

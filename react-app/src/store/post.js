@@ -117,7 +117,8 @@ export const createPostThunk = (data) => async (dispatch, getState) => {
 };
 
 export const updatePostThunk = (data) => async (dispatch, getState) => {
-    const res = await fetch(`/api/text_posts/posts/${data}/update`, {
+    console.log(data)
+    const res = await fetch(`/api/text_posts/posts/${data.id}/update`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),

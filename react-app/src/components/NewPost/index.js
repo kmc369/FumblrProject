@@ -1,7 +1,7 @@
 import './NewPost.css';
 import  { useDispatch, useSelector } from 'react-redux';
 import { useEffect , useState} from 'react';
-import { createPostThunk, updatePostThunk } from '../../store/post';
+import { createPostThunk, loadSpecificPostThunk, updatePostThunk } from '../../store/post';
 import { useModal } from '../../context/Modal';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
@@ -16,7 +16,7 @@ const NewPost = ({ type, post }) => {
     const [postTitle, setPostTitle] = useState(isTherePost ? post.title : "")
     const [secondContent, setSecondContent] = useState(isTherePost ? post.second_content : "")
     const [postType, setPostType] = useState(isTherePost ? post.post_type : type)
-    const [userId, setUserId] = useState(currentUser.id) 
+    const [userId, setUserId] = useState(1) 
     const [errors, setErrors] = useState({})
     const [create, setCreate] = useState(isTherePost ? false : true)
     const [image,setImage] = useState(null)
@@ -41,6 +41,7 @@ const NewPost = ({ type, post }) => {
         post_type: postType,
         user_id: userId
     }
+    console.log('create?', create)
     const handleSubmit = async e => {
         e.preventDefault();
         setErrors({})
@@ -50,13 +51,16 @@ const NewPost = ({ type, post }) => {
             await dispatch(createPostThunk(newPost))
             console.log("created post")
         } else {
+            newPost.id = post.id
+            newPost.user = currentUser
+            console.log(newPost)
             await dispatch(updatePostThunk(newPost))
             console.log('updated post')
         }
         history.push('/')
         return (closeModal())
     };
-    
+
     const submitButton = "newPost-submit-button" + (isDisabled() ? ' disabled' : '')
     
     return (
@@ -78,7 +82,6 @@ const NewPost = ({ type, post }) => {
                 <textarea 
                 value={postContent}
                 onChange={e => setPostContent(e.target.value)}
-                placeholder="Go ahead, put anything."
                 className="post-content"
                 rows='6'
                 cols='32'
@@ -96,7 +99,7 @@ const NewPost = ({ type, post }) => {
                 <>
                 <div className="quote-modal">
             {/* need to add in the username of user who is logged in and posting. See Tumblr website */}
-            <h2 className='user-tag'>{currentUser.username}</h2>
+            {/* <h2 className='user-tag'>{currentUser.username}</h2> */}
               <div className='quote-modal-content'>
          
                 <input 
