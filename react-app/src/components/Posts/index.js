@@ -13,6 +13,7 @@ const Posts = () => {
 
     Object.values(postsData)?.map(post => allPosts.push(post));
 
+    // console.log(allPosts)
 
     useEffect(() => {
         dispatch(loadPostsThunk());
@@ -21,7 +22,7 @@ const Posts = () => {
     const handlePostClick = (postId) => {
         history.push(`/posts/${postId}`);
     };
-
+    
     return (
         // <h1 className='heading_posts'>All Posts Component!!</h1>
         <>

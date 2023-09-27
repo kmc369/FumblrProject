@@ -10,14 +10,19 @@ const NewPost = ({ type, post }) => {
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user)
     const { closeModal } = useModal();
-    const isTherePost = Object.keys(post).length;
+    let isTherePost;
+    post ? isTherePost = Object.keys(post).length : isTherePost = 0
     const [postContent, setPostContent] = useState(isTherePost ? post.text_content : "")
     const [postTitle, setPostTitle] = useState(isTherePost ? post.title : "")
     const [secondContent, setSecondContent] = useState(isTherePost ? post.second_content : "")
-    const [postType, setPostType] = useState(type)
-    const [userId, setUserId] = useState(currentUser.id)
+    const [postType, setPostType] = useState(isTherePost ? post.post_type : type)
+    const [userId, setUserId] = useState(currentUser.id) 
     const [errors, setErrors] = useState({})
     const [create, setCreate] = useState(isTherePost ? false : true)
+    const [image,setImage] = useState(null)
+    const [imageLoading, setImageLoading] = useState(false);
+    
+
 
     const validationForPost = () => {
         const validationErrors = {};
@@ -53,12 +58,13 @@ const NewPost = ({ type, post }) => {
     };
     
     const submitButton = "newPost-submit-button" + (isDisabled() ? ' disabled' : '')
-
-
+    
     return (
         <div className="newPost-modal">
             {/* need to add in the username of user who is logged in and posting. See Tumblr website */}
-            <div>
+            {type === 'text' ? (
+                <>
+                <div>
                 <textarea 
                 value={postTitle}
                 onChange={e => setPostTitle(e.target.value)}
@@ -84,6 +90,105 @@ const NewPost = ({ type, post }) => {
             <div>
                 {create ? <button className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Post Now</button> : <button className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Update</button>}
             </div>
+                </>
+            ) : <></>}
+            {type === 'quote' ? (
+                <>
+                <div className="quote-modal">
+            {/* need to add in the username of user who is logged in and posting. See Tumblr website */}
+            <h2 className='user-tag'>{currentUser.username}</h2>
+              <div className='quote-modal-content'>
+         
+                <input 
+                value={postTitle}
+                onChange={(e)=>setPostTitle(e.target.value)}
+                placeholder="Author"
+                className="author-content"
+                
+                />
+           
+          
+                <textarea 
+                value={postContent}
+                onChange={(e)=>setPostContent(e.target.value)}
+                placeholder="Something someone else said here."
+                className="post-content"
+                rows='6'
+                cols='32'
+                />
+           
+            <div className='buttom-items'>
+            <div>
+                <button className='close-quote-modal' onClick={closeModal}>Close</button>
+            </div>
+            <div>
+                {create ? <button id='quoteSubmitButton' className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Post Now</button> : <button id='quoteSubmitButton' className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Update</button>}
+            </div>
+            </div>
+            </div>
+        </div>
+                </>
+            ) : <></>}
+            {type === 'photo' ? (
+                <>
+                <form  method="POST" encType="multipart/form-data" onSubmit={handleSubmit} >
+                 <div className='photo-container'>
+                <label className='image-label'>
+                <i className="fa-solid fa-camera-retro"></i>
+                <input className='input-image'
+                    type="file"
+                    accept="image/*"
+                    onChange={(e)=>setImage(e.target.files[0])}
+                
+                />
+                </label>
+                <div className='buttonandinput'>
+                <input className='input-text'
+                    type='text'
+                    value={secondContent}
+                    onChange={(e)=>setSecondContent(e.target.value)}
+                    placeholder='Go ahead, say something!'
+                />
+                <button className='photoButton'> Submit</button>
+
+
+            </div>
+            </div>
+            {(imageLoading)&& <p>Loading...</p>}
+            </form>
+                </>
+            ) : <></>}
+            {type === 'link' ? (
+                <>
+                <form  method="POST" encType="multipart/form-data" onSubmit={handleSubmit} >
+        <div className='photo-container'>
+            <label className='image-label'>
+       
+            <input className='input-image'
+                type="text"
+                value={postContent}
+                placeholder='Type or place Link'
+                onChange={(e)=>setPostContent(e.target.value)}
+              
+            />
+            </label>
+
+            <div className='buttonandinput'>
+            <input className='input-text'
+                type='text'
+                value={postTitle}
+                onChange={(e)=>setPostTitle(e.target.value)}
+                placeholder='Go ahead, say something!'
+            />
+            <button className='photoButton'> Submit</button>
+
+{/* hello */}
+        </div>
+        </div>
+     
+        </form>
+                </>
+            ) : <></>}
         </div>
     )
 

@@ -18,7 +18,7 @@ const EditPost = () => {
 
     return (
         <>
-            <NewPost post={currentPost} />
+            <NewPost post={currentPost} type={currentPost.post_type}/>
         </>
     )
 }
