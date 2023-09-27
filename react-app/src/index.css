@@ -4,24 +4,21 @@
         /* max-width: 1000px; 
         margin: 0 auto; 
         padding: 20px;  */
-        /* border:1px solid limegreen; 
+    /* border:1px solid limegreen; 
         ; */
 
-        display: flex;
-        justify-content: center;
-        /* border:1px solid rgb(161, 159, 159); */
+    display: flex;
+    justify-content: center;
+    /* border:1px solid rgb(161, 159, 159); */
 
-      
-    
-     
-       
-       
-    }
-body{
+
+}
+
+body {
     background-color: black;
-  
 
 
-   
- 
+
+
+
 }

@@ -8,7 +8,7 @@ import DeleteNote from "./components/ManageNote";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
 
-import LikeButton from "./components/Likes";
+import LikeButton from "./components/Likes/LikeButton";
 import Posts from "./components/Posts";
 import SpecificPost from './components/SpecificPost'
 import EditPost from './components/EditPost'
@@ -27,8 +27,8 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
-         
-          
+
+
           <Route exact path="/login" >
             <LoginFormPage />
           </Route>
@@ -37,15 +37,17 @@ function App() {
             <SignupFormPage />
           </Route>
           {/* <Route exact path='/' component={Posts}/> */}
-          <Route exact path='/posts/new' component={NewPost}/>
-          <Route exact path='/posts/current-user' component={CurrentUserPosts}/>
-          <Route exact path='/posts/:postId' component={SpecificPost}/>
-          <Route exact path='/posts/:postId/edit' component={EditPost}/>
+          <Route exact path='/posts/new' component={NewPost} />
+          <Route exact path='/posts/current-user' component={CurrentUserPosts} />
+          <Route exact path='/posts/:postId'>
+            <SpecificPost />
+          </Route>
+          <Route exact path='/posts/:postId/edit' component={EditPost} />
           <Route exact path="/delete/note" >
             <DeleteNote />
           </Route>
 
-      
+
 
           <Route exact path="/post/:post_id/notes" >
             <NotePostForm />
