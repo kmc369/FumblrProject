@@ -1,3 +1,4 @@
+import './LikeShow.css'
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaHeart, FaRegHeart } from 'react-icons/fa';
@@ -22,14 +23,14 @@ const LikeShow = ({ post_id }) => {
     return (
         <div>
             <div>
-                <button className='showLikeButton' onClick={handleShowLike} style={{ color: isLiked ? 'red' : 'grey', border: 'none', background: 'none' }}>
-                    <FaRegHeart size={20} />
+                <button className='showLikeButton' onClick={handleShowLike}>
+                    <FaHeart />
                     {likesCount}
                 </button>
             </div>
             <div className="user-liked-the-post">
                 {showlike && users && users.length > 0 ? (
-                    <ul style={{ color: 'white' }}>
+                    <ul>
                         {users.map((user, index) => (
                             <li key={index}>{user[1]}</li>
                         ))}
