@@ -124,7 +124,7 @@ def update_textpost(id):
     if post_to_update is None:
         return post_not_found_error(404)
     update_data = request.get_json()
-    print('data : ', update_data)
+    # print('data : ', update_data)
     if "id" in update_data:
         post_to_update.id = update_data["id"]
     if "title" in update_data:
@@ -139,7 +139,7 @@ def update_textpost(id):
         post_to_update.post_type = update_data['post_type']
     # if "user" in update_data:
     #     post_to_update.user = update_data["user"]
-    print("updated post before commit: ", post_to_update)
+    # print("updated post before commit: ", post_to_update)
     db.session.commit()
     return jsonify(post_to_update.to_dict())
 

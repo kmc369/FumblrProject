@@ -41,7 +41,7 @@ const NewPost = ({ type, post }) => {
         post_type: postType,
         user_id: userId
     }
-    console.log('create?', create)
+    // console.log('create?', create)
     const handleSubmit = async e => {
         e.preventDefault();
         setErrors({})
@@ -49,13 +49,13 @@ const NewPost = ({ type, post }) => {
         if(Object.values(validationErrors).length) setErrors(validationErrors);
         if(create) {
             await dispatch(createPostThunk(newPost))
-            console.log("created post")
+            // console.log("created post")
         } else {
             newPost.id = post.id
             newPost.user = currentUser
-            console.log(newPost)
+            // console.log(newPost)
             await dispatch(updatePostThunk(newPost))
-            console.log('updated post')
+            // console.log('updated post')
         }
         history.push('/')
         return (closeModal())
