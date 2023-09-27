@@ -2,7 +2,7 @@ from flask import Blueprint, jsonify, request #jsonify???? Do we need to use to 
 from flask_login import login_required
 from app.models import TextPost, db, User
 from ..forms import PostForm
-
+from .aws_helpers import get_unique_filename,upload_file_to_s3,remove_file_from_s3
 
 post_bp = Blueprint('text_posts', __name__)
 
@@ -61,12 +61,20 @@ def new_post_textpost():
     form['csrf_token'].data = request.cookies['csrf_token']
 
     if form.validate_on_submit():
+        image = form.data["second_content"]
+        image.filename = get_unique_filename(image.filename)
+        upload = upload_file_to_s3(image)
+        print("upload is ", upload)
+        if "url" not in upload:
+            return jsonify({"error": "Failed to upload image to S3"}), 400
+
         new_post = TextPost(
             title = form.data["title"],
             text_content = form.data['text_content'],
             user_id = form.data['user_id'],
             post_type = form.data['post_type'],
-            second_content = form.data['second_content']
+            # second_content = form.data['second_content']
+            second_content = upload["url"]
         )
         
         db.session.add(new_post)
@@ -131,3 +139,12 @@ def form_validation_error(error):
         "errors": error.description 
     }
     return jsonify(form_error_response, 400)
+
+
+#    image = form.data["second_content"]
+#         print("image is" ,image)
+#         image.filename = get_unique_filename(image.filename)
+#         upload = upload_file_to_s3(image)
+#         print("upload is ", upload)
+#         if "url" not in upload:
+#             return '<h1>Error</h1>'

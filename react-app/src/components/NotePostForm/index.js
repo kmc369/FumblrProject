@@ -76,7 +76,7 @@ function NoteForm(){
 
     return (
         <>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} enctype="multipart/form-data">
             
             <div className="noteTextBox">
        
