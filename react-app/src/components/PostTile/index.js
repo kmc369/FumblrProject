@@ -8,16 +8,13 @@ import { FaShare, FaCommentDots, FaRetweet, FaEdit, FaTrash } from 'react-icons/
 
 
 const PostTile = ({ post }) => {
-
-    const session = useSelector(state => state.session);
-    let currentUserId;
-    const likesCount = useSelector(state => state.like.likes.count);
-
-    //notesCount = likesCount + commentCount add my comment count
-    const notesCount = likesCount
-
-
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const session = useSelector(state => state.session);
+    const likes = useSelector(state => state.like.likes[post.id]);
+    let currentUserId = null;
+    let likesCount = null;
+    let notesCount = null;
+
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -26,10 +23,16 @@ const PostTile = ({ post }) => {
         currentUserId = session.user.id
     }
 
+    if (likes) {
+        likesCount = likes.count;
+        notesCount = likesCount;
+        //notesCount = likesCount + commentCount
+    }
+
 
     return (
         <div className="post-modal">
-            <div className="post-header">
+            {/* <div className="post-header">
                 <h3>{post.user.username}</h3>
                 <p>Follow</p>
             </div>
@@ -41,6 +44,19 @@ const PostTile = ({ post }) => {
                 <div className="post-text-content">
                     {post.text_content}
                 </div>
+            </div> */}
+            <div className='user-username'>
+                {post.user.username}
+            </div>
+            <div className='post-title'>
+                {post.title}
+            </div>
+            <div className='post-textContent'>
+                {post.second_content ? (
+                    <img className="postimages" src={post.second_content} alt="Post Image" />
+                ) : (
+                    <span>{post.text_content}</span>
+                )}
             </div>
 
 
