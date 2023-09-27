@@ -60,7 +60,8 @@ SIDE BAR ICONS ABOVE */
   width:fit-content;
   height: fit-content;
   margin:0 auto;
-  margin-top: 15px;;
+  margin-top: 15px;
+  margin-bottom: 15px;
   border:2px solid red;
 
   
@@ -105,7 +106,7 @@ SIDE BAR ICONS ABOVE */
   flex-direction: row;
   justify-content: flex-start;
   gap:2%;
-  height: 10%;;
+  height: 50px;
   width:100%;
   font-weight: bold;
   font-family: Arial, Helvetica, sans-serif;
@@ -158,8 +159,8 @@ background-color: rgb(41, 41, 41) ;
   /* margin-top: 50px; */
 
   width: 90%;
-  height: 100%;
-  max-width: 1500px;
+  height: 900px;
+  max-width: 1000px;
    
   border:2px solid purple;
   
@@ -177,7 +178,7 @@ background-color: rgb(41, 41, 41) ;
 .homeanduser-container{
 
 height:10%;
-width:15%;
+width:10%;
 display: flex;
 justify-content: left;
 }
@@ -246,10 +247,7 @@ justify-content: left;
   justify-content: center;
   
 }
-#authDropDown button:last-child{
-  background-color: #00b8ff;
-  
-}
+
 
 
 #authDropDown button{
@@ -274,5 +272,22 @@ justify-content: left;
   background-color: rgb(44, 44, 44);
 
   
+}
+
+.profile-button{
+  color: white;
+  background-color:  rgba(4, 4, 37, 0.959);
+  border: none;
+}
+
+.profile-dropdown button{
+  background-color: red;
+  border-radius: 7px;
+  border: none;
+  color: white;
+}
+
+.profile-dropdown{
+  gap: 5px;
 }
 
