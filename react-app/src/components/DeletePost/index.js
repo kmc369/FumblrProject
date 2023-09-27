@@ -3,7 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import './DeletePost.css'
-import * as PostActions from '../../store/post'
+import { deletePostThunk } from '../../store/post'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
@@ -15,7 +15,7 @@ const DeletePost = ({postId}) =>{
     
       function  handleDelete(e){
         e.preventDefault();
-        dispatch(PostActions.deletePostThunk(postId))
+        dispatch(deletePostThunk(postId))
         history.push('/')
         closeModal()
       }
