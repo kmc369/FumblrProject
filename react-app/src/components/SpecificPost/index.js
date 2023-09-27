@@ -8,7 +8,8 @@ import PostTile from '../PostTile';
 import LikeButton from '../Likes/LikeButton';
 import LikeShow from '../Likes/LikeShow';
 import { FaShare, FaCommentDots, FaRetweet, FaEdit, FaTrash } from 'react-icons/fa';
-
+import DeletePost from '../DeletePost';
+import OpenModalButton from '../OpenModalButton'
 //import notes section here
 
 
@@ -42,7 +43,10 @@ const SpecificPost = () => {
 
     if (post.user_id) {
         return (
+            <>
             <PostTile post={post} />
+            <OpenModalButton buttonText={'Delete Post'} modalComponent={<DeletePost postId={postId} />} />
+            </>
 
         );
     }
