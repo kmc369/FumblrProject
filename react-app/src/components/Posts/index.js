@@ -36,7 +36,7 @@ const Posts = () => {
                     </div>
                     <div className='post-textContent'>
                 {post.second_content ? (
-                 <img src={post.second_content} alt="Post Image" />
+                 <img className="postimages" src={post.second_content} alt="Post Image" />
                      ) : (
                      <span>{post.text_content}</span>
                         )}
