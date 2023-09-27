@@ -8,6 +8,7 @@ import NotePostForm from '../NotePostForm'
 import * as NoteActions from '../../store/note'
 
 const PostTile = ({ post }) => {
+    const history = useHistory()
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const session = useSelector(state => state.session);
     const likes = useSelector(state => state.like.likes[post.id]);
@@ -20,6 +21,10 @@ const PostTile = ({ post }) => {
     
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
+    };
+
+    const handlePostClick = (postId) => {
+        history.push(`/posts/${postId}`);
     };
 
     if (session.user) {
@@ -58,7 +63,7 @@ const PostTile = ({ post }) => {
                     {post.text_content}
                 </div>
             </div> */}
-            <div className='user-username'>
+            <div className='user-username' onClick={() => handlePostClick(post.id)}>
                 {post.user.username}
             </div>
             <div className='post-title'>

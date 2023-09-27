@@ -58,3 +58,28 @@
     display: flex;
     justify-content: flex-start;
 }
+
+.user-username{
+    border-bottom: solid black 1px;
+    color: black;
+    padding: 15px;
+}
+
+.post-title{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.post-textContent{
+    margin: 10px;
+    display: grid;
+    
+}
+
+.postimages{
+    display: flex;
+    width: 425px;
+    height: fit-content;
+    justify-self: center;
+}

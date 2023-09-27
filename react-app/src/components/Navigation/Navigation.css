@@ -34,7 +34,7 @@
   display: flex;
   gap: 25px;
   flex-direction: column;
-  border-right: 1px solid rgb(165, 165, 165 ,0.3);
+  /* border-right: 1px solid rgb(165, 165, 165 ,0.3); */
   height:100%; 
   width:25%;
   cursor: pointer;
@@ -127,6 +127,7 @@ background-color: rgb(41, 41, 41) ;
 .followingandicons{
   width: 85%;
   border-right: 1px solid rgb(165, 165, 165 ,0.3);
+  border-left: 1px solid rgb(165, 165, 165 ,0.3);
   cursor: pointer;
 }
 
@@ -159,7 +160,7 @@ background-color: rgb(41, 41, 41) ;
   /* margin-top: 50px; */
 
   width: 90%;
-  height: 900px;
+  height: fit-content;
   max-width: 1000px;
    
   border:2px solid purple;
