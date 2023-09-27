@@ -48,7 +48,6 @@ function App() {
           </Route>
 
 
-
           <Route exact path="/post/:post_id/notes" >
             <NotePostForm />
           </Route>

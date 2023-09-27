@@ -161,6 +161,9 @@ const postsReducer = (state = initialState, action) => {
             const postsArr = Object.values(action.posts.Posts)
             postsArr.map(post => postNewState.allPosts[post.id] = post)
             return postNewState
+        case LOAD_SPECIFIC_POST:
+            postNewState['singlePost'] = action.post;
+            return postNewState
         case CREATE_POST:
             postNewState["allPosts"] = {...postNewState.allPosts}
             postNewState.allPosts[action.post.id] = action.post

@@ -1,19 +1,23 @@
 import './NewPost.css';
 import  { useDispatch, useSelector } from 'react-redux';
 import { useEffect , useState} from 'react';
-import { createPostThunk } from '../../store/post';
+import { createPostThunk, updatePostThunk } from '../../store/post';
 import { useModal } from '../../context/Modal';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
-const NewPost = ({ type }) => {
+const NewPost = ({ type, post }) => {
     const dispatch = useDispatch();
+    const history = useHistory();
     const { closeModal } = useModal();
-    const [postContent, setPostContent] = useState("")
-    const [postTitle, setPostTitle] = useState("")
-    const [secondContent, setSecondContent] = useState("")
+    const isTherePost = Object.keys(post).length;
+    const [postContent, setPostContent] = useState(isTherePost ? post.text_content : "")
+    const [postTitle, setPostTitle] = useState(isTherePost ? post.title : "")
+    const [secondContent, setSecondContent] = useState(isTherePost ? post.second_content : "")
     const [postType, setPostType] = useState(type)
-    //console.log(postType)
+    // const currentState = useState(state => state)
     const [userId, setUserId] = useState(1)
     const [errors, setErrors] = useState({})
+    const [create, setCreate] = useState(isTherePost ? false : true)
 
     const validationForPost = () => {
         const validationErrors = {};
@@ -25,22 +29,26 @@ const NewPost = ({ type }) => {
         const validationErrors = validationForPost();
         return (Object.values(validationErrors).length) ? true : false 
     }
-
+    const newPost = {
+        title: postTitle,
+        text_content: postContent,
+        second_content: secondContent,
+        post_type: postType,
+        user_id: userId
+    }
     const handleSubmit = async e => {
         e.preventDefault();
         setErrors({})
         const validationErrors = validationForPost();
         if(Object.values(validationErrors).length) setErrors(validationErrors);
-
-        const newPost = {
-            title: postTitle,
-            text_content: postContent,
-            second_content: secondContent,
-            post_type: postType,
-            user_id: userId
+        if(create) {
+            await dispatch(createPostThunk(newPost))
+            console.log("created post")
+        } else {
+            await dispatch(updatePostThunk(newPost))
+            console.log('updated post')
         }
-        await dispatch(createPostThunk(newPost))
-        console.log("created post")
+        history.push('/')
         return (closeModal())
     };
     
@@ -74,7 +82,7 @@ const NewPost = ({ type }) => {
                 <button className='close-newPost-modal' onClick={closeModal}>Close</button>
             </div>
             <div>
-                <button className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Post Now</button>
+                {create ? <button className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Post Now</button> : <button className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Update</button>}
             </div>
         </div>
     )

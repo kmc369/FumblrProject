@@ -20,10 +20,11 @@ export const unlikePost = (likes) => ({
 });
 
 //thunks
-export const fetchLikesThunk = (post_id, user_id) => async (dispatch) => {      //get number of likes and if current user likes the post or not
+export const fetchLikesThunk = (post_id, user_id, usernames) => async (dispatch) => {      //get number of likes and if current user likes the post or not
     try {
         const response = await fetch(`/api/likes/post/${post_id}`);
         const data = await response.json();
+
         dispatch(countLikes(data.likes));
     } catch (error) {
         console.error(error);

@@ -246,6 +246,11 @@ justify-content: left;
   justify-content: center;
   
 }
+#authDropDown button:last-child{
+  background-color: #00b8ff;
+  
+}
+
 
 #authDropDown button{
   width: 65px;
