@@ -14,6 +14,7 @@ import './NavIcons.css';
 import PhotoForm from '../PhotoForm';
 import { logout } from '../../store/session';
 import SpecificPost from '../SpecificPost';
+import LinkForm from '../LinkForm'
 // import AccountDropdown from './accountDropDown';
 
 function Navigation({ isLoaded }) {
@@ -106,7 +107,7 @@ function Navigation({ isLoaded }) {
 
 						<div className="Navicons">
 							<i class="fa-solid fa-link allnavicon" style={{ color: "limegreen" }}></i>
-							<OpenModalButton buttonText={`Link`} modalComponent={<NewPost type="link"/>} />
+							<OpenModalButton buttonText={`Link`} modalComponent={<LinkForm type="link"/>} />
 						</div>
 
 						<div className="Navicons">

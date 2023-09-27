@@ -13,7 +13,7 @@ const PostTile = ({ post }) => {
     let currentUserId;
     const likesCount = useSelector(state => state.like.likes.count);
 
-    //notesCount = likesCount + commentCount
+    //notesCount = likesCount + commentCount add my comment count
     const notesCount = likesCount
 
 
