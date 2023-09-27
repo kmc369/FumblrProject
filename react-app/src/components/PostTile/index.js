@@ -95,7 +95,7 @@ const PostTile = ({ post }) => {
                            
                             <button className="option"><FaCommentDots />  </button>
                             <LikeShow className="likes-show" post_id={post.id} />
-                            {<NotePostForm />}
+                            {<NotePostForm post_id={post.id}/>}
 
                         </div>
                     )}
