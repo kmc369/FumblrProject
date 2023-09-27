@@ -9,8 +9,14 @@ const LikeShow = ({ post_id }) => {
     const [isLiked, setisLiked] = useState(false);
     const [showlike, setshowlike] = useState(false);
     const dispatch = useDispatch();
-    const likesCount = useSelector(state => state.like.likes.count);    //number of likes from store state
-    const users = useSelector(state => state.like.likes.users);
+    const likes = useSelector(state => state.like.likes[post_id]);    //number of likes from store state
+    let users = null;
+    let likesCount = null;
+
+    if (likes) {
+        users = likes.users;
+        likesCount = likes.count;
+    }
 
     useEffect(() => {
         dispatch(fetchLikesThunk(post_id));    //update store state when rendered the first time
@@ -19,7 +25,7 @@ const LikeShow = ({ post_id }) => {
     const handleShowLike = () => {      //based on like store state, add or remove like accordingly when click the button
         setshowlike(!showlike)
     };
-
+    console.log(users)
     return (
         <div>
             <div>

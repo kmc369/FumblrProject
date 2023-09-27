@@ -24,8 +24,8 @@ export const fetchLikesThunk = (post_id, user_id, usernames) => async (dispatch)
     try {
         const response = await fetch(`/api/likes/post/${post_id}`);
         const data = await response.json();
-
         dispatch(countLikes(data.likes));
+
     } catch (error) {
         console.error(error);
     }
@@ -71,17 +71,17 @@ const likeReducer = (state = initialState, action) => {
         case COUNT_LIKES:
             return {
                 ...state,
-                likes: { ...action.payload }
+                likes: { ...state.likes, ...action.payload }
             };
         case LIKE_POST:
             return {
                 ...state,
-                likes: { ...action.payload },
+                likes: { ...state.likes, ...action.payload },
             };
         case UNLIKE_POST:
             return {
                 ...state,
-                likes: { ...action.payload },
+                likes: { ...state.likes, ...action.payload },
             };
         default:
             return state;

@@ -8,17 +8,25 @@ import { fetchLikesThunk, addLikeThunk, removeLikeThunk } from '../../store/like
 const LikeButton = ({ post_id }) => {
     const [isLiked, setisLiked] = useState(false);
     const dispatch = useDispatch();
-    const likesCount = useSelector(state => state.like.likes.count);    //number of likes from store state
-    const users = useSelector(state => state.like.likes.users);
+    // const likesCount = useSelector(state => state.like.likes.count);    //number of likes from store state
+    const likes = useSelector(state => state.like.likes[post_id]);
     const session = useSelector(state => state.session);
-    let user_id;
+    let user_id = null;
+    let users = null;
+    // console.log(Object.keys(users))
 
     if (session.user) {
         user_id = session.user.id;
     }
-    else {
-        user_id = null;
+
+    if (likes) {
+        users = likes.users
     }
+    useEffect(() => {
+        dispatch(fetchLikesThunk(post_id, user_id));    //update store state when rendered the first time
+    }, [dispatch]);
+    // console.log("im username", username)
+
     useEffect(() => {
         if (Array.isArray(users) && user_id) {
             const current_user = users.filter(user => user[0] == user_id);
@@ -41,20 +49,20 @@ const LikeButton = ({ post_id }) => {
         }
     };
 
-    useEffect(() => {
-        dispatch(fetchLikesThunk(post_id, user_id));    //update store state when rendered the first time
-    }, [dispatch]);
-    // console.log("im username", username)
 
-
-    return (
-        <div>
-            <button className='LikeButton' onClick={handleLike} style={{ color: isLiked ? 'red' : 'white' }}>
-                {isLiked ? <FaHeart /> : <FaRegHeart />}
-            </button>
-            {/* <div>test</div> */}
-        </div>
-    );
+    if (users) {
+        return (
+            <div>
+                <button className='LikeButton' onClick={handleLike} style={{ color: isLiked ? 'red' : 'white' }}>
+                    {isLiked ? <FaHeart /> : <FaRegHeart />}
+                </button>
+                {/* <div>test</div> */}
+            </div>
+        );
+    }
+    else {
+        return null;
+    }
 };
 
 export default LikeButton;
