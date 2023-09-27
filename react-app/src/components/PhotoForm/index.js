@@ -9,15 +9,16 @@ const [image,setImage] = useState("")
         <>
 
         <div className='photo-container'>
-            <label className='image-input'>
-            <input
+            <label className='image-label'>
+            <i className="fa-solid fa-camera-retro"></i>
+            <input className='input-image'
                 type="file"
-                placeholder='Upload Image'
                 value={image}
                 onChange={(e)=>setImage(e.target.value)}
+              
             />
             </label>
-            <input 
+            <input className='input-text'
                 type='text'
                 value={context}
                 onChange={(e)=>setContent(e.target.value)}
