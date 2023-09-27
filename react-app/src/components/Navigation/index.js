@@ -9,7 +9,11 @@ import NewPost from '../NewPost'
 import Posts from '../Posts';
 import SearchResults from '../SearchResults';
 import CurrentUserPosts from '../CurrentUserPosts';
+
+import './NavIcons.css';
+import PhotoForm from '../PhotoForm';
 import { logout } from '../../store/session';
+
 // import AccountDropdown from './accountDropDown';
 
 function Navigation({ isLoaded }) {
@@ -92,7 +96,7 @@ function Navigation({ isLoaded }) {
 
 						<div className="Navicons">
 							<i class="fa-solid fa-camera allnavicon" style={{ color: "red" }}></i>
-							<OpenModalButton buttonText={`Photo`} modalComponent={<NewPost type="photo"/>} />
+							<OpenModalButton buttonText={`Photo`} modalComponent={<PhotoForm type="photo"/>} />
 						</div>
 
 						<div className="Navicons">
