@@ -93,6 +93,7 @@ export const getCommentByIdThunk = (comment_id) => async (dispatch) => {
 export const createNoteThunk = (note) => async (dispatch) => {
     // const  {content,user_id,post_id} = note
     const { content, user_id, post_id } = note
+    console.log("the note id post the thunk is ", post_id)
     const response = await fetch(`/api/post/${post_id}/notes`, {
         method: "POST",
         headers: {

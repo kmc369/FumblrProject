@@ -6,20 +6,19 @@ import { useSelector } from 'react-redux';
 import {useParams } from 'react-router-dom'
 import * as NoteActions from '../../store/note'
 // import { openDeleteModal } from "../DeleteNote";
-
+import PostTile from "../PostTile";
 import DeleteNote from "../ManageNote";
 
 import "./NoteForm.css"
 
 
-function NoteForm(){
+function NoteForm({post_id}){
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
 
    
-    const {post_id} = useParams()
-    const post_id_int = parseInt(post_id, 10);
+  console.log(post_id)
     const [content,setContent] = useState("")
     const [postComments,setPostComments] = useState({})
     const [change ,setChange] = useState(false)
@@ -27,16 +26,16 @@ function NoteForm(){
 
     const handleSubmit = async (e)=>{
     e.preventDefault();
-    
+   
   
     const new_note = {
         content:content,
         user_id:sessionUser.id,
-        post_id:post_id_int
+        post_id:post_id
     
 
     }
-    // console.log(new_note)
+    console.log("the new note is ",new_note)
 
     await dispatch(NoteActions.createNoteThunk(new_note))
     setChange(false)
