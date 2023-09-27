@@ -6,6 +6,7 @@ import { useEffect, useState } from 'react';
 import { FaShare, FaCommentDots, FaRetweet, FaEdit, FaTrash } from 'react-icons/fa';
 import NotePostForm from '../NotePostForm'
 import * as NoteActions from '../../store/note'
+import { useHistory } from 'react-router-dom';
 
 const PostTile = ({ post }) => {
     const history = useHistory()
