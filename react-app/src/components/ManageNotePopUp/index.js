@@ -60,7 +60,7 @@ const {closeModal} = useModal()
 
 
 const handleSubmit = async (e)=>{
-    console.log("the new content is ",content)
+  
     
     e.preventDefault()
     
@@ -72,7 +72,7 @@ const handleSubmit = async (e)=>{
         
     }
 
-    console.log("the form data is ",formData)
+    
 
      dispatch(NoteActions.EditCommentThunk(formData,comment.id))
     setContent("")
@@ -87,17 +87,18 @@ const handleSubmit = async (e)=>{
   return(
 
     <>
-    <h1>hello from Edit Note</h1>
-    <div className="EditForm" onSubmit={handleSubmit}>
-        <form>
+    <div className="EditForm" >
+    <h3 className="edit-header">Let update this comment!</h3>
+     
             <textarea 
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 required
                 type='text'
+                className="editTextText"
             />
-            <button type="submit">Reply</button>
-        </form>
+            <button onClick={handleSubmit} className="editSubmitButton" type="submit">Reply</button>
+      
     </div>
 
     </>
