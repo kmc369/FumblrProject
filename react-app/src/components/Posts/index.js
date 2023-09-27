@@ -9,6 +9,8 @@ const Posts = () => {
     const postsData = useSelector(state => state.post.allPosts);
     const dispatch = useDispatch();
     const history = useHistory();
+    const User = useSelector(state => state.session.user);
+  
     Object.values(postsData)?.map(post => allPosts.push(post));
 
 
@@ -27,18 +29,22 @@ const Posts = () => {
             {allPosts.map(post => (
                 <div className='post' key={post.id} onClick={() => handlePostClick(post.id)}>
                     <div className='user-username'>
-                        {post.user.username}
+                        {User.username}
                     </div>
                     <div className='post-title'>
                         {post.title}
                     </div>
                     <div className='post-textContent'>
-                        {post.text_content}
-                    </div>
+                {post.second_content ? (
+                 <img src={post.second_content} alt="Post Image" />
+                     ) : (
+                     <span>{post.text_content}</span>
+                        )}
+                </div>
                 </div>
             ))}
         </div>
-        </>
+    </>
     )
 
 }
