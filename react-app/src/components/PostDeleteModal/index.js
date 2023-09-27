@@ -2,12 +2,12 @@ import React, { useEffect, useState } from "react";
 import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
-import './DeletePost.css'
+import './PostDeleteModal.css'
 import * as PostActions from '../../store/post'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
-const DeletePost = ({postId}) =>{
+const PostDeleteModal = ({postId}) =>{
     // const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
     const dispatch = useDispatch()
     const history = useHistory()
@@ -15,7 +15,7 @@ const DeletePost = ({postId}) =>{
     
       function  handleDelete(e){
         e.preventDefault();
-        dispatch(PostActions.deletePostThunk(postId))
+        dispatch(PostActions.PostDeleteModalThunk(postId))
         history.push('/')
         closeModal()
       }
@@ -35,4 +35,4 @@ const DeletePost = ({postId}) =>{
           )
     }
     
-    export default DeletePost
+    export default PostDeleteModal
