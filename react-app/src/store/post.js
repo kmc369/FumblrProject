@@ -81,22 +81,24 @@ export const loadUserPostsThunk = (data) => async (dispatch, getState) => {
 };
 
 export const createPostThunk = (data) => async (dispatch, getState) => {
-
+    let res;
     if(data.get("post_type")==="photo"){
        
-        const response = await fetch(`/api/text_posts/new_post`, {
+          res = await fetch(`/api/text_posts/new_post`, {
             method: "POST",
         
             body: data
           });
        
     }
-    const res = await fetch('/api/text_posts/new_post', {
+    else if(data.get("post_type")==="link"){
+        res = await fetch('/api/text_posts/new_post', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
     });
-    if(res.ok) {
+    }
+    if(res.ok && res) {
         const post = await res.json();
         dispatch(actionCreateNewPost(post)); 
         return post;
