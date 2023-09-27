@@ -8,14 +8,14 @@ import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 const NewPost = ({ type, post }) => {
     const dispatch = useDispatch();
     const history = useHistory();
+    const currentUser = useSelector(state => state.session.user)
     const { closeModal } = useModal();
     const isTherePost = Object.keys(post).length;
     const [postContent, setPostContent] = useState(isTherePost ? post.text_content : "")
     const [postTitle, setPostTitle] = useState(isTherePost ? post.title : "")
     const [secondContent, setSecondContent] = useState(isTherePost ? post.second_content : "")
     const [postType, setPostType] = useState(type)
-    // const currentState = useState(state => state)
-    const [userId, setUserId] = useState(1)
+    const [userId, setUserId] = useState(currentUser.id)
     const [errors, setErrors] = useState({})
     const [create, setCreate] = useState(isTherePost ? false : true)
 
