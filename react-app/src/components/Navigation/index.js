@@ -9,7 +9,7 @@ import NewPost from '../NewPost'
 import Posts from '../Posts';
 import SearchResults from '../SearchResults';
 import CurrentUserPosts from '../CurrentUserPosts';
-
+import SpecificPost from '../SpecificPost';
 import './NavIcons.css';
 import PhotoForm from '../PhotoForm';
 import { logout } from '../../store/session';
@@ -134,6 +134,9 @@ function Navigation({ isLoaded }) {
 					</Route>
 					<Route exact path='/user/:userId'>
 						<CurrentUserPosts/>
+					</Route>
+					<Route exact path='/post/:id'>
+						<SpecificPost/>
 					</Route>
 
 
