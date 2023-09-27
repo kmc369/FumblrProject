@@ -39,9 +39,9 @@ function App() {
           {/* <Route exact path='/' component={Posts}/> */}
           <Route exact path='/posts/new' component={NewPost} />
           <Route exact path='/posts/current-user' component={CurrentUserPosts} />
-          <Route exact path='/posts/:postId'>
+          {/* <Route exact path='/posts/:postId'>
             <SpecificPost />
-          </Route>
+          </Route> */}
           <Route exact path='/posts/:postId/edit' component={EditPost} />
           <Route exact path="/delete/note" >
             <DeleteNote />

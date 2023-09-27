@@ -157,9 +157,6 @@ function Navigation({ isLoaded }) {
 
 			<div className='homeanduser-container'>
 				<ul className='homeanduser'>
-					<li>
-						<NavLink className="houselink" exact to="/"> <i class="fa-solid fa-house" ></i></NavLink>
-					</li>
 					{isLoaded && (
 						<li >
 							<ProfileButton user={sessionUser} />

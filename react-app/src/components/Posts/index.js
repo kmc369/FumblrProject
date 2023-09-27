@@ -29,7 +29,7 @@ const Posts = () => {
             {allPosts.map(post => (
                 <div className='post' key={post.id} onClick={() => handlePostClick(post.id)}>
                     <div className='user-username'>
-                        {User.username}
+                        {post.user.username}
                     </div>
                     <div className='post-title'>
                         {post.title}
