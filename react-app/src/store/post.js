@@ -138,6 +138,7 @@ export const deletePostThunk = data => async (dispatch, getState) => {
         headers: {'Content-Type': 'application/json'}
     });
     if(res.ok) {
+        console.log('post deleted')
         dispatch(actionDeletePost(data))
     } else {
         const errors = await res.json();

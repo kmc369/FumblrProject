@@ -17,11 +17,13 @@ class TextPost(db.Model):
 
     #relationships 
     user = db.relationship("User", back_populates="posts")
-    notes = db.relationship("Note", back_populates="posts")
     
+    # notes = db.relationship("Note", back_populates="posts")
+    # likes = db.relationship("Like",back_populates="posts")
 
-    
-    likes = db.relationship("Like",back_populates="posts")
+    # needed to add in cascade delete to satisfy the null constraint on likes model for post_id
+    notes = db.relationship("Note", back_populates="posts", cascade="all, delete-orphan")
+    likes = db.relationship("Like", back_populates="posts", cascade="all, delete-orphan")
     
     def add_prefix_for_prod(attr):
         if environment == "production":
