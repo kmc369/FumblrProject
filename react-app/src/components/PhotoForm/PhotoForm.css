@@ -1,6 +1,62 @@
 .photo-container{
-    /* background-color: rgb(44, 44, 44);  */
+    background-color: rgb(44, 44, 44); 
     display: flex;
     flex-direction: column;
-    border:2px solid red
+    /* border:2px solid red; */
+    width:400px;
+    height: 200px;
+    justify-content: space-around;
+}
+
+.fa-camera-retro{
+    font-size:70px;
+    /* border:1px solid purple; */
+    width:60%;
+    display: flex;
+    justify-content: center;
+    color: rgb(108, 108, 108);
+
+}
+
+.input-image::file-selector-button {
+    background-color: rgb(44, 44, 44); 
+    border:none;
+    font-size:x-large;
+    color:rgb(108, 108, 108);
+    cursor: pointer;
+    margin-left: 60px;;
+}
+
+
+
+.image-label{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* border:2px solid green; */
+    height:60%;
+   
+}
+.image-label:hover{
+    border:2px solid  rgb(0, 145, 255);
+   
+}
+
+.input-image{
+    width: 99%;
+    height: 30%;
+    margin-top:10px;
+   
+    border-bottom:1px solid rgb(108, 108, 108,0.3);
+  
+}
+.input-text{
+    text-align: center;
+    height: 20%;
+    border-radius: 7px;;
+    width: 60%;
+    border:1px solid rgb(108, 108, 108,0.3); ;
+    margin: 0 auto;
+    background-color: rgb(44, 44, 44); 
+
 }
