@@ -13,7 +13,7 @@ import QuoteForm from '../QuoteForm';
 import './NavIcons.css';
 import PhotoForm from '../PhotoForm';
 import { logout } from '../../store/session';
-
+import SpecificPost from '../SpecificPost';
 // import AccountDropdown from './accountDropDown';
 
 function Navigation({ isLoaded }) {
@@ -134,6 +134,9 @@ function Navigation({ isLoaded }) {
 					</Route>
 					<Route exact path='/user/:userId'>
 						<CurrentUserPosts/>
+					</Route>
+					<Route exact path='/posts/:postId'>
+						<SpecificPost/>
 					</Route>
 
 
