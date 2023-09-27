@@ -13,8 +13,8 @@ class PostForm(FlaskForm):
     title = StringField("Title", validators=[DataRequired()])
     text_content = StringField("Content")
     user_id = IntegerField('User ID', validators=[DataRequired()])
-    second_content = FileField("Image file", validators=[FileRequired(), FileAllowed(list(ALLOWED_EXTENSIONS))])
     post_type = StringField("Type", validators=[DataRequired()])
+    second_content = FileField("Image file", validators=[FileAllowed(list(ALLOWED_EXTENSIONS))])
 
 
 

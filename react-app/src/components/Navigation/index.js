@@ -9,7 +9,7 @@ import NewPost from '../NewPost'
 import Posts from '../Posts';
 import SearchResults from '../SearchResults';
 import CurrentUserPosts from '../CurrentUserPosts';
-import SpecificPost from '../SpecificPost';
+import QuoteForm from '../QuoteForm';
 import './NavIcons.css';
 import PhotoForm from '../PhotoForm';
 import { logout } from '../../store/session';
@@ -101,7 +101,7 @@ function Navigation({ isLoaded }) {
 
 						<div className="Navicons">
 							<i class="fa-solid fa-quote-left allnavicon" style={{ color: "orange" }}></i>
-							<OpenModalButton buttonText={`Quote`} modalComponent={<NewPost type="quote"/>} />
+							<OpenModalButton buttonText={`Quote`} modalComponent={<QuoteForm type="quote"/>} />
 						</div>
 
 						<div className="Navicons">

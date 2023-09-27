@@ -80,4 +80,8 @@ flex-direction: column;
 /* border:1px solid green; */
 height:100px;
 gap:10px;
+cursor: pointer;
 }
+/* .buttonandinput:hover{
+    border:1px solid white;
+} */
