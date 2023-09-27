@@ -54,15 +54,17 @@ async function handleSubmit(e){
               
             />
             </label>
+            <div className='buttonandinput'>
             <input className='input-text'
                 type='text'
                 value={content}
                 onChange={(e)=>setContent(e.target.value)}
                 placeholder='Go ahead, say something!'
             />
-            <button >Submit</button>
+            <button className='photoButton'> Submit</button>
 
 
+        </div>
         </div>
         {(imageLoading)&& <p>Loading...</p>}
         </form>
