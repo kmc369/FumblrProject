@@ -16,68 +16,36 @@ const SpecificPost = () => {
     const { postId } = useParams();
     const dispatch = useDispatch();
     const posts = useSelector(state => state.post.allPosts);
-    const currentUserId = useSelector(state => state.session.user.id);
-    const post = posts[postId]
+    const session = useSelector(state => state.session);
+    const post = posts[postId];
+    let currentUserId;
+    // const likesCount = useSelector(state => state.like.likes.count);
+    // const notesCount = likesCount
+
+
+    if (session.user) {
+        currentUserId = session.user.id
+    }
+    else {
+        currentUserId = null
+    }
 
     useEffect(() => {
         dispatch(loadPostsThunk(postId));
     }, [dispatch]);
 
 
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
-    };
+
     if (!post) {
         return null;
     }
 
-    return (
-        <div className="post-modal">
-            <div className="post-header">
-                <h3>{post.user.username}</h3>
-                <p>Follow</p>
-            </div>
+    if (post.user_id) {
+        return (
+            <PostTile post={post} />
 
-            <div className="post-body">
-                <div className='post-image'>
-                    IMAGE GOES HERE
-                </div>
-                <div className="post-text-content">
-                    {post.text_content}
-                </div>
-                {/* <LikeButton className="likes-button" post_id={post.id} /> */}
-            </div>
-
-
-            <div className="post-operations">
-                <button className="icon-button"><FaTrash /></button>
-                <button className="icon-button"><FaEdit /></button>
-            </div>
-
-            <div className="post-actions">
-                <button className="icon-button"><FaShare /></button>
-                <button className="icon-button"><FaCommentDots /></button>
-                <button className="icon-button"><FaRetweet /></button>
-                <LikeButton className="likes-button" post_id={post.id} />
-            </div>
-
-            <div className="post-footer">
-                <div className="dropdown" onClick={toggleDropdown}>
-                    <div className="dropdown-label">Notes</div>
-                    {dropdownOpen && (
-                        <div className="dropdown-options">
-                            <button className="option"><FaCommentDots />Comments</button>
-                            <LikeShow className="likes-show" post_id={post.id} />
-                        </div>
-                    )}
-                </div>
-
-            </div>
-        </div>
-
-    );
-
+        );
+    }
 }
 
 export default SpecificPost;
