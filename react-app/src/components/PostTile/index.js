@@ -101,8 +101,9 @@ const PostTile = ({ post }) => {
 
             {currentUserId === post.user_id &&
                 <div className="post-operations">
-                       <OpenModalButton id="editPostModal" buttonText={<FaTrash />} modalComponent={<DeletePost post={post}/>}/> 
-                   
+                        <div className='trashcan'>
+                       <OpenModalButton className="trashcan" id="editPostModal" buttonText={<FaTrash />} modalComponent={<DeletePost post={post}/>}/> 
+                        </div>
                     <button className={post.post_type === 'photo' ? imageEditHidden : "editButton"}>
                        <OpenModalButton id="editPostModal" buttonText={<FaEdit />} modalComponent={<EditPostModal post={post}/>}/> 
                     </button>
@@ -112,10 +113,10 @@ const PostTile = ({ post }) => {
               modalComponent={<DeleteSpot spotId={element.id}  onCloseModal={() => setIsDeleteModalOpen(false)} />} */}
 
             <div className="post-actions">
-                <button className="icon-button"><FaShare /></button>
-                <button className="icon-button"><FaCommentDots /></button>
-                <button className="icon-button"><FaRetweet /></button>
                 <LikeButton className="likes-button" post_id={post.id} />
+                {/* <button className="icon-button"><FaShare /></button>
+                <button className="icon-button"><FaCommentDots /></button>
+                <button className="icon-button"><FaRetweet /></button> */}
             </div>
 
             <div className="post-footer">
