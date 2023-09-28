@@ -39,31 +39,31 @@ function Navigation({ isLoaded }) {
 						<NavLink exact to='/'><i class="fa-solid fa-house"><span className="icontext">Home</span></i></NavLink>
 					</div>
 
-					<div className="iconsandtext">
+					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-compass"><span className="icontext">Explore</span></i>
 					</div>
 
-					<div className="iconsandtext">
+					{/* <div className="iconsandtext">
 						<i class="fa-solid fa-video"><span className="icontext">Live</span></i>
-					</div>
+					</div> */}
 
-					<div className="iconsandtext">
+					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-bolt"><span className="icontext">Activity</span></i>
 					</div>
 
-					<div className="iconsandtext">
+					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-comment-dots"><span className="icontext">Messages</span></i>
 					</div>
 
-					<div className="iconsandtext">
+					{/* <div className="iconsandtext">
 						<i class="fa-solid fa-envelope-circle-check"><span className="icontext">Inbox</span></i>
-					</div>
+					</div> */}
 					{sessionUser &&
 					<div className="iconsandtext">
 						<NavLink exact to={`/user/${sessionUser.id}`}><i class="fa-solid fa-user"><span className="icontext">Account</span></i></NavLink>
 					</div>
 					}
-					<div className="iconsandtext">
+					<div className="iconsandtext"onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-gear"><span className="icontext">Settings</span></i>
 					</div>
 
