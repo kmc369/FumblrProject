@@ -85,6 +85,7 @@ function Navigation({ isLoaded }) {
 					</div>
 
 
+					{sessionUser &&
 					<div className="posttype">
 
 
@@ -125,7 +126,8 @@ function Navigation({ isLoaded }) {
 							<span>video</span>
 						</div>
 
-					</div>
+					</div> || <></>
+					}
 
 					<Route exact path='/'>
 						<Posts />
