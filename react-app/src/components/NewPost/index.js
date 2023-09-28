@@ -9,11 +9,8 @@ const NewPost = ({ type, post }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user)
-    const postSelector = useSelector(state => state.post.singlePost);
-    console.log('postSelector: ', postSelector)
     const { closeModal } = useModal();
-    let isTherePost;
-    post ? isTherePost = Object.keys(post).length : isTherePost = 0
+    const isTherePost = post && Object.keys(post).length > 0;
     const [postContent, setPostContent] = useState(isTherePost ? post.text_content : "")
     const [postTitle, setPostTitle] = useState(isTherePost ? post.title : "")
     const [secondContent, setSecondContent] = useState(isTherePost ? post.second_content : "")
@@ -23,8 +20,6 @@ const NewPost = ({ type, post }) => {
     const [create, setCreate] = useState(isTherePost ? false : true)
     const [image,setImage] = useState(null)
     const [imageLoading, setImageLoading] = useState(false);
-    
-
 
     const validationForPost = () => {
         const validationErrors = {};
@@ -42,7 +37,7 @@ const NewPost = ({ type, post }) => {
     
     const isDisabled = () => {
         const validationErrors = validationForPost();
-        return (Object.values(validationErrors).length) ? true : false 
+        return Object.keys(validationErrors).length > 0
     }
     const newPost = {
         title: postTitle,
