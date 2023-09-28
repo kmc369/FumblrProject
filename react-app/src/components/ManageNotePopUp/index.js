@@ -7,7 +7,31 @@ import {useParams } from 'react-router-dom'
 import './ManageNotePopUp.css'
 import * as NoteActions from '../../store/note'
 
-const DeleteNotePopUp = ()=>{
+const DeleteNotePopUp = ({comment})=>{
+
+  const dispatch = useDispatch()
+  const user = useSelector((state)=>state.session.user)
+  console.log("the comment id is ", comment.id)
+  const {closeModal} = useModal()
+  
+  function handleDelete(e){
+    e.preventDefault()
+    dispatch(NoteActions.deleteCommentThunk(comment.id))
+    closeModal()
+  }
+  
+  // dispatch(NoteActions.getCommentsOfPostThunk(1))
+  useEffect(() => {
+  
+      const fetchData = async () => {
+        await dispatch(NoteActions.getCommentsOfPostThunk(comment.post_id));
+        // setComment(commentData);
+        // setContent(commentData.content)
+      
+      };
+      
+      fetchData(); // Call the async function immediately
+    }, [dispatch,comment.id]);
  
     return (
 
@@ -17,40 +41,26 @@ const DeleteNotePopUp = ()=>{
           <h3 className="confirmDelete"> Confirm Delete</h3>
           <p className="delete-message"> Are you sure you want to delete this post?</p>
           <div className="buttonItems">
-            <div><button className='confirm'  type='submit'  >Delete</button></div>
-            <div><button className='deny' >Cancel</button></div>
+            <div><button className='confirm'  type='submit' onClick={handleDelete} >Delete</button></div>
+            <div><button className='deny' onClick={closeModal}>Cancel</button></div>
           </div>
         </div>
         </div>
       )
 }
 
-export function EditNotePopUp (){
+export function EditNotePopUp ({comment}){
   const dispatch = useDispatch()
 const user = useSelector((state)=>state.session.user)
-// console.log(old_content)
-const {note_id} = useParams()
-const note_id_int = parseInt(note_id, 10);
-const [comment, setComment] = useState("");
-const [content ,setContent] = useState("")
 
 
+const [content ,setContent] = useState(comment.content)
+const {closeModal} = useModal()
 
-// dispatch(NoteActions.getCommentsOfPostThunk(1))
-useEffect(() => {
 
-    const fetchData = async () => {
-      const commentData = await dispatch(NoteActions.getCommentByIdThunk(note_id_int));
-      setComment(commentData);
-      setContent(commentData.content)
-    
-    };
-    
-    fetchData(); // Call the async function immediately
-  }, [note_id_int]);
 
 const handleSubmit = async (e)=>{
-    console.log("the new content is ",content)
+  
     
     e.preventDefault()
     
@@ -62,10 +72,11 @@ const handleSubmit = async (e)=>{
         
     }
 
-    console.log("the form data is ",formData)
+    
 
-     dispatch(NoteActions.EditCommentThunk(formData,note_id_int))
+     dispatch(NoteActions.EditCommentThunk(formData,comment.id))
     setContent("")
+    closeModal()
   
     
     
@@ -76,17 +87,18 @@ const handleSubmit = async (e)=>{
   return(
 
     <>
-    <h1>hello from Edit Note</h1>
-    <div className="EditForm" onSubmit={handleSubmit}>
-        <form>
+    <div className="EditForm" >
+    <h3 className="edit-header">Let update this comment!</h3>
+     
             <textarea 
                 value={content}
                 onChange={(e) => setContent(e.target.value)}
                 required
                 type='text'
+                className="editTextText"
             />
-            <button type="submit">Reply</button>
-        </form>
+            <button onClick={handleSubmit} className="editSubmitButton" type="submit">Reply</button>
+      
     </div>
 
     </>

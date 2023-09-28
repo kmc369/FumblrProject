@@ -117,7 +117,8 @@ export const createPostThunk = (data) => async (dispatch, getState) => {
 };
 
 export const updatePostThunk = (data) => async (dispatch, getState) => {
-    const res = await fetch(`/api/text_posts/posts/${data}/update`, {
+    // console.log(data)
+    const res = await fetch(`/api/text_posts/posts/${data.id}/update`, {
         method: 'PUT',
         headers: {'Content-Type': 'application/json'},
         body: JSON.stringify(data),
@@ -138,6 +139,7 @@ export const deletePostThunk = data => async (dispatch, getState) => {
         headers: {'Content-Type': 'application/json'}
     });
     if(res.ok) {
+        console.log('post deleted')
         dispatch(actionDeletePost(data))
     } else {
         const errors = await res.json();
@@ -160,6 +162,9 @@ const postsReducer = (state = initialState, action) => {
             postNewState.allPosts = {}
             const postsArr = Object.values(action.posts.Posts)
             postsArr.map(post => postNewState.allPosts[post.id] = post)
+            return postNewState
+        case LOAD_SPECIFIC_POST:
+            postNewState['singlePost'] = action.post;
             return postNewState
         case CREATE_POST:
             postNewState["allPosts"] = {...postNewState.allPosts}

@@ -24,7 +24,7 @@ def get_num_likes(post_id):
     # Collect usernames from each like, assuming 'user' is the relationship name on Like to User model
     users = [[like.user.id, like.user.username] for like in likes]
 
-    return jsonify(status='success', likes={'count': count_like(post_id), "users": users})
+    return jsonify(status='success', likes={post_id: {'count': count_like(post_id), "users": users}})
 
 
 @likes_bp.route('/post/<int:post_id>', methods=['POST'])
@@ -42,7 +42,7 @@ def like_post(post_id):
         post = TextPost.query.get_or_404(post_id)
         likes = post.likes
         users = [[like.user.id, like.user.username] for like in likes]
-        return jsonify(status='success', likes={'count': count_like(post_id), "users": users})
+        return jsonify(status='success', likes={post_id: {'count': count_like(post_id), "users": users}})
     return jsonify(status='error', error='User ID is required'), 400
 
 
@@ -59,6 +59,6 @@ def unlike_post(post_id):
             likes = post.likes
             users = [[like.user.id, like.user.username]
                      for like in likes]
-            return jsonify(status='success', likes={'count': count_like(post_id), "users": users})
+            return jsonify(status='success', likes={post_id: {'count': count_like(post_id), "users": users}})
         return jsonify(status='error', error='Like not found'), 404
     return jsonify(status='error', error='User ID is required'), 400

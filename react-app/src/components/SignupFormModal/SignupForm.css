@@ -1,0 +1,26 @@
+.signUpForm {
+    background-color: rgb(132, 68, 216);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 425px;
+    height: 425px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    color: white;
+}
+
+.signUpForm form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 200px;
+}
+
+.signUpForm button {
+    height: 35px;
+    border-radius: 7px;
+    border: none;
+    background-color: #00b8ff;
+    color: white;
+}

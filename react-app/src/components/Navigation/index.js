@@ -14,6 +14,7 @@ import './NavIcons.css';
 import PhotoForm from '../PhotoForm';
 import { logout } from '../../store/session';
 import SpecificPost from '../SpecificPost';
+import LinkForm from '../LinkForm'
 // import AccountDropdown from './accountDropDown';
 
 function Navigation({ isLoaded }) {
@@ -78,9 +79,9 @@ function Navigation({ isLoaded }) {
 				<div className='followingandicons'>
 
 					<div className='following'>
-						<div className='followingtag'>Following</div>
-						<div className='foryou'>For you</div>
-						<div className='yourtags'>Your tags</div>
+						{sessionUser && <div className='followingtag'>Following</div> || <div className='followingtag'>Trending</div>  }
+						{sessionUser && <div className='foryou'>For you</div> || <div className='foryou'>Staff Picks</div>}
+						{sessionUser && <div className='yourtags'>Your tags</div> || <div className='yourtags'>More...</div>}
 					</div>
 
 
@@ -106,7 +107,7 @@ function Navigation({ isLoaded }) {
 
 						<div className="Navicons">
 							<i class="fa-solid fa-link allnavicon" style={{ color: "limegreen" }}></i>
-							<OpenModalButton buttonText={`Link`} modalComponent={<NewPost type="link"/>} />
+							<OpenModalButton buttonText={`Link`} modalComponent={<LinkForm type="link"/>} />
 						</div>
 
 						<div className="Navicons">
@@ -157,9 +158,6 @@ function Navigation({ isLoaded }) {
 
 			<div className='homeanduser-container'>
 				<ul className='homeanduser'>
-					<li>
-						<NavLink className="houselink" exact to="/"> <i class="fa-solid fa-house" ></i></NavLink>
-					</li>
 					{isLoaded && (
 						<li >
 							<ProfileButton user={sessionUser} />

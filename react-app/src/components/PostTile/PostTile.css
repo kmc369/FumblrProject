@@ -1,7 +1,7 @@
 .post-modal {
     width: 500px;
     margin: 20px auto;
-    background-color: rgb(29, 34, 34);
+    background-color:white;
     border-radius: 5px;
 }
 
@@ -51,10 +51,43 @@
 .option {
     border: none;
     background: none;
-    color: white;
+    color: black;
+
 }
 
 .dropdown-options {
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
+}
+
+
+.user-username{
+    border-bottom: solid black 1px;
+    color: black;
+    padding: 15px;
+}
+
+.post-title{
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.post-textContent{
+    margin: 10px;
+    display: grid;
+    
+}
+
+.postimages{
+    display: flex;
+    width: 425px;
+    height: fit-content;
+    justify-self: center;
+}
+
+
+.hide-edit-image {
+    display: none;
 }
