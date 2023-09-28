@@ -7,7 +7,8 @@ import { FaShare, FaCommentDots, FaRetweet, FaEdit, FaTrash } from 'react-icons/
 import NotePostForm from '../NotePostForm'
 import * as NoteActions from '../../store/note'
 import { useHistory } from 'react-router-dom';
-
+import OpenModalButton from '../OpenModalButton';
+import EditPostModal from '../EditPostModal'
 const PostTile = ({ post }) => {
     const history = useHistory()
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -82,8 +83,13 @@ const PostTile = ({ post }) => {
             {currentUserId === post.user_id &&
                 <div className="post-operations">
                     <button className="icon-button"><FaTrash /></button>
-                    <button className="icon-button"><FaEdit /></button>
+                    <button><FaEdit />
+                       <OpenModalButton id="editPostModal" modalComponent={<EditPostModal post={post}/>}/> 
+                    </button>
                 </div>}
+
+                {/* <OpenModalButton 
+              modalComponent={<DeleteSpot spotId={element.id}  onCloseModal={() => setIsDeleteModalOpen(false)} />} */}
 
             <div className="post-actions">
                 <button className="icon-button"><FaShare /></button>
