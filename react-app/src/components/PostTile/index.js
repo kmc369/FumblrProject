@@ -101,12 +101,10 @@ const PostTile = ({ post }) => {
 
             {currentUserId === post.user_id &&
                 <div className="post-operations">
-                      <button ><FaTrash />
-                       <OpenModalButton id="editPostModal" modalComponent={<DeletePost post={post}/>}/> 
-                    </button>
+                       <OpenModalButton id="editPostModal" buttonText={<FaTrash />} modalComponent={<DeletePost post={post}/>}/> 
                    
-                    <button className={post.post_type === 'photo' ? imageEditHidden : ""}><FaEdit />
-                       <OpenModalButton id="editPostModal" modalComponent={<EditPostModal post={post}/>}/> 
+                    <button className={post.post_type === 'photo' ? imageEditHidden : "editButton"}>
+                       <OpenModalButton id="editPostModal" buttonText={<FaEdit />} modalComponent={<EditPostModal post={post}/>}/> 
                     </button>
                 </div>}
 

@@ -91,3 +91,12 @@
 .hide-edit-image {
     display: none;
 }
+
+.editButton {
+    border: none;
+}
+
+.post-operations button{
+    border: none;
+    background-color: white;
+}
