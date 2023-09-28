@@ -15,15 +15,14 @@ body {
 
 } */
 
-.postimages{
+/* .postimages{
     width:150px;
     height:75px;
-}
+} */
 
 .all-posts-container{
     display: flex;
     flex-direction: column;
-    gap: 15px;
 }
 
 .user-username{

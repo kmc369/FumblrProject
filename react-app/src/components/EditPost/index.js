@@ -9,10 +9,8 @@ import { loadSpecificPostThunk } from '../../store/post';
 const EditPost = () => {
     const dispatch = useDispatch();
     const { postId } = useParams();
-    const currentUser = useSelector(state => state.session.user);
-    const currentPost = useSelector(state => state.post.singlePost)
+    const currentPost = useSelector(state => state.post.singlePost);
     const postIdNum = Number(postId)
-
     let postLoaded;
     currentPost.id ? postLoaded = currentPost : postLoaded = 0
 
