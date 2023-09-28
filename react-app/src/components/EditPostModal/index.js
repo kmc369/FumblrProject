@@ -78,6 +78,8 @@ const handleSubmit = async (e)=>{
             </div>
             <div>
                 <button className='close-newPost-modal' onClick={closeModal}>Close</button>
+                <button className='close-quote-modal' onClick={handleSubmit}>Update</button>
+
             </div>
             <div>
                 {/* {create ? <button className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Post Now</button> : <button className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Update</button>} */}

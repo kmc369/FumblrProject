@@ -9,6 +9,7 @@ import * as NoteActions from '../../store/note'
 import { useHistory } from 'react-router-dom';
 import OpenModalButton from '../OpenModalButton';
 import EditPostModal from '../EditPostModal'
+import DeletePost from '../DeletePost';
 const PostTile = ({ post }) => {
     const history = useHistory()
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -82,7 +83,10 @@ const PostTile = ({ post }) => {
 
             {currentUserId === post.user_id &&
                 <div className="post-operations">
-                    <button className="icon-button"><FaTrash /></button>
+                      <button ><FaTrash />
+                       <OpenModalButton id="editPostModal" modalComponent={<DeletePost post={post}/>}/> 
+                    </button>
+                   
                     <button><FaEdit />
                        <OpenModalButton id="editPostModal" modalComponent={<EditPostModal post={post}/>}/> 
                     </button>
