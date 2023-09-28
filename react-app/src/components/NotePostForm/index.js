@@ -107,10 +107,14 @@ console.log("the session user",sessionUser)
             // Render the comments if there are any
             blak.map((comment, index) => (
               <div className="comment-items" key={index} id={`item${index}`}>
-                {comment.content}
+                <div className="comment-content">{comment.content}</div>
+                
+                {/* Render the DeleteNote component in a separate div if the condition is met */}
                 {comment.user_id === sessionUser.id && (
-          <DeleteNote comment={comment} key={index} />
-        )}
+                  <div className="delete-note-containerbor">
+                    <DeleteNote comment={comment} key={index} />
+                  </div>
+                )}
 
               </div>
             ))
