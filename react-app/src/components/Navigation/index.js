@@ -27,6 +27,7 @@ function Navigation({ isLoaded }) {
 		history.push('/')
 	  };
 
+
 	return (
 
 
@@ -78,10 +79,10 @@ function Navigation({ isLoaded }) {
 
 				<div className='followingandicons'>
 
-					<div className='following'>
-						{sessionUser && <div className='followingtag'>Following</div> || <div className='followingtag'>Trending</div>  }
-						{sessionUser && <div className='foryou'>For you</div> || <div className='foryou'>Staff Picks</div>}
-						{sessionUser && <div className='yourtags'>Your tags</div> || <div className='yourtags'>More...</div>}
+					<div className='following' >
+						{sessionUser && <div className='followingtag' onClick={() => alert('Feature Coming Soon…')} >Following</div> || <div className='followingtag' onClick={() => alert('Feature Coming Soon…')}>Trending</div>  }
+						{sessionUser && <div className='foryou' onClick={() => alert('Feature Coming Soon…')}>For you</div> || <div className='foryou' onClick={() => alert('Feature Coming Soon…')}>Staff Picks</div>}
+						{sessionUser && <div className='yourtags' onClick={() => alert('Feature Coming Soon…')}>Your tags</div> || <div className='yourtags' onClick={() => alert('Feature Coming Soon…')}>More...</div>}
 					</div>
 
 
