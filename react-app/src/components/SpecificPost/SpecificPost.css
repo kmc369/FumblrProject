@@ -42,7 +42,8 @@
 }
 
 .post-footer {
-    padding: 50px;
+    padding: 25px;
+    padding-bottom: 50px;
     border-top: 1px solid #e0e0e0;
     display: flex;
     justify-content: flex-start;
@@ -50,8 +51,8 @@
 
 .option {
     border: none;
-    background: none;
-    color: white;
+    /* background: none; */
+    color: black;
 }
 
 .dropdown-options {

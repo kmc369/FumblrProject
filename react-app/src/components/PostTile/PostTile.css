@@ -51,12 +51,14 @@
 .option {
     border: none;
     background: none;
-    color: white;
+    color: black;
+
 }
 
 .dropdown-options {
     display: flex;
     justify-content: flex-start;
+    align-items: flex-start;
 }
 
 
