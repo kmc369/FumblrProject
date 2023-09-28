@@ -3,6 +3,7 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
+import { NavLink } from 'react-router-dom';
 
 function LoginFormModal() {
   const dispatch = useDispatch();
@@ -20,6 +21,19 @@ function LoginFormModal() {
         closeModal()
     }
   };
+
+  const demoUser = async () => {
+    const demoUserCredential = 'bobbie@aa.io'
+    const demoUserPassword = 'password'
+    return await dispatch(login(demoUserCredential, demoUserPassword))
+      .then(closeModal)
+      .catch(async (res) => {
+        const data = await res.json();
+        if(data && data.errors) {
+          setErrors(data.errors);
+        }
+      })
+  }
 
   return (
     <div className="loginForm">
@@ -49,6 +63,9 @@ function LoginFormModal() {
           />
         </label>
         <button type="submit">Log In</button>
+        <div className="demo-user">
+          <NavLink to='/' onClick={demoUser} >Demo User</NavLink>
+        </div>
       </form>
     </div>
   );
