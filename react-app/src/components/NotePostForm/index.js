@@ -17,8 +17,7 @@ function NoteForm({post_id}){
     const sessionUser = useSelector(state => state.session.user);
     const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
 
-   
-  console.log(post_id)
+ 
     const [content,setContent] = useState("")
     const [postComments,setPostComments] = useState({})
     const [change ,setChange] = useState(false)
@@ -35,11 +34,11 @@ function NoteForm({post_id}){
     
 
     }
-    console.log("the new note is ",new_note)
+  
 
     await dispatch(NoteActions.createNoteThunk(new_note))
-    setChange(false)
-    const post = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
+    
+    // const post = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
   
     
     setContent("")
@@ -50,7 +49,7 @@ function NoteForm({post_id}){
     useEffect(()=>{
         async function fetchData() {
             const getCommentsOfPost = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
-            
+           
         setPostComments(getCommentsOfPost); 
       }
       fetchData();
@@ -61,10 +60,10 @@ function NoteForm({post_id}){
     if(blak===undefined){
         return null
     }
-    if(blak.length===0){
+    // if(blak.length===0){
       
-        return null
-      }
+    //     return null
+    //   }
 
     
 
@@ -75,10 +74,11 @@ function NoteForm({post_id}){
 
     return (
         <>
+            
             <form onSubmit={handleSubmit} enctype="multipart/form-data">
             
             <div className="noteTextBox">
-       
+       {    sessionUser && (
             <div className="input-container"> 
             <label id="label-form">
             <input className="comment-input"
@@ -91,20 +91,35 @@ function NoteForm({post_id}){
             </label>
             </div>
            
-        
+     
+                )}
             <div className="manage-and-comment">
-               
-            <div className="comments-container">
-                {blak.map((comment, index) => (
-                <div className="comment-items" key={index} id={`item${index}`}>
-                  
-                    {comment.content}
-                  
-                    
+        <div className="comments-container">
+            {/* {console.log("blak length is ", blak.length)} */}
+          {blak.length === 0 ? (
+            // Render the input and message when there are no comments
+            <>
+              <input
+                className="comment-input"
+                placeholder="Have something to say?"
+                value={content}
+                onChange={(e) => setContent(e.target.value)}
+              />
+              <div>No comments yet.</div>
+            </>
+          ) : (
+            // Render the comments if there are any
+            blak.map((comment, index) => (
+              <div className="comment-items" key={index} id={`item${index}`}>
+                {comment.content}
+              </div>
+            ))
+          )}
+        </div>
 
-                </div>
-                ))}
-            </div>
+
+
+
             <div className="manage-note">
                     {blak.map((comment, index) => (
                     
@@ -119,6 +134,7 @@ function NoteForm({post_id}){
 
             </div>
             </form>
+
         
         
         

@@ -16,7 +16,7 @@ const PostTile = ({ post }) => {
     const [openComments, setOpenComments] = useState(false)
     const [totalNotes , setTotalNotes] = useState(0)
     const session = useSelector(state => state.session);
-    console.log("The user is ", session.user)
+    
     const likes = useSelector(state => state.like.likes[post.id]);
 
     const notes1 = useSelector(state => state.note.singlePost.comment);
@@ -129,7 +129,7 @@ const PostTile = ({ post }) => {
                            
                             <button className="option" onClick={handleComments}><FaCommentDots /></button>
                             <LikeShow className="likes-show" post_id={post.id} />
-                            {openComments &&
+                            {openComments && 
                             <NotePostForm className="NoteformDrop" post_id={post.id}/>
                             }
 
