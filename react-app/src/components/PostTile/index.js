@@ -11,6 +11,7 @@ import { useHistory } from 'react-router-dom';
 const PostTile = ({ post }) => {
     const history = useHistory()
     const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [openComments, setOpenComments] = useState(false)
     const session = useSelector(state => state.session);
     const likes = useSelector(state => state.like.likes[post.id]);
     let currentUserId = null;
@@ -27,6 +28,10 @@ const PostTile = ({ post }) => {
     const handlePostClick = (postId) => {
         history.push(`/posts/${postId}`);
     };
+
+    const handleComments = () => {
+        setOpenComments(!openComments)
+    }
 
     if (session.user) {
         currentUserId = session.user.id
@@ -94,14 +99,16 @@ const PostTile = ({ post }) => {
 
             <div className="post-footer">
                 <div className="dropdown">
-                    <div className="dropdown-label" onClick={toggleDropdown}>Get Notes{notesCount}</div>
+                    <div className="dropdown-label" onClick={toggleDropdown}>{notesCount} Notes</div>
                     {dropdownOpen && (
                  
                         <div className="dropdown-options">
                            
-                            <button className="option"><FaCommentDots />  </button>
+                            <button className="option" onClick={handleComments}><FaCommentDots /></button>
                             <LikeShow className="likes-show" post_id={post.id} />
+                            {openComments &&
                             <NotePostForm className="NoteformDrop" post_id={post.id}/>
+                            }
 
                         </div>
                     )}
