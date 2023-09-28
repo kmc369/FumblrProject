@@ -15,6 +15,7 @@ import EditPost from './components/EditPost'
 import CurrentUserPosts from './components/CurrentUserPosts'
 import NewPost from './components/NewPost'
 import SearchBar from "./components/Search";
+import { Redirect } from "react-router-dom/cjs/react-router-dom";
 
 function App() {
   const dispatch = useDispatch();
@@ -42,7 +43,7 @@ function App() {
           {/* <Route exact path='/posts/:postId'>
             <SpecificPost />
           </Route> */}
-          <Route exact path='/posts/:postId/edit' component={EditPost} />
+          {/* <Route exact path='/posts/:postId/edit' component={EditPost} /> */}
           <Route exact path="/delete/note" >
             <DeleteNote />
           </Route>
@@ -57,6 +58,9 @@ function App() {
           </Route>
           <Route exact path="/search" >
             <SearchBar />
+          </Route>
+          <Route>
+            <Redirect to='/' />
           </Route>
         </Switch>
       )}
