@@ -22,7 +22,7 @@ const PostTile = ({ post }) => {
     const notes1 = useSelector(state => state.note.singlePost.comment);
 
     // console.log("the notes are blah", notes.length)
- 
+    //hellow rld
     let currentUserId = null;
     let likesCount = 0;
     let notesCount = 0;
