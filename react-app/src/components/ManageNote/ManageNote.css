@@ -36,7 +36,7 @@ color:rgb(142, 141, 141);
 .dropdown-menu.active{
     opacity: 1;
     visibility: visible;
-    transform: translate(-40px, 0);
+    transform: translate(10px, 0);
     transition: var(--speed) ease;
     box-shadow: 5px 5px 5px 0px rgb(29, 29, 29);
     z-index: 4px;
