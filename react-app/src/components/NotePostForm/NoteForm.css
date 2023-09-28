@@ -72,6 +72,9 @@ input.comment-input {
     border-radius: 10px;
     width: fit-content;
     padding:15px;
+    display: flex;
+    flex-direction: row;
+    gap:30px;
   
    
 
@@ -104,4 +107,10 @@ input.comment-input {
     flex-direction: row;
     height:80%;
   
+}
+.delete-note-containerbor{
+    /* border:1px solid green; */
+    width:20px;
+    height:20px;
+
 }

@@ -1,5 +1,5 @@
 import "./ManageNote.css"
-import React, { useState ,useEffect} from "react";
+import React, { useState ,useEffect,useRef} from "react";
 import {useParams } from 'react-router-dom';
 import { useDispatch,useSelector } from "react-redux";
 import * as NoteActions from '../../store/note'
@@ -13,6 +13,7 @@ function DeleteNote({comment }) {
 // console.log("the function from delete is ", openDeleteModal)
 const DropdownItems  =["Delete","Edit"];
 const [open,setOpen] = useState(false)
+
 
 
 
