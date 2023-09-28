@@ -99,12 +99,7 @@ function NoteForm({post_id}){
           {blak.length === 0 ? (
             // Render the input and message when there are no comments
             <>
-              <input
-                className="comment-input"
-                placeholder="Have something to say?"
-                value={content}
-                onChange={(e) => setContent(e.target.value)}
-              />
+          
               <div>No comments yet.</div>
             </>
           ) : (
