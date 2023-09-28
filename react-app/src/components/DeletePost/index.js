@@ -7,7 +7,7 @@ import { deletePostThunk } from '../../store/post'
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 
-const DeletePost = ({postId}) =>{
+const DeletePost = ({post}) =>{
     // const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
     const dispatch = useDispatch()
     const history = useHistory()
@@ -15,7 +15,7 @@ const DeletePost = ({postId}) =>{
     
       function  handleDelete(e){
         e.preventDefault();
-        dispatch(deletePostThunk(postId))
+        dispatch(deletePostThunk(post.id))
         history.push('/')
         closeModal()
       }

@@ -5,7 +5,7 @@ import { createPostThunk, loadSpecificPostThunk, updatePostThunk } from '../../s
 import { useModal } from '../../context/Modal';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom';
 
-const NewPost = ({ type, post }) => {
+const NewPost = ({ post, type }) => {
     const dispatch = useDispatch();
     const history = useHistory();
     const currentUser = useSelector(state => state.session.user)
