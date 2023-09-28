@@ -14,7 +14,9 @@ const PostTile = ({ post }) => {
     const history = useHistory()
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [openComments, setOpenComments] = useState(false)
+    const [totalNotes , setTotalNotes] = useState(0)
     const session = useSelector(state => state.session);
+    console.log("The user is ", session.user)
     const likes = useSelector(state => state.like.likes[post.id]);
 
     const notes1 = useSelector(state => state.note.singlePost.comment);
@@ -45,18 +47,21 @@ const PostTile = ({ post }) => {
         currentUserId = session.user.id
     }
 
-    if (likes || notes1 ) {
+    if (likes && notes1 ) {
+        // console.log("the likes are" ,likes.count)
         likesCount = likes.count;
-        notesCount = notes1 .length;
+        notesCount = totalNotes;
         totalCount = likesCount + notesCount
     }
 
     useEffect(()=>{
-
+        
         const get_notes = async () =>{
 
            const notes =  await dispatch(NoteActions.getCommentsOfPostThunk(post.id))
-          
+        //   console.log("the notes are", notes)
+        //   console.log("the notes length is", notes.length)
+          setTotalNotes(notes.length)
         }
 
         get_notes()
