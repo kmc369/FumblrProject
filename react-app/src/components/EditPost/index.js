@@ -10,6 +10,7 @@ const EditPost = () => {
     const dispatch = useDispatch();
     const { postId } = useParams();
     const currentPost = useSelector(state => state.post.singlePost);
+    console.log('current Post: ', currentPost)
     const postIdNum = Number(postId)
     let postLoaded;
     currentPost.id ? postLoaded = currentPost : postLoaded = 0
