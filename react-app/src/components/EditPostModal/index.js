@@ -92,8 +92,8 @@ const handleSubmit = async (e)=>{
               <div className='quote-modal-content'>
          
                 <input 
-                value={content}
-                onChange={(e)=>setContent(e.target.value)}
+                value={postTitle}
+                onChange={(e)=>setPostTitle(e.target.value)}
                 placeholder="Author"
                 className="author-content"
                 
@@ -101,8 +101,8 @@ const handleSubmit = async (e)=>{
            
           
                 <textarea 
-                value={postTitle}
-                onChange={(e)=>setPostTitle(e.target.value)}
+                value={content}
+                onChange={(e)=>setContent(e.target.value)}
                 placeholder="Something someone else said here."
                 className="post-content"
                 rows='6'
@@ -112,6 +112,7 @@ const handleSubmit = async (e)=>{
             <div className='buttom-items'>
             <div>
                 <button className='close-quote-modal' onClick={closeModal}>Close</button>
+                <button className='close-quote-modal' onClick={handleSubmit}>Update</button>
             </div>
             <div>
                 {/* {create ? <button id='quoteSubmitButton' className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Post Now</button> : <button id='quoteSubmitButton' className={submitButton} onClick={handleSubmit} disabled={isDisabled()} >Update</button>} */}
