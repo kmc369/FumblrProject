@@ -91,24 +91,26 @@ function Navigation({ isLoaded }) {
 
 						<div className="Navicons">
 
-							<i class="fa-solid fa-font allnavicon" style={{ color: "#fff" }}></i>
-							<OpenModalButton buttonText={`Text`} modalComponent={<NewPost type="text"/>} />
+							<OpenModalButton className="Text-icon" buttonText={<i class="fa-solid fa-font allnavicon" style={{ color: "#fff" }}></i>} modalComponent={<NewPost type="text"/>} />
+							<p>Text</p>
 						</div>
 
 
 						<div className="Navicons">
-							<i class="fa-solid fa-camera allnavicon" style={{ color: "red" }}></i>
-							<OpenModalButton buttonText={`Photo`} modalComponent={<PhotoForm type="photo"/>} />
+							<OpenModalButton buttonText={<i class="fa-solid fa-camera allnavicon" style={{ color: "red" }}></i>} modalComponent={<PhotoForm type="photo"/>} />
+							<p>Photo</p>
 						</div>
 
 						<div className="Navicons">
-							<i class="fa-solid fa-quote-left allnavicon" style={{ color: "orange" }}></i>
-							<OpenModalButton buttonText={`Quote`} modalComponent={<QuoteForm type="quote"/>} />
+							
+							<OpenModalButton buttonText={<i class="fa-solid fa-quote-left allnavicon" style={{ color: "orange" }}></i>} modalComponent={<QuoteForm type="quote"/>} />
+							<p>Quote</p>
 						</div>
 
 						<div className="Navicons">
-							<i class="fa-solid fa-link allnavicon" style={{ color: "limegreen" }}></i>
-							<OpenModalButton buttonText={`Link`} modalComponent={<LinkForm type="link"/>} />
+							
+							<OpenModalButton buttonText={<i class="fa-solid fa-link allnavicon" style={{ color: "limegreen" }}></i>} modalComponent={<LinkForm type="link"/>} />
+							<p>Link</p>
 						</div>
 
 						<div className="Navicons">

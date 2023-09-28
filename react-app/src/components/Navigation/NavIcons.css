@@ -4,3 +4,13 @@
     color:#fff;
     font-family: Helvetica, sans-serif;
 }
+
+.Navicons button{
+    background-color: rgb(44, 44, 44);
+    border: none;
+    
+}
+.Navicons p{
+    margin: 0;
+    margin-bottom: 5px;
+}
