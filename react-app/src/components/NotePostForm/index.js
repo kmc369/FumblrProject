@@ -17,6 +17,7 @@ function NoteForm({post_id}){
     const sessionUser = useSelector(state => state.session.user);
     const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
 
+console.log("the session user",sessionUser)
  
     const [content,setContent] = useState("")
     const [postComments,setPostComments] = useState({})
@@ -38,8 +39,8 @@ function NoteForm({post_id}){
 
     await dispatch(NoteActions.createNoteThunk(new_note))
     
-    const post = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
-  
+    const comments = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
+ 
     
     setContent("")
    //missing a rerender here
@@ -49,13 +50,13 @@ function NoteForm({post_id}){
     useEffect(()=>{
         async function fetchData() {
             const getCommentsOfPost = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
-           
+        
         setPostComments(getCommentsOfPost); 
       }
       fetchData();
     }, [dispatch, post_id]);
 
-    
+    console.log("the post commens are", postComments)
     
     if(blak===undefined){
         return null
@@ -107,6 +108,10 @@ function NoteForm({post_id}){
             blak.map((comment, index) => (
               <div className="comment-items" key={index} id={`item${index}`}>
                 {comment.content}
+                {comment.user_id === sessionUser.id && (
+          <DeleteNote comment={comment} key={index} />
+        )}
+
               </div>
             ))
           )}
@@ -114,13 +119,17 @@ function NoteForm({post_id}){
 
 
 
-
+{/*            
             <div className="manage-note">
+
                     {blak.map((comment, index) => (
+                    comment.user_id === sessionUser.id ? (
+                      <DeleteNote comment={comment}  key={index} />
+                    ) :null
+                    ))}
                     
-                    <DeleteNote comment={comment}  key={index} />
-                        ))}
-                    </div>
+                    </div> */}
+                    
             </div>
 
 
