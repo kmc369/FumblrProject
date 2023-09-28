@@ -15,7 +15,7 @@ const NewPost = ({ post, type }) => {
     const [postTitle, setPostTitle] = useState(isTherePost ? post.title : "")
     const [secondContent, setSecondContent] = useState(isTherePost ? post.second_content : "")
     const [postType, setPostType] = useState(isTherePost ? post.post_type : type)
-    const [userId, setUserId] = useState(1) 
+    const [userId, setUserId] = useState(currentUser.id)
     const [errors, setErrors] = useState({})
     const [create, setCreate] = useState(isTherePost ? false : true)
     const [image,setImage] = useState(null)
