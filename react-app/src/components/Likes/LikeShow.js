@@ -29,8 +29,8 @@ const LikeShow = ({ post_id }) => {
     return (
         <div>
             <div>
-                <button className='showLikeButton' onClick={handleShowLike}>
-                    <FaHeart />
+                <button className='showLikeButton' onClick={handleShowLike} style={{ color: likesCount ? 'red' : 'black' }}>
+                    {likesCount ? <FaHeart /> : <FaRegHeart />}
                     {likesCount}
                 </button>
             </div>
