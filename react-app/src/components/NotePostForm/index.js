@@ -38,7 +38,7 @@ function NoteForm({post_id}){
 
     await dispatch(NoteActions.createNoteThunk(new_note))
     
-    // const post = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
+    const post = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
   
     
     setContent("")
