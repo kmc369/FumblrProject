@@ -87,3 +87,7 @@
     justify-self: center;
 }
 
+
+.hide-edit-image {
+    display: none;
+}

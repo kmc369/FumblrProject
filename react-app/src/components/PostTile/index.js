@@ -62,6 +62,8 @@ const PostTile = ({ post }) => {
         get_notes()
     },[dispatch,post.id])
 
+    const imageEditHidden = "hide-edit-image"
+
     return (
         <div className="post-modal">
             {/* <div className="post-header">
@@ -98,7 +100,7 @@ const PostTile = ({ post }) => {
                        <OpenModalButton id="editPostModal" modalComponent={<DeletePost post={post}/>}/> 
                     </button>
                    
-                    <button><FaEdit />
+                    <button className={post.post_type === 'photo' ? imageEditHidden : ""}><FaEdit />
                        <OpenModalButton id="editPostModal" modalComponent={<EditPostModal post={post}/>}/> 
                     </button>
                 </div>}
