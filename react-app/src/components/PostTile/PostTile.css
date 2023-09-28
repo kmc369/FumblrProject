@@ -59,6 +59,7 @@
     justify-content: flex-start;
 }
 
+
 .user-username{
     border-bottom: solid black 1px;
     color: black;
@@ -83,3 +84,4 @@
     height: fit-content;
     justify-self: center;
 }
+

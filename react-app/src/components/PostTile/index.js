@@ -94,14 +94,14 @@ const PostTile = ({ post }) => {
 
             <div className="post-footer">
                 <div className="dropdown">
-                    <div className="dropdown-label" onClick={toggleDropdown}>Notes{notesCount}</div>
+                    <div className="dropdown-label" onClick={toggleDropdown}>Get Notes{notesCount}</div>
                     {dropdownOpen && (
                  
                         <div className="dropdown-options">
                            
                             <button className="option"><FaCommentDots />  </button>
                             <LikeShow className="likes-show" post_id={post.id} />
-                            {<NotePostForm post_id={post.id}/>}
+                            <NotePostForm className="NoteformDrop" post_id={post.id}/>
 
                         </div>
                     )}
