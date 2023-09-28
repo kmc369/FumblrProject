@@ -33,15 +33,13 @@ const SpecificPost = () => {
 
     useEffect(() => {
         dispatch(loadPostsThunk(postId));
-    }, [dispatch]);
+    }, [dispatch,postId]);
 
 
+    console.log()
+   
 
-    if (!post) {
-        return null;
-    }
 
-    if (post.user_id) {
         return (
             <>
             <PostTile post={post} />
@@ -49,7 +47,7 @@ const SpecificPost = () => {
             </>
 
         );
-    }
+    
 }
 
 export default SpecificPost;

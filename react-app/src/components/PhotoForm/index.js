@@ -15,6 +15,7 @@ const {closeModal} = useModal()
 const dispatch = useDispatch()
 const sessionUser = useSelector(state => state.session.user);
 const [imageLoading, setImageLoading] = useState(false);
+const [change,setChange] = useState(true)
 const history = useHistory();
 
 
@@ -38,7 +39,8 @@ async function handleSubmit(e){
     await dispatch(PostActions.createPostThunk(formData))
     // history.push("/images");
     closeModal()
-    // const newCommets = dispatch(NoteActions.getCommentsOfPostThunk(post_id))
+    const newCommets = await dispatch(PostActions.loadPostsThunk())
+    // setChange(false)
   }
 
     return (
@@ -65,8 +67,8 @@ async function handleSubmit(e){
 
 
         </div>
-        </div>
         {(imageLoading)&& <p>Loading...</p>}
+        </div>
         </form>
         </>
     )

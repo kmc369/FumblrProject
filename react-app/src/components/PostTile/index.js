@@ -85,7 +85,7 @@ const PostTile = ({ post }) => {
                 </div>
             </div> */}
             <div className='user-username' onClick={() => handlePostClick(post.id)}>
-                {post.user.username}
+                {post.user  && post.user.username ? post.user.username : "loading"}
             </div>
             <div className='post-title'>
                 {post.title}
