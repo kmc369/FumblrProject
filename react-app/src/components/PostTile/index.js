@@ -16,11 +16,17 @@ const PostTile = ({ post }) => {
     const [openComments, setOpenComments] = useState(false)
     const session = useSelector(state => state.session);
     const likes = useSelector(state => state.like.likes[post.id]);
+
+    const notes1 = useSelector(state => state.note.singlePost.comment);
+
+    // console.log("the notes are blah", notes.length)
+ 
     let currentUserId = null;
-    let likesCount = null;
-    let notesCount = null;
+    let likesCount = 0;
+    let notesCount = 0;
+    let totalCount=0;
     const dispatch = useDispatch()
-    console.log("the current post it ",post)
+    // console.log("the current post it ",post)
 
     
     const toggleDropdown = () => {
@@ -39,10 +45,10 @@ const PostTile = ({ post }) => {
         currentUserId = session.user.id
     }
 
-    if (likes) {
+    if (likes || notes1 ) {
         likesCount = likes.count;
-        notesCount = likesCount;
-        //notesCount = likesCount + commentCount
+        notesCount = notes1 .length;
+        totalCount = likesCount + notesCount
     }
 
     useEffect(()=>{
@@ -50,11 +56,11 @@ const PostTile = ({ post }) => {
         const get_notes = async () =>{
 
            const notes =  await dispatch(NoteActions.getCommentsOfPostThunk(post.id))
-           console.log("the notes are " , notes)
+          
         }
 
         get_notes()
-    })
+    },[dispatch,post.id])
 
     return (
         <div className="post-modal">
@@ -109,7 +115,7 @@ const PostTile = ({ post }) => {
 
             <div className="post-footer">
                 <div className="dropdown">
-                    <div className="dropdown-label" onClick={toggleDropdown}>{notesCount} Notes</div>
+                    <div className="dropdown-label" onClick={toggleDropdown}>{totalCount} Notes</div>
                     {dropdownOpen && (
                  
                         <div className="dropdown-options">
