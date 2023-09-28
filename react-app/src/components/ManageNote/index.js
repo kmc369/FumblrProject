@@ -13,10 +13,23 @@ function DeleteNote({comment }) {
 // console.log("the function from delete is ", openDeleteModal)
 const DropdownItems  =["Delete","Edit"];
 const [open,setOpen] = useState(false)
+const [showMenu, setShowMenu] = useState(false);
+const ulRef = useRef();
 
 
+useEffect(() => {
+    if (!showMenu) return;
 
+    const closeMenu = (e) => {
+      if (!ulRef.current.contains(e.target)) {
+        setShowMenu(false);
+      }
+    };
 
+    document.addEventListener("click", closeMenu);
+
+    return () => document.removeEventListener("click", closeMenu);
+  }, [showMenu]);
 
 
 
