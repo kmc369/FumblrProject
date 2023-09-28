@@ -15,6 +15,20 @@ function SignupFormModal() {
 
 	const handleSubmit = async (e) => {
 		e.preventDefault();
+		if (!validEmail(email)) {
+			setErrors([
+			"Please enter a valid email address."
+			]);
+			return;
+		}
+
+		const isUsernameAvailable = await checkUsernameAvailability(username);
+  
+		if (!isUsernameAvailable) {
+		  setErrors(["Username is already in use. Please choose a different one."]);
+		  return;
+		}
+
 		if (password === confirmPassword) {
 			const data = await dispatch(signUp(username, email, password));
 			if (data) {
@@ -24,10 +38,27 @@ function SignupFormModal() {
 			}
 		} else {
 			setErrors([
-				"Confirm Password field must be the same as the Password field",
+			"Confirm Password field must be the same as the Password field",
 			]);
 		}
 	};
+
+	const validEmail = (email) => {
+		const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+		return emailRegex.test(email);
+	};
+
+	const checkUsernameAvailability = async (username) => {
+	try {
+		const res = await fetch(`/api/auth/check-username?username=${username}`);
+		const data = await res.json();
+		return data.isAvailable;
+	} catch (error) {
+		console.error("Error checking username availability:", error);
+		return false; 
+	}
+	};
+
 
 	return (
 		<div className="signUpForm">
