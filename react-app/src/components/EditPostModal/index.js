@@ -2,8 +2,9 @@ import './EditPostModal.css'
 import React, { useState ,useEffect} from "react";
 import {useParams } from 'react-router-dom';
 import { useDispatch,useSelector } from "react-redux";
-// import * as NoteActions from '../../store/note';
+import * as PostActions from '../../store/post'
 import { useModal } from "../../context/Modal";
+import { createPostThunk, loadSpecificPostThunk, updatePostThunk } from '../../store/post';
 
 function EditPostModal({post}){
 
@@ -28,12 +29,16 @@ const handleSubmit = async (e)=>{
     e.preventDefault()
     
     const formData = {
-        content:content,
-        user_id:post.user_id,
-        post_id:post.post_id
+        id:post_id,
+        title:postTitle,
+        text_content:content,
+        user_id:userid,
+        second_content:second_content,
+        post_type:postType
      
         
     }
+    await dispatch(updatePostThunk(formData))
 
     
 
