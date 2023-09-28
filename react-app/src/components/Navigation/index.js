@@ -113,17 +113,17 @@ function Navigation({ isLoaded }) {
 							<p>Link</p>
 						</div>
 
-						<div className="Navicons">
+						<div className="Navicons" onClick={() => alert('Feature coming soon!')}>
 							<i class="fa-solid fa-comment-sms allnavicon" style={{ color: "lightblue" }}></i>
 							<span>Chat</span>
 						</div> 
 
-						<div className="Navicons">
+						<div className="Navicons" onClick={() => alert('Feature coming soon!')}>
 							<i class="fa-solid fa-headphones allnavicon" style={{ color: "purple" }}></i>
 							<span>Audio</span>
 						</div>
 
-						<div className="Navicons video">
+						<div className="Navicons video" onClick={() => alert('Feature coming soon!')}>
 							<i class="fa-solid fa-video allnavicon" style={{ color: "pink" }}></i>
 							<span>video</span>
 						</div>
