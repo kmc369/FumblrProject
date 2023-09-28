@@ -66,21 +66,20 @@ const NewPost = ({ post, type }) => {
         return (closeModal())
     };
 
-    const submitButton = "newPost-submit-button" + (isDisabled() ? ' disabled' : '')
+    const submitButton = "newPost-submit-button" + (isDisabled() ? ' disabled' : 'enabled')
     
     return (
         <div className="newPost-modal">
             {/* need to add in the username of user who is logged in and posting. See Tumblr website */}
             {type === 'text' ? (
                 <>
-                <div>
-                <textarea 
+                <div className='text-post'>
+                <input 
                 value={postTitle}
                 onChange={e => setPostTitle(e.target.value)}
                 placeholder="Title"
                 className="post-title"
-                rows='6'
-                cols='32'
+                id='text-title'
                 />
             </div>
             <div>
@@ -88,6 +87,7 @@ const NewPost = ({ post, type }) => {
                 value={postContent}
                 onChange={e => setPostContent(e.target.value)}
                 className="post-content"
+                placeholder='Go ahead, say something!'
                 rows='6'
                 cols='32'
                 />

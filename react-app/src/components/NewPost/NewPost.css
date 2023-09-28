@@ -1,0 +1,32 @@
+.newPost-modal{
+    background-color: rgb(44,44,44);
+    width: 450px;
+    height: 325px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#text-title{
+    background-color: rgb(44,44,44);
+}
+
+.post-content{
+    margin-left: 15px;
+}
+
+.newPost-modal button{
+    padding: 7px;
+    border-radius: 5px;
+    border: none;
+}
+
+.close-newPost-modal{
+    background-color: #00b8ff;
+}
+
+.newPost-submit-buttonenabled{
+    background-color: #00cf35;
+}
