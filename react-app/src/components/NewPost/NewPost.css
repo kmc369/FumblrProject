@@ -11,10 +11,12 @@
 
 #text-title{
     background-color: rgb(44,44,44);
+    color: white;
 }
 
 .post-content{
     margin-left: 15px;
+    color: white;
 }
 
 .newPost-modal button{
