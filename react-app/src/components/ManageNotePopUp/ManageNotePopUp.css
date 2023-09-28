@@ -1,7 +1,7 @@
 
 
 .EditForm{
-background-color: rgb(44, 44, 44, 0.5); 
+background-color: rgb(44, 44, 44); 
 display: flex;
 justify-content: center;
 flex-direction: column;
@@ -15,6 +15,7 @@ height:220px;
 .edit-header{
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     margin-bottom: 5px;
+    color: white;
 }
 .editFormData{
   

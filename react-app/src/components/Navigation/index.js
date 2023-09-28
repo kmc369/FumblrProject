@@ -39,31 +39,31 @@ function Navigation({ isLoaded }) {
 						<NavLink exact to='/'><i class="fa-solid fa-house"><span className="icontext">Home</span></i></NavLink>
 					</div>
 
-					<div className="iconsandtext">
+					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-compass"><span className="icontext">Explore</span></i>
 					</div>
 
-					<div className="iconsandtext">
+					{/* <div className="iconsandtext">
 						<i class="fa-solid fa-video"><span className="icontext">Live</span></i>
-					</div>
+					</div> */}
 
-					<div className="iconsandtext">
+					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-bolt"><span className="icontext">Activity</span></i>
 					</div>
 
-					<div className="iconsandtext">
+					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-comment-dots"><span className="icontext">Messages</span></i>
 					</div>
 
-					<div className="iconsandtext">
+					{/* <div className="iconsandtext">
 						<i class="fa-solid fa-envelope-circle-check"><span className="icontext">Inbox</span></i>
-					</div>
+					</div> */}
 					{sessionUser &&
 					<div className="iconsandtext">
 						<NavLink exact to={`/user/${sessionUser.id}`}><i class="fa-solid fa-user"><span className="icontext">Account</span></i></NavLink>
 					</div>
 					}
-					<div className="iconsandtext">
+					<div className="iconsandtext"onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-gear"><span className="icontext">Settings</span></i>
 					</div>
 
@@ -113,17 +113,17 @@ function Navigation({ isLoaded }) {
 							<p>Link</p>
 						</div>
 
-						<div className="Navicons">
+						<div className="Navicons" onClick={() => alert('Feature coming soon!')}>
 							<i class="fa-solid fa-comment-sms allnavicon" style={{ color: "lightblue" }}></i>
 							<span>Chat</span>
 						</div> 
 
-						<div className="Navicons">
+						<div className="Navicons" onClick={() => alert('Feature coming soon!')}>
 							<i class="fa-solid fa-headphones allnavicon" style={{ color: "purple" }}></i>
 							<span>Audio</span>
 						</div>
 
-						<div className="Navicons video">
+						<div className="Navicons video" onClick={() => alert('Feature coming soon!')}>
 							<i class="fa-solid fa-video allnavicon" style={{ color: "pink" }}></i>
 							<span>video</span>
 						</div>
