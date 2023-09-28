@@ -79,9 +79,9 @@ function Navigation({ isLoaded }) {
 				<div className='followingandicons'>
 
 					<div className='following'>
-						<div className='followingtag'>Following</div>
-						<div className='foryou'>For you</div>
-						<div className='yourtags'>Your tags</div>
+						{sessionUser && <div className='followingtag'>Following</div> || <div className='followingtag'>Trending</div>  }
+						{sessionUser && <div className='foryou'>For you</div> || <div className='foryou'>Staff Picks</div>}
+						{sessionUser && <div className='yourtags'>Your tags</div> || <div className='yourtags'>More...</div>}
 					</div>
 
 
