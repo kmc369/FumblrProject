@@ -43,7 +43,7 @@ const SpecificPost = () => {
         return (
             <>
             <PostTile post={post} />
-            <OpenModalButton buttonText={'Delete Post'} modalComponent={<DeletePost postId={postId} />} />
+            {/* <OpenModalButton buttonText={'Delete Post'} modalComponent={<DeletePost postId={postId} />} /> */}
             </>
 
         );
