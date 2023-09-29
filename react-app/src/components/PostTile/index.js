@@ -1,7 +1,7 @@
 import './PostTile.css';
 import LikeButton from '../Likes/LikeButton';
 import LikeShow from '../Likes/LikeShow';
-import { useDispatch, useSelector,dispatch } from 'react-redux';
+import { useDispatch, useSelector, dispatch } from 'react-redux';
 import { useEffect, useState } from 'react';
 import { FaShare, FaCommentDots, FaRetweet, FaEdit, FaTrash } from 'react-icons/fa';
 import NotePostForm from '../NotePostForm'
@@ -14,23 +14,23 @@ const PostTile = ({ post }) => {
     const history = useHistory()
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [openComments, setOpenComments] = useState(false)
-    const [totalNotes , setTotalNotes] = useState(0)
+    const [totalNotes, setTotalNotes] = useState(0)
     const session = useSelector(state => state.session);
-    
-    const likes = useSelector(state => state.like.likes[post.id]);
 
-    const notes1 = useSelector(state => state.note.singlePost.comment);
+    const likes = useSelector(state => state.like.likes[post.id]);
+    // const notes1 = useSelector(state => state.note.singlePost.comment);
+    const notes1 = useSelector(state => state.note.comments[post.id]); //edited by WL for Note bug: use comments in state to aviod overwrite
 
     // console.log("the notes are blah", notes.length)
     //hellow rld
     let currentUserId = null;
     let likesCount = 0;
     let notesCount = 0;
-    let totalCount=0;
+    let totalCount = 0;
     const dispatch = useDispatch()
     // console.log("the current post it ",post)
 
-    
+
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
     };
@@ -47,25 +47,29 @@ const PostTile = ({ post }) => {
         currentUserId = session.user.id
     }
 
-    if (likes && notes1 ) {
+    if (likes && notes1) {
         // console.log("the likes are" ,likes.count)
         likesCount = likes.count;
-        notesCount = totalNotes;
+        // notesCount = totalNotes;
+        notesCount = notes1.length;     //edited by WL for Note bug: use state directly
         totalCount = likesCount + notesCount
     }
 
-    useEffect(()=>{
-        
-        const get_notes = async () =>{
+    // useEffect(() => {
 
-           const notes =  await dispatch(NoteActions.getCommentsOfPostThunk(post.id))
-        //   console.log("the notes are", notes)
-        //   console.log("the notes length is", notes.length)
-          setTotalNotes(notes.length)
-        }
+    //     const get_notes = async () => {
 
-        get_notes()
-    },[dispatch,post.id])
+    //         const notes = await dispatch(NoteActions.getCommentsOfPostThunk(post.id))
+    //         //   console.log("the notes are", notes)
+    //         //   console.log("the notes length is", notes.length)
+    //         setTotalNotes(notes.length)
+    //     }
+
+    //     get_notes()
+    // }, [dispatch, post.id])
+    useEffect(() => {
+        dispatch(NoteActions.getCommentsOfPostThunk(post.id))   //edited by WL for Note bug: use state directly other than return from Thunk
+    }, [dispatch])
 
     const imageEditHidden = "hide-edit-image"
 
@@ -85,7 +89,7 @@ const PostTile = ({ post }) => {
                 </div>
             </div> */}
             <div className='user-username' onClick={() => handlePostClick(post.id)}>
-                {post.user  && post.user.username ? post.user.username : "loading"}
+                {post.user && post.user.username ? post.user.username : "loading"}
             </div>
             <div className='post-title'>
                 {post.title}
@@ -101,15 +105,15 @@ const PostTile = ({ post }) => {
 
             {currentUserId === post.user_id &&
                 <div className="post-operations">
-                        <div className='trashcan'>
-                       <OpenModalButton className="trashcan" id="editPostModal" buttonText={<FaTrash />} modalComponent={<DeletePost post={post}/>}/> 
-                        </div>
+                    <div className='trashcan'>
+                        <OpenModalButton className="trashcan" id="editPostModal" buttonText={<FaTrash />} modalComponent={<DeletePost post={post} />} />
+                    </div>
                     <button className={post.post_type === 'photo' ? imageEditHidden : "editButton"}>
-                       <OpenModalButton id="editPostModal" buttonText={<FaEdit />} modalComponent={<EditPostModal post={post}/>}/> 
+                        <OpenModalButton id="editPostModal" buttonText={<FaEdit />} modalComponent={<EditPostModal post={post} />} />
                     </button>
                 </div>}
 
-                {/* <OpenModalButton 
+            {/* <OpenModalButton 
               modalComponent={<DeleteSpot spotId={element.id}  onCloseModal={() => setIsDeleteModalOpen(false)} />} */}
 
             <div className="post-actions">
@@ -123,13 +127,13 @@ const PostTile = ({ post }) => {
                 <div className="dropdown">
                     <div className="dropdown-label" onClick={toggleDropdown}>{totalCount} Notes</div>
                     {dropdownOpen && (
-                 
+
                         <div className="dropdown-options">
-                           
+
                             <button className="option" onClick={handleComments}><FaCommentDots /></button>
                             <LikeShow className="likes-show" post_id={post.id} />
-                            {openComments && 
-                            <NotePostForm className="NoteformDrop" post_id={post.id}/>
+                            {openComments &&
+                                <NotePostForm className="NoteformDrop" post_id={post.id} />
                             }
 
                         </div>
