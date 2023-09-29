@@ -47,6 +47,10 @@ function NoteForm({ post_id }) {
 
   }
 
+  // useEffect(()=>{
+
+  // },[dispatch,blak]);
+
   useEffect(() => {
     async function fetchData() {
       const getCommentsOfPost = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
@@ -65,12 +69,6 @@ function NoteForm({ post_id }) {
 
   //     return null
   //   }
-
-
-
-
-
-
 
 
   return (
