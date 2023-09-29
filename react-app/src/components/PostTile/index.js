@@ -16,17 +16,11 @@ import { useHistory } from "react-router-dom";
 import OpenModalButton from "../OpenModalButton";
 import EditPostModal from "../EditPostModal";
 import DeletePost from "../DeletePost";
+
+
 const PostTile = ({ post }) => {
-    const history = useHistory();
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [openComments, setOpenComments] = useState(false);
-    const [totalNotes, setTotalNotes] = useState(0);
+
     const ulRef = useRef();
-    const session = useSelector((state) => state.session);
-
-    const likes = useSelector((state) => state.like.likes[post.id]);
-
-    const notes1 = useSelector((state) => state.note.singlePost.comment);
     const history = useHistory()
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [openComments, setOpenComments] = useState(false)

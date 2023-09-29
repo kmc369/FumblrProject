@@ -112,7 +112,7 @@ function NoteForm({ post_id }) {
                     {sessionUser && comment.user_id === sessionUser.id && (
 
                       <div className="delete-note-containerbor">
-                        {postUsername}
+                        {/* {sessionUser.username} */}
                         <DeleteNote comment={comment} key={index} />
                       </div>
                     )}
