@@ -110,7 +110,7 @@ console.log("the session user",sessionUser)
                 <div className="comment-content">{comment.content}</div>
                 
                 {/* Render the DeleteNote component in a separate div if the condition is met */}
-                {comment.user_id === sessionUser.id && (
+                { sessionUser && comment.user_id === sessionUser.id &&  (
                   <div className="delete-note-containerbor">
                     <DeleteNote comment={comment} key={index} />
                   </div>
