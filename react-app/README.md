@@ -1,22 +1,7 @@
-# Fumblr(Tumblr Clone)
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-A clone of Tumblr's website
+Your React App will live here.  You will need to run `npm install` to install all your dependencies before starting up the application. While in development, run this application from this location using `npm start`.
 
-## About
+No environment variables are needed to run this application in development, but be sure to set the REACT_APP_BASE_URL environment variable when you deploy!
 
-This project is a clone of the Tumblr website, aiming to replicate its core functionality. It provides users with a platform to express themselves through various content types, such as text, images, audio, and video.
-
-## Features
-
-- **User Authentication**: Users can sign up and log in.
-- **Create Posts**: Users can create various types of posts, including text, images, quotes, and links.
-- **Dashboard**: Users can view and interact with posts from other users.
-- **Likes**: Users can like and unlike posts.
-- **Comments**: Users can leave comments on posts.
-- **Discover Content**: Users can explore and discover new content from other users.
-
-## Landing Page
-
-To get started, you can visit our [Fumblr](https://fumblr-project.onrender.com/). 
- Here,  you will find access to the Login and Signup pages. 
-We've also provided a demo user button for you to explore the website without the need to sign up.
+This app will be automatically built when you push to your main branch on Github.
