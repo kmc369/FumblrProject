@@ -196,9 +196,9 @@ export default function noteReducer(state = initialState, action) {
         case DELETE_COMMENT: {
             const newState = { ...state }
             // delete newState.singlePost[action.payload.comment_id]
-            // newState.singlePost.comment = newState.singlePost.comment.filter(
-            //     (comment) => comment.id !== action.payload.comment_id
-            // );
+            newState.singlePost.comment = newState.singlePost.comment.filter(
+                (comment) => comment.id !== action.payload.comment_id
+            );
             for (let post_id in newState.comments) {                                //edited by WL for Note bug: update newState.comments other than newState.singlePost.comment
                 newState.comments[post_id] = [...newState.comments[post_id].filter(
                     (comment) => comment.id !== action.payload.comment_id
