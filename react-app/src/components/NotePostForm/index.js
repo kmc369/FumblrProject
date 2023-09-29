@@ -12,7 +12,7 @@ import DeleteNote from "../ManageNote";
 import "./NoteForm.css"
 
 
-function NoteForm({post_id}){
+function NoteForm({post_id,postUsername}){
     const dispatch = useDispatch()
     const sessionUser = useSelector(state => state.session.user);
     const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
@@ -50,7 +50,7 @@ console.log("the session user",sessionUser)
     useEffect(()=>{
         async function fetchData() {
             const getCommentsOfPost = await dispatch(NoteActions.getCommentsOfPostThunk(post_id))
-        
+            
         setPostComments(getCommentsOfPost); 
       }
       fetchData();
@@ -107,7 +107,9 @@ console.log("the session user",sessionUser)
             // Render the comments if there are any
             blak.map((comment, index) => (
               <div className="comment-items" key={index} id={`item${index}`}>
-                <div className="comment-content">{comment.content}</div>
+                <div className="comment-content">
+                  {postUsername}
+                  {comment.content}</div>
                 
                 {/* Render the DeleteNote component in a separate div if the condition is met */}
                 { sessionUser && comment.user_id === sessionUser.id &&  (
