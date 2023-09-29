@@ -33,21 +33,24 @@ const SpecificPost = () => {
 
     useEffect(() => {
         dispatch(loadPostsThunk(postId));
-    }, [dispatch,postId]);
+    }, [dispatch, postId]);
 
 
     console.log()
-   
+
+    if (!post) {
+        return null
+    }
 
 
-        return (
-            <>
+    return (
+        <>
             <PostTile post={post} />
             {/* <OpenModalButton buttonText={'Delete Post'} modalComponent={<DeletePost postId={postId} />} /> */}
-            </>
+        </>
 
-        );
-    
+    );
+
 }
 
 export default SpecificPost;

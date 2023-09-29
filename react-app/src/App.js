@@ -59,6 +59,13 @@ function App() {
           <Route exact path="/search" >
             <SearchBar />
           </Route>
+
+          {/* //edited by WL: aviod redirect when refreshing */}
+          <Route exact path='/posts/:postId'></Route>
+          <Route exact path='/posts/:postId/edit'></Route>
+          <Route exact path='/search/:searchItem'></Route>
+          <Route exact path='/user/:userId'></Route>
+          <Route exact path='/posts/:postId'></Route>
           <Route>
             <Redirect to='/' />
           </Route>
