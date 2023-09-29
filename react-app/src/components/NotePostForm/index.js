@@ -16,14 +16,16 @@ function NoteForm({ post_id }) {
   const dispatch = useDispatch()
   const sessionUser = useSelector(state => state.session.user);
   // const blak = useSelector(state => state.note.singlePost.comment);  // Adjust this selector to match your state structure
-  const blak = useSelector(state => state.note.comments[post_id]); //edited by WL for Note bug: use comments in state to aviod overwirte
-
+  const comments = useSelector(state => state.note.comments); //edited by WL for Note bug: use comments in state to aviod overwirte
   console.log("the session user", sessionUser)
-
+  let blak;
   const [content, setContent] = useState("")
   const [postComments, setPostComments] = useState({})
   const [change, setChange] = useState(false)
 
+  if (!blak) {
+    blak = comments[post_id]
+  }
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -46,10 +48,6 @@ function NoteForm({ post_id }) {
     //missing a rerender here
 
   }
-
-  // useEffect(()=>{
-
-  // },[dispatch,blak]);
 
   useEffect(() => {
     async function fetchData() {
