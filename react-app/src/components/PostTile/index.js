@@ -180,4 +180,5 @@ const PostTile = ({ post }) => {
   );
 };
 
+
 export default PostTile;
