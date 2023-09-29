@@ -17,7 +17,7 @@ function NoteForm({post_id,postUsername}){
     const sessionUser = useSelector(state => state.session.user);
     const blak = useSelector(state => state.note.singlePost.comment); // Adjust this selector to match your state structure
 
-console.log("the session user",sessionUser)
+// console.log("the post username is ",postUsername)
  
     const [content,setContent] = useState("")
     const [postComments,setPostComments] = useState({})
@@ -108,12 +108,15 @@ console.log("the session user",sessionUser)
             blak.map((comment, index) => (
               <div className="comment-items" key={index} id={`item${index}`}>
                 <div className="comment-content">
-                  {postUsername}
+               
                   {comment.content}</div>
                 
                 {/* Render the DeleteNote component in a separate div if the condition is met */}
+             
                 { sessionUser && comment.user_id === sessionUser.id &&  (
+                   
                   <div className="delete-note-containerbor">
+                       {postUsername}
                     <DeleteNote comment={comment} key={index} />
                   </div>
                 )}
