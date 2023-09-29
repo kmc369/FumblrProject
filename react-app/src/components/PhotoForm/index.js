@@ -16,16 +16,18 @@ const dispatch = useDispatch()
 const sessionUser = useSelector(state => state.session.user);
 const [imageLoading, setImageLoading] = useState(false);
 const [change,setChange] = useState(true)
+const [isImageSelected, setIsImageSelected] = useState(false);
 const history = useHistory();
 
-
+function handleImageChange(e) {
+    const selectedImage = e.target.files[0];
+    setImage(selectedImage);
+    setIsImageSelected(e.target.files[0] !== null);
+}
 
 
 async function handleSubmit(e){
     e.preventDefault();
-  
-  
-
 
     const formData = new FormData();
     formData.append('title', content);
@@ -42,6 +44,7 @@ async function handleSubmit(e){
     const newCommets = await dispatch(PostActions.loadPostsThunk())
     // setChange(false)
   }
+  console.log("isImageSelected:", isImageSelected);
 
     return (
         <>
@@ -52,7 +55,7 @@ async function handleSubmit(e){
             <input className='input-image'
                 type="file"
                 accept="image/*"
-                onChange={(e)=>setImage(e.target.files[0])}
+                onChange={handleImageChange}
               
             />
             </label>
@@ -63,7 +66,7 @@ async function handleSubmit(e){
                 onChange={(e)=>setContent(e.target.value)}
                 placeholder='Go ahead, say something!'
             />
-            <button className='photoButton'> Submit</button>
+            <button className='photoButton' disabled={!isImageSelected}> Submit</button>
 
 
         </div>
