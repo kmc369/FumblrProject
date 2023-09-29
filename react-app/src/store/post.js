@@ -45,7 +45,7 @@ export const actionDeletePost = (postId) => {
 //THUNKS
 export const loadPostsThunk = (data) => async (dispatch, getState) => {
     const response = await fetch("/api/text_posts/");
-    console.log(response)
+    // console.log(response)
     if(response.ok){
         const posts = await response.json();
         dispatch(actionLoadPosts(posts));
@@ -139,7 +139,7 @@ export const deletePostThunk = data => async (dispatch, getState) => {
         headers: {'Content-Type': 'application/json'}
     });
     if(res.ok) {
-        console.log('post deleted')
+        // console.log('post deleted')
         dispatch(actionDeletePost(data))
     } else {
         const errors = await res.json();

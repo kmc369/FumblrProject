@@ -10,8 +10,17 @@ const Posts = () => {
     const dispatch = useDispatch();
     const history = useHistory();
     const User = useSelector(state => state.session.user);
-
     Object.values(postsData)?.map(post => allPosts.push(post));
+    
+    if(allPosts.length){
+        allPosts.sort(
+            (a, b) => {
+                const aTime = Date.parse(a.updated_at);
+                const bTime = Date.parse(b.updated_at);
+                return bTime - aTime
+            }
+          );
+    }
 
     // console.log(allPosts)
 
@@ -22,6 +31,7 @@ const Posts = () => {
     const handlePostClick = (postId) => {
         history.push(`/posts/${postId}`);
     };
+    
     
     return (
         // <h1 className='heading_posts'>All Posts Component!!</h1>

@@ -1,16 +1,32 @@
-import './PostTile.css';
-import LikeButton from '../Likes/LikeButton';
-import LikeShow from '../Likes/LikeShow';
-import { useDispatch, useSelector, dispatch } from 'react-redux';
-import { useEffect, useState } from 'react';
-import { FaShare, FaCommentDots, FaRetweet, FaEdit, FaTrash } from 'react-icons/fa';
-import NotePostForm from '../NotePostForm'
-import * as NoteActions from '../../store/note'
-import { useHistory } from 'react-router-dom';
-import OpenModalButton from '../OpenModalButton';
-import EditPostModal from '../EditPostModal'
-import DeletePost from '../DeletePost';
+import "./PostTile.css";
+import LikeButton from "../Likes/LikeButton";
+import LikeShow from "../Likes/LikeShow";
+import { useDispatch, useSelector, dispatch } from "react-redux";
+import { useEffect, useState, useRef } from "react";
+import {
+    FaShare,
+    FaCommentDots,
+    FaRetweet,
+    FaEdit,
+    FaTrash,
+} from "react-icons/fa";
+import NotePostForm from "../NotePostForm";
+import * as NoteActions from "../../store/note";
+import { useHistory } from "react-router-dom";
+import OpenModalButton from "../OpenModalButton";
+import EditPostModal from "../EditPostModal";
+import DeletePost from "../DeletePost";
 const PostTile = ({ post }) => {
+    const history = useHistory();
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [openComments, setOpenComments] = useState(false);
+    const [totalNotes, setTotalNotes] = useState(0);
+    const ulRef = useRef();
+    const session = useSelector((state) => state.session);
+
+    const likes = useSelector((state) => state.like.likes[post.id]);
+
+    const notes1 = useSelector((state) => state.note.singlePost.comment);
     const history = useHistory()
     const [dropdownOpen, setDropdownOpen] = useState(false);
     const [openComments, setOpenComments] = useState(false)
@@ -27,9 +43,28 @@ const PostTile = ({ post }) => {
     let likesCount = 0;
     let notesCount = 0;
     let totalCount = 0;
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     // console.log("the current post it ",post)
 
+    const closeComments = () => {
+        setOpenComments(false);
+    };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownOpen && ulRef.current) {
+                closeComments();
+            }
+        };
+
+        if (dropdownOpen) {
+            document.addEventListener("click", handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener("click", handleClickOutside);
+        };
+    }, [dropdownOpen]);
 
     const toggleDropdown = () => {
         setDropdownOpen(!dropdownOpen);
@@ -40,11 +75,11 @@ const PostTile = ({ post }) => {
     };
 
     const handleComments = () => {
-        setOpenComments(!openComments)
-    }
+        setOpenComments(!openComments);
+    };
 
     if (session.user) {
-        currentUserId = session.user.id
+        currentUserId = session.user.id;
     }
 
     if (likes && notes1) {
@@ -71,7 +106,7 @@ const PostTile = ({ post }) => {
         dispatch(NoteActions.getCommentsOfPostThunk(post.id))   //edited by WL for Note bug: use state directly other than return from Thunk
     }, [dispatch])
 
-    const imageEditHidden = "hide-edit-image"
+    const imageEditHidden = "hide-edit-image";
 
     return (
         <div className="post-modal">
@@ -88,30 +123,45 @@ const PostTile = ({ post }) => {
                     {post.text_content}
                 </div>
             </div> */}
-            <div className='user-username' onClick={() => handlePostClick(post.id)}>
+            <div className="user-username" onClick={() => handlePostClick(post.id)}>
                 {post.user && post.user.username ? post.user.username : "loading"}
             </div>
-            <div className='post-title'>
-                {post.title}
-            </div>
-            <div className='post-textContent'>
+            <div className="post-title">{post.title}</div>
+            <div className="post-textContent">
                 {post.second_content ? (
-                    <img className="postimages" src={post.second_content} alt="Post Image" />
+                    <img
+                        className="postimages"
+                        src={post.second_content}
+                        alt="Post Image"
+                    />
                 ) : (
                     <span>{post.text_content}</span>
                 )}
             </div>
 
-
-            {currentUserId === post.user_id &&
+            {currentUserId === post.user_id && (
                 <div className="post-operations">
-                    <div className='trashcan'>
-                        <OpenModalButton className="trashcan" id="editPostModal" buttonText={<FaTrash />} modalComponent={<DeletePost post={post} />} />
+                    <div className="trashcan">
+                        <OpenModalButton
+                            className="trashcan"
+                            id="editPostModal"
+                            buttonText={<FaTrash />}
+                            modalComponent={<DeletePost post={post} />}
+                        />
                     </div>
-                    <button className={post.post_type === 'photo' ? imageEditHidden : "editButton"}>
-                        <OpenModalButton id="editPostModal" buttonText={<FaEdit />} modalComponent={<EditPostModal post={post} />} />
+                    <button
+                        className={
+                            post.post_type === "photo" ? imageEditHidden : "editButton"
+                        }
+                    >
+                        <OpenModalButton
+                            id="editPostModal"
+                            buttonText={<FaEdit />}
+                            modalComponent={<EditPostModal post={post} />}
+                        />
                     </button>
-                </div>}
+                </div>
+            )}
 
             {/* <OpenModalButton 
               modalComponent={<DeleteSpot spotId={element.id}  onCloseModal={() => setIsDeleteModalOpen(false)} />} */}
@@ -125,27 +175,25 @@ const PostTile = ({ post }) => {
 
             <div className="post-footer">
                 <div className="dropdown">
-                    <div className="dropdown-label" onClick={toggleDropdown}>{totalCount} Notes</div>
+                    <div className="dropdown-label" onClick={toggleDropdown}>
+                        {totalCount} Notes
+                    </div>
                     {dropdownOpen && (
-
                         <div className="dropdown-options">
-
-                            <button className="option" onClick={handleComments}><FaCommentDots /></button>
+                            <button className="option" onClick={handleComments}>
+                                <FaCommentDots />
+                            </button>
                             <LikeShow className="likes-show" post_id={post.id} />
-                            {openComments &&
+                            {openComments && (
                                 <NotePostForm className="NoteformDrop" post_id={post.id} />
-                            }
-
+                            )}
                         </div>
                     )}
                 </div>
-
             </div>
-        </div >
-
+        </div>
     );
+};
 
-}
 
 export default PostTile;
-

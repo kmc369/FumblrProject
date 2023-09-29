@@ -44,8 +44,9 @@ async function handleSubmit(e){
     const newCommets = await dispatch(PostActions.loadPostsThunk())
     // setChange(false)
   }
-  console.log("isImageSelected:", isImageSelected);
+//   console.log("isImageSelected:", isImageSelected);
 
+  
     return (
         <>
         <form  method="POST" encType="multipart/form-data" onSubmit={handleSubmit} >
