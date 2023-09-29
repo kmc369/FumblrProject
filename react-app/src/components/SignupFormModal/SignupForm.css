@@ -24,3 +24,8 @@
     background-color: #00b8ff;
     color: white;
 }
+
+.signup-form > label {
+    display: flex;
+    flex-direction: column;
+}
