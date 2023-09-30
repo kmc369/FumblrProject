@@ -296,3 +296,7 @@ justify-content: left;
   color: white;
 }
 
+.developer-heading {
+  margin-bottom: -5px;
+  margin-top: 30px;
+}
