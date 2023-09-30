@@ -25,7 +25,7 @@ const LikeShow = ({ post_id }) => {
     const handleShowLike = () => {      //based on like store state, add or remove like accordingly when click the button
         setshowlike(!showlike)
     };
-    console.log(users)
+    // console.log(users)
     return (
         <div>
             <div>
