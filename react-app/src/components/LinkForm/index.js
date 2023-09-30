@@ -31,7 +31,7 @@ const handleSubmit = async e => {
         post_type: type,
         user_id: sessionUser.id
     }
-    console.log("the form data is " ,newPost)
+    // console.log("the form data is " ,newPost)
     await dispatch(PostActions.createPostThunk(newPost))
     // console.log("created post")
     return (closeModal())

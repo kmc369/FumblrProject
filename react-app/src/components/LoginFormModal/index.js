@@ -3,13 +3,14 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 function LoginFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
@@ -27,6 +28,7 @@ function LoginFormModal() {
     const demoUserPassword = 'password'
     return await dispatch(login(demoUserCredential, demoUserPassword))
       .then(closeModal)
+      .then(history.push('/'))
       .catch(async (res) => {
         const data = await res.json();
         if(data && data.errors) {

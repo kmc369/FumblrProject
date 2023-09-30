@@ -36,7 +36,7 @@ const SpecificPost = () => {
     }, [dispatch,postId]);
 
 
-    console.log()
+    // console.log()
    
 
 
