@@ -11,7 +11,7 @@ const DeleteNotePopUp = ({comment})=>{
 
   const dispatch = useDispatch()
   const user = useSelector((state)=>state.session.user)
-  console.log("the comment id is ", comment.id)
+  // console.log("the comment id is ", comment.id)
   const {closeModal} = useModal()
   
   function handleDelete(e){

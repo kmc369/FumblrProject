@@ -56,7 +56,7 @@ function NoteForm({post_id,postUsername}){
       fetchData();
     }, [dispatch, post_id]);
 
-    console.log("the post commens are", postComments)
+    // console.log("the post commens are", postComments)
     
     if(blak===undefined){
         return null
