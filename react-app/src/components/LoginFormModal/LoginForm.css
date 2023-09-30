@@ -4,7 +4,7 @@
     flex-direction: column;
     align-items: center;
     width: 425px;
-    height: 300px;
+    height: 350px;
     box-sizing: border-box;
     border-radius: 5px;
     color: white;
@@ -20,6 +20,20 @@
 .loginForm form button {
     background-color: #00cf35;
     height: 35px;
+    border-radius: 7px;
+    border: none;
+    color: white;
+}
+
+.login-form > label {
+    display: flex;
+    flex-direction: column;
+}
+
+.demo-user > button {
+    background-color: #00cf35;
+    height: 35px;
+    width: 200px;
     border-radius: 7px;
     border: none;
     color: white;

@@ -157,6 +157,54 @@ function Navigation({ isLoaded }) {
 			
 			</input> */}
 					</label>
+
+					<div className='site-developers'>
+						<h4 className='developer-heading'>Site Developers:</h4>
+						<div>
+							<h5>Keisha Coleman</h5>
+							<div className='social-links'>
+								<NavLink to={{ pathname: 'https://github.com/kmc369'}} target="_blank">
+									<i class="fa fa-github" aria-hidden="true"></i>
+								</NavLink>
+								<NavLink to={{ pathname: 'https://github.com/kmc369'}} target="_blank">
+									<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+								</NavLink>
+							</div>
+						</div>
+						<div>
+							<h5>Maria Ramirez</h5>
+							<div className='social-links'>
+								<NavLink to={{ pathname: 'https://github.com/Maria-R01'}} target="_blank">
+									<i class="fa fa-github" aria-hidden="true"></i>
+								</NavLink>
+								<NavLink to={{ pathname: 'https://github.com/Maria-R01'}} target="_blank">
+									<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+								</NavLink>
+							</div>
+						</div>
+						<div>
+							<h5>Matt Piper</h5>
+							<div className='social-links'>
+								<NavLink to={{ pathname: 'https://github.com/OEPiper'}} target="_blank">
+									<i class="fa fa-github" aria-hidden="true"></i>
+								</NavLink>
+								<NavLink to={{ pathname: 'https://github.com/OEPiper'}} target="_blank">
+									<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+								</NavLink>
+							</div>
+						</div>
+						<div>
+							<h5>Wenyu Li</h5>
+							<div className='social-links'>
+								<NavLink to={{ pathname: 'https://github.com/wenyulll'}} target="_blank">
+									<i class="fa fa-github" aria-hidden="true"></i>
+								</NavLink>
+								<NavLink to={{ pathname: 'https://github.com/wenyulll'}} target="_blank">
+									<i class="fa fa-linkedin-square" aria-hidden="true"></i>
+								</NavLink>
+							</div>
+						</div>
+					</div>
 				</div>
 
 			</div>
