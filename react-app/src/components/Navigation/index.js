@@ -177,7 +177,7 @@ function Navigation({ isLoaded }) {
 								<NavLink to={{ pathname: 'https://github.com/Maria-R01'}} target="_blank">
 									<i class="fa fa-github" aria-hidden="true"></i>
 								</NavLink>
-								<NavLink to={{ pathname: 'https://github.com/Maria-R01'}} target="_blank">
+								<NavLink to={{ pathname: 'https://www.linkedin.com/in/maria-ramirez-00b61b1b5/'}} target="_blank">
 									<i class="fa fa-linkedin-square" aria-hidden="true"></i>
 								</NavLink>
 							</div>

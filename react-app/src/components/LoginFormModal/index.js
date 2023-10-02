@@ -24,17 +24,19 @@ function LoginFormModal() {
   };
 
   const demoUser = async () => {
-    const demoUserCredential = 'bobbie@aa.io'
-    const demoUserPassword = 'password'
-    return await dispatch(login(demoUserCredential, demoUserPassword))
-      .then(closeModal)
-      .then(history.push('/'))
-      .catch(async (res) => {
-        const data = await res.json();
-        if(data && data.errors) {
-          setErrors(data.errors);
-        }
-      })
+    // const demoUserCredential = 'bobbie@aa.io'
+    // const demoUserPassword = 'password'
+    // return await dispatch(login(demoUserCredential, demoUserPassword))
+    //   .then(closeModal)
+    //   .then(history.push('/'))
+    //   .catch(async (res) => {
+    //     const data = await res.json();
+    //     if(data && data.errors) {
+    //       setErrors(data.errors);
+    //     }
+    //   })
+    setEmail('bobbie@aa.io')
+    setPassword('password')
   }
 
   return (
