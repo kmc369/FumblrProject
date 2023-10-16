@@ -5,10 +5,11 @@
     top:100px;
     display: flex;
     flex-direction: column;
-    background-color: white;
+    background-color: rgb(44,44,44);
     gap:15px;
     transform: translateY(50px) translateX(-78px);
     border-radius: 7px;
+    
    
 }
 
@@ -19,7 +20,7 @@
     justify-content: space-between;
     border-radius: 30px; 
     text-align: center;
-    background-color: white;
+    background-color: rgb(44,44,44);
     display: flex;
     height:80%;
     width: 85%;
@@ -31,7 +32,7 @@
 
 }
 input.comment-input {
-    background-color: white;
+    background-color: rgb(44,44,44);
     border:none;
     width:80%;
     height: 10%;
@@ -45,13 +46,14 @@ input.comment-input {
 }
 
 #note-button {
-    background-color: white;
+    background-color: rgb(44,44,44);
     border: 0px;
     width: 20%;
     border-radius: 30px;
     height:90%;
     font-size: 15px;
     margin-right: 5px;
+    color: white;
     
 
 }
@@ -83,7 +85,7 @@ input.comment-input {
 .comments-container{
   
     height: 98%;
-    color:black;
+    color:white;
     display: flex;
     flex-direction: column;
     gap:15px;

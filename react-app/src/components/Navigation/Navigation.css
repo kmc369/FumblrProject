@@ -286,14 +286,14 @@ justify-content: left;
 }
 
 .profile-dropdown button{
-  background-color: red;
+  background-color: #00cf35;
   border-radius: 7px;
   border: none;
   color: white;
 }
 
-.profile-dropdown{
-  gap: 5px;
+.profile-dropdown li{
+  margin: 5px 0;
   color: white;
 }
 
