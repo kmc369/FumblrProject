@@ -24,7 +24,7 @@ color:rgb(142, 141, 141);
     border-radius: 5px;
     text-align: center;
     width:150px;
-    font-family: Helvetica, sans-serif;
+    /* font-family: Helvetica, sans-serif; */
 }
 
 .dropdown-menu ul li{
@@ -70,7 +70,7 @@ ul{
     border:none;
     margin-left: 25px;
     cursor:pointer;
-    font-family: Helvetica, sans-serif;
+    /* font-family: Helvetica, sans-serif; */
     font-weight: bolder;
     font-size: 17px;
    
@@ -85,7 +85,7 @@ ul{
     border:none;
     color:#fff;
     cursor:pointer;
-    font-family: Helvetica, sans-serif;
+    /* font-family: Helvetica, sans-serif; */
     font-weight: bolder;
     font-size: 17px;
 
