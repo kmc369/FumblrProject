@@ -64,13 +64,13 @@ export const EditComments = (data, comment_id) => {
 
 
 export const deleteCommentThunk = (comment_id) => async (dispatch) => {
-    console.log("the comment id is ", comment_id)
+    // console.log("the comment id is ",comment_id)
     const response = await fetch(`/api/delete/note/${comment_id}`, {
         method: "DELETE"
     })
     if (response.ok) {
         const data = await response.json()
-        console.log("the data coming back is ", data)
+        // console.log("the data coming back is ", data)
         dispatch(DeleteNote(comment_id, data))
         return data
     }
@@ -98,7 +98,7 @@ export const getCommentByIdThunk = (comment_id) => async (dispatch) => {
 export const createNoteThunk = (note) => async (dispatch) => {
     // const  {content,user_id,post_id} = note
     const { content, user_id, post_id } = note
-    console.log("the note id post the thunk is ", post_id)
+    // console.log("the note id post the thunk is ", post_id)
     const response = await fetch(`/api/post/${post_id}/notes`, {
         method: "POST",
         headers: {
@@ -135,7 +135,7 @@ export const getCommentsOfPostThunk = (current_post_id) => async (dispatch) => {
 
 export const EditCommentThunk = (notedata, current_note_id) => async (dispatch) => {
     const { content, post_id, user_id } = notedata
-    console.log("note data form thunk", content)
+    // console.log("note data form thunk", content)
     const response = await fetch(`/api/notes/${current_note_id}`, {
         method: "PUT",
         headers: {
@@ -215,7 +215,7 @@ export default function noteReducer(state = initialState, action) {
                 )
                 ]
             }
-            console.log("newState after deleting comment:", newState); // Debugging
+            // console.log("newState after deleting comment:", newState); // Debugging
 
 
             return newState

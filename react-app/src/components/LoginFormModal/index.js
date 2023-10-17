@@ -3,13 +3,14 @@ import { login } from "../../store/session";
 import { useDispatch } from "react-redux";
 import { useModal } from "../../context/Modal";
 import "./LoginForm.css";
-import { NavLink } from 'react-router-dom';
+import { NavLink, useHistory } from 'react-router-dom';
 
 function LoginFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState([]);
+  const history = useHistory();
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
@@ -23,22 +24,25 @@ function LoginFormModal() {
   };
 
   const demoUser = async () => {
-    const demoUserCredential = 'bobbie@aa.io'
-    const demoUserPassword = 'password'
-    return await dispatch(login(demoUserCredential, demoUserPassword))
-      .then(closeModal)
-      .catch(async (res) => {
-        const data = await res.json();
-        if(data && data.errors) {
-          setErrors(data.errors);
-        }
-      })
+    // const demoUserCredential = 'bobbie@aa.io'
+    // const demoUserPassword = 'password'
+    // return await dispatch(login(demoUserCredential, demoUserPassword))
+    //   .then(closeModal)
+    //   .then(history.push('/'))
+    //   .catch(async (res) => {
+    //     const data = await res.json();
+    //     if(data && data.errors) {
+    //       setErrors(data.errors);
+    //     }
+    //   })
+    setEmail('bobbie@aa.io')
+    setPassword('password')
   }
 
   return (
     <div className="loginForm">
       <h1>Log In</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} className="login-form">
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
@@ -64,7 +68,7 @@ function LoginFormModal() {
         </label>
         <button type="submit">Log In</button>
         <div className="demo-user">
-          <NavLink to='/' onClick={demoUser} >Demo User</NavLink>
+          <button onClick={demoUser} >Demo User</button>
         </div>
       </form>
     </div>

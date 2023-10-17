@@ -15,7 +15,7 @@ const QuoteForm = ({ type }) => {
     const [postType, setPostType] = useState(type)
 
     const sessionUser = useSelector(state => state.session.user);
-    console.log(sessionUser)
+    // console.log(sessionUser)
     const [errors, setErrors] = useState({})
 
     const validationForPost = () => {
@@ -42,7 +42,7 @@ const QuoteForm = ({ type }) => {
             post_type: type,
             user_id: sessionUser.id
         }
-        console.log("the form data is " ,newPost)
+        // console.log("the form data is " ,newPost)
         await dispatch(createPostThunk(newPost))
         // console.log("created post")
         return (closeModal())

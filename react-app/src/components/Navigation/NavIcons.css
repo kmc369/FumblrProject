@@ -2,7 +2,7 @@
     background-color: rgb(44, 44, 44) ;
     border:none;
     color:#fff;
-    font-family: Helvetica, sans-serif;
+    /* font-family: Helvetica, sans-serif; */
 }
 
 .Navicons button{
@@ -13,4 +13,17 @@
 .Navicons p{
     margin: 0;
     margin-bottom: 5px;
+}
+
+.site-developers {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
+}
+
+.social-links {
+    display: flex;
+    gap: 10px;
+    margin-top: -10px;
 }
