@@ -26,7 +26,10 @@ body {
 }
 
 .user-username{
-    border-bottom: solid black 1px;
-    color: black;
+    border-bottom: solid rgb(177, 176, 176) 1px;
+    color: white;
     padding: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    /* font-family: Verdana, Geneva, Tahoma, sans-serif; */
 }

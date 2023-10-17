@@ -1,7 +1,7 @@
 .post-modal {
     width: 500px;
     margin: 20px auto;
-    background-color:white;
+    background-color:rgb(44,44,44);
     border-radius: 5px;
 }
 
@@ -70,7 +70,7 @@
 }
 
 .post-title{
-    font-weight: bold;
+    /* font-weight: bold; */
     font-size: 20px;
     margin: 10px;
 }

@@ -1,7 +1,8 @@
 .post-modal {
     width: 500px;
     margin: 20px auto;
-    background-color: white;
+    background-color: rgb(44,44,44);
+    color: white;
     border-radius: 5px;
 }
 
@@ -52,7 +53,7 @@
 .option {
     border: none;
     /* background: none; */
-    color: black;
+    color: white;
 }
 
 .dropdown-options {
