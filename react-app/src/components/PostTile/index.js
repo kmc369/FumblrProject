@@ -4,11 +4,11 @@ import LikeShow from "../Likes/LikeShow";
 import { useDispatch, useSelector, dispatch } from "react-redux";
 import { useEffect, useState, useRef } from "react";
 import {
-    FaShare,
-    FaCommentDots,
-    FaRetweet,
-    FaEdit,
-    FaTrash,
+  FaShare,
+  FaCommentDots,
+  FaRetweet,
+  FaEdit,
+  FaTrash,
 } from "react-icons/fa";
 import NotePostForm from "../NotePostForm";
 import * as NoteActions from "../../store/note";
@@ -20,91 +20,91 @@ import DeletePost from "../DeletePost";
 
 const PostTile = ({ post }) => {
 
-    const ulRef = useRef();
-    const history = useHistory()
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [openComments, setOpenComments] = useState(false)
-    const [totalNotes, setTotalNotes] = useState(0)
-    const session = useSelector(state => state.session);
+  const ulRef = useRef();
+  const history = useHistory()
+  const [dropdownOpen, setDropdownOpen] = useState(false);
+  const [openComments, setOpenComments] = useState(false)
+  const [totalNotes, setTotalNotes] = useState(0)
+  const session = useSelector(state => state.session);
 
-    const likes = useSelector(state => state.like.likes[post.id]);
-    // const notes1 = useSelector(state => state.note.singlePost.comment);
-    const notes1 = useSelector(state => state.note.comments[post.id]); //edited by WL for Note bug: use comments in state to aviod overwrite
+  const likes = useSelector(state => state.like.likes[post.id]);
+  // const notes1 = useSelector(state => state.note.singlePost.comment);
+  const notes1 = useSelector(state => state.note.comments[post.id]); //edited by WL for Note bug: use comments in state to aviod overwrite
 
-    // console.log("the notes are blah", notes.length)
-    //hellow rld
-    let currentUserId = null;
-    let likesCount = 0;
-    let notesCount = 0;
-    let totalCount = 0;
-    const dispatch = useDispatch();
-    // console.log("the current post it ",post)
+  // console.log("the notes are blah", notes.length)
+  //hellow rld
+  let currentUserId = null;
+  let likesCount = 0;
+  let notesCount = 0;
+  let totalCount = 0;
+  const dispatch = useDispatch();
+  // console.log("the current post it ",post)
 
-    const closeComments = () => {
-        setOpenComments(false);
+  const closeComments = () => {
+    setOpenComments(false);
+  };
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (dropdownOpen && ulRef.current) {
+        closeComments();
+      }
     };
 
-    useEffect(() => {
-        const handleClickOutside = (event) => {
-            if (dropdownOpen && ulRef.current) {
-                closeComments();
-            }
-        };
-
-        if (dropdownOpen) {
-            document.addEventListener("click", handleClickOutside);
-        }
-
-        return () => {
-            document.removeEventListener("click", handleClickOutside);
-        };
-    }, [dropdownOpen]);
-
-    const toggleDropdown = () => {
-        setDropdownOpen(!dropdownOpen);
-    };
-
-    const handlePostClick = (postId) => {
-        history.push(`/posts/${postId}`);
-    };
-
-    const handleComments = () => {
-        setOpenComments(!openComments);
-    };
-
-    if (session.user) {
-        currentUserId = session.user.id;
+    if (dropdownOpen) {
+      document.addEventListener("click", handleClickOutside);
     }
 
-    if (likes && notes1) {
-        // console.log("the likes are" ,likes.count)
-        likesCount = likes.count;
-        // notesCount = totalNotes;
-        notesCount = notes1.length;     //edited by WL for Note bug: use state directly
-        totalCount = likesCount + notesCount
-    }
+    return () => {
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [dropdownOpen]);
 
-    // useEffect(() => {
+  const toggleDropdown = () => {
+    setDropdownOpen(!dropdownOpen);
+  };
 
-    //     const get_notes = async () => {
+  const handlePostClick = (postId) => {
+    history.push(`/posts/${postId}`);
+  };
 
-    //         const notes = await dispatch(NoteActions.getCommentsOfPostThunk(post.id))
-    //         //   console.log("the notes are", notes)
-    //         //   console.log("the notes length is", notes.length)
-    //         setTotalNotes(notes.length)
-    //     }
+  const handleComments = () => {
+    setOpenComments(!openComments);
+  };
 
-    //     get_notes()
-    // }, [dispatch, post.id])
-    useEffect(() => {
-        dispatch(NoteActions.getCommentsOfPostThunk(post.id))   //edited by WL for Note bug: use state directly other than return from Thunk
-    }, [dispatch])
+  if (session.user) {
+    currentUserId = session.user.id;
+  }
 
-    const imageEditHidden = "hide-edit-image";
+  if (likes && notes1) {
+    // console.log("the likes are" ,likes.count)
+    likesCount = likes.count;
+    // notesCount = totalNotes;
+    notesCount = notes1.length;     //edited by WL for Note bug: use state directly
+    totalCount = likesCount + notesCount
+  }
 
-    return (
-        <div className="post-modal">
-            {/* <div className="post-header">
+  // useEffect(() => {
+
+  //     const get_notes = async () => {
+
+  //         const notes = await dispatch(NoteActions.getCommentsOfPostThunk(post.id))
+  //         //   console.log("the notes are", notes)
+  //         //   console.log("the notes length is", notes.length)
+  //         setTotalNotes(notes.length)
+  //     }
+
+  //     get_notes()
+  // }, [dispatch, post.id])
+  useEffect(() => {
+    dispatch(NoteActions.getCommentsOfPostThunk(post.id))   //edited by WL for Note bug: use state directly other than return from Thunk
+  }, [dispatch, post.id])
+
+  const imageEditHidden = "hide-edit-image";
+
+  return (
+    <div className="post-modal">
+      {/* <div className="post-header">
                 <h3>{post.user.username}</h3>
                 <p>Follow</p>
             </div>
@@ -117,76 +117,76 @@ const PostTile = ({ post }) => {
                     {post.text_content}
                 </div>
             </div> */}
-            <div className="user-username" onClick={() => handlePostClick(post.id)}>
-                {post.user && post.user.username ? post.user.username : "loading"}
-            </div>
-            <div className="post-title">{post.title}</div>
-            <div className="post-textContent">
-                {post.second_content ? (
-                    <img
-                        className="postimages"
-                        src={post.second_content}
-                        alt="Post Image"
-                    />
-                ) : (
-                    <span>{post.text_content}</span>
-                )}
-            </div>
+      <div className="user-username" onClick={() => handlePostClick(post.id)}>
+        {post.user && post.user.username ? post.user.username : "loading"}
+      </div>
+      <div className="post-title">{post.title}</div>
+      <div className="post-textContent">
+        {post.second_content ? (
+          <img
+            className="postimages"
+            src={post.second_content}
+            alt="Post Image"
+          />
+        ) : (
+          <span>{post.text_content}</span>
+        )}
+      </div>
 
-            {currentUserId === post.user_id && (
-                <div className="post-operations">
-                    <div className="trashcan">
-                        <OpenModalButton
-                            className="trashcan"
-                            id="editPostModal"
-                            buttonText={<FaTrash />}
-                            modalComponent={<DeletePost post={post} />}
-                        />
-                    </div>
-                    <button
-                        className={
-                            post.post_type === "photo" ? imageEditHidden : "editButton"
-                        }
-                    >
-                        <OpenModalButton
-                            id="editPostModal"
-                            buttonText={<FaEdit />}
-                            modalComponent={<EditPostModal post={post} />}
-                        />
-                    </button>
-                </div>
-            )}
+      {currentUserId === post.user_id && (
+        <div className="post-operations">
+          <div className="trashcan">
+            <OpenModalButton
+              className="trashcan"
+              id="editPostModal"
+              buttonText={<FaTrash />}
+              modalComponent={<DeletePost post={post} />}
+            />
+          </div>
+          <button
+            className={
+              post.post_type === "photo" ? imageEditHidden : "editButton"
+            }
+          >
+            <OpenModalButton
+              id="editPostModal"
+              buttonText={<FaEdit />}
+              modalComponent={<EditPostModal post={post} />}
+            />
+          </button>
+        </div>
+      )}
 
-            {/* <OpenModalButton 
+      {/* <OpenModalButton 
               modalComponent={<DeleteSpot spotId={element.id}  onCloseModal={() => setIsDeleteModalOpen(false)} />} */}
 
-            <div className="post-actions">
-                <LikeButton className="likes-button" post_id={post.id} />
-                {/* <button className="icon-button"><FaShare /></button>
+      <div className="post-actions">
+        {post.id && (<LikeButton className="likes-button" post_id={post.id} />)}
+        {/* <button className="icon-button"><FaShare /></button>
                 <button className="icon-button"><FaCommentDots /></button>
                 <button className="icon-button"><FaRetweet /></button> */}
-            </div>
+      </div>
 
-            <div className="post-footer">
-                <div className="dropdown">
-                    <div className="dropdown-label" onClick={toggleDropdown}>
-                        {totalCount} Notes
-                    </div>
-                    {dropdownOpen && (
-                        <div className="dropdown-options">
-                            <button className="option" onClick={handleComments}>
-                                <FaCommentDots />
-                            </button>
-                            <LikeShow className="likes-show" post_id={post.id} />
-                            {openComments && (
-                                <NotePostForm className="NoteformDrop" post_id={post.id} />
-                            )}
-                        </div>
-                    )}
-                </div>
+      <div className="post-footer">
+        <div className="dropdown">
+          <div className="dropdown-label" onClick={toggleDropdown}>
+            {totalCount} Notes
+          </div>
+          {dropdownOpen && (
+            <div className="dropdown-options">
+              <button className="option" onClick={handleComments}>
+                <FaCommentDots />
+              </button>
+              <LikeShow className="likes-show" post_id={post.id} />
+              {openComments && (
+                <NotePostForm className="NoteformDrop" post_id={post.id} />
+              )}
             </div>
+          )}
         </div>
-    );
+      </div>
+    </div>
+  );
 };
 
 
