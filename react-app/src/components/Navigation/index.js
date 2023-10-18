@@ -205,6 +205,18 @@ function Navigation({ isLoaded }) {
 							</div>
 						</div>
 					</div>
+				<div style={{ color:"rgb(127, 127, 128)", marginLeft:"10px",marginTop:"30px", fontSize:"10px"}}><p>Tech Stack</p>
+					
+					<div><ul>
+						<li>Flask</li>
+						<li>Python</li>
+						<li>React. JS</li>
+						<li>JavaScript</li>
+						<li>Redux</li>
+						
+					</ul>
+					</div>
+				</div>
 				</div>
 
 			</div>
