@@ -188,7 +188,7 @@ function Navigation({ isLoaded }) {
 								<NavLink to={{ pathname: 'https://github.com/OEPiper'}} target="_blank">
 									<i class="fa fa-github" aria-hidden="true"></i>
 								</NavLink>
-								<NavLink to={{ pathname: 'www.linkedin.com/in/matthew-piper-aa463b157'}} target="_blank">
+								<NavLink to={{ pathname: 'https://www.linkedin.com/in/matthew-piper-aa463b157'}} target="_blank">
 									<i class="fa fa-linkedin-square" aria-hidden="true"></i>
 								</NavLink>
 							</div>
