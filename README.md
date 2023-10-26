@@ -8,7 +8,7 @@ A clone of Tumblr's website
 - [Features List](#features)
 - [Landing Page](#landing-page)
 - [Screenshots of Application](#screenshots)
-- [Tech Stacks](#tech-stacks)
+- [Tech Stacks](#tech-stack)
 - [Database Schema](#database-schema)
 <!-- - [API Routes Document](#api-routes-document) -->
 <!-- - [React Components List](#react-components-list) -->
@@ -37,7 +37,8 @@ We've also provided a demo user button for you to explore the website without th
 
 
 
-<!-- ## Screenshots  -->
+## Screenshots 
+
 
 
 ## Tech Stack
