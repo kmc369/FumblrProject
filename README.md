@@ -38,7 +38,10 @@ We've also provided a demo user button for you to explore the website without th
 
 
 ## Screenshots 
-
+![Screenshot 2023-10-25 at 4 36 23 PM](https://github.com/kmc369/FumblrProject/assets/114263285/a0f596cc-909b-4440-a1b5-8789256c83ee)
+![Screenshot 2023-10-25 at 11 10 03 PM](https://github.com/kmc369/FumblrProject/assets/114263285/a8308a18-6110-4673-aae6-bde55cc0a19a)
+![Screenshot 2023-10-25 at 11 10 20 PM](https://github.com/kmc369/FumblrProject/assets/114263285/a64c57ec-0eac-4435-8f0c-183f98371607)
+![Screenshot 2023-10-25 at 11 10 43 PM](https://github.com/kmc369/FumblrProject/assets/114263285/89517f5b-5e19-4185-a5aa-bcf62568d382)
 
 
 ## Tech Stack
