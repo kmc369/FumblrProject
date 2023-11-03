@@ -177,12 +177,12 @@ const PostTile = ({ post }) => {
               <button className="option" onClick={handleComments}>
                 <FaCommentDots />
               </button>
-              <LikeShow className="likes-show" post_id={post.id} />
-              {openComments && (
-              
-                <NotePostForm className="NoteformDrop" post_id={post.id} />
-              )}
+              <LikeShow className="likes-show" post_id={post.id} openComments={openComments} />
             </div>
+          )}
+          {openComments && dropdownOpen &&(
+          
+            <NotePostForm className="NoteformDrop" post_id={post.id} />
           )}
         </div>
       </div>

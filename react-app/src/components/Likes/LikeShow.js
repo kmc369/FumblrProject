@@ -5,7 +5,7 @@ import { FaHeart, FaRegHeart } from 'react-icons/fa';
 import { fetchLikesThunk, addLikeThunk, removeLikeThunk } from '../../store/like';
 
 
-const LikeShow = ({ post_id }) => {
+const LikeShow = ({ post_id, openComments }) => {
     const [isLiked, setisLiked] = useState(false);
     const [showlike, setshowlike] = useState(false);
     const dispatch = useDispatch();
@@ -39,12 +39,12 @@ const LikeShow = ({ post_id }) => {
                     <ul>
                         {users.map((user, index) => (
                             <li key={index}>{user[1]}</li>
-                        ))}
+                            ))}
                     </ul>
                 ) : (
                     <></>
-                )}
-            </div>
+                    )}
+            </div>  
 
         </div>
     );

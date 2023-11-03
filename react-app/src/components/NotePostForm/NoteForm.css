@@ -7,7 +7,7 @@
     flex-direction: column;
     background-color: rgb(44,44,44);
     gap:15px;
-    transform: translateY(50px) translateX(-78px);
+    /* transform: translateY(50px) translateX(-78px); */
     border-radius: 7px;
     
    
