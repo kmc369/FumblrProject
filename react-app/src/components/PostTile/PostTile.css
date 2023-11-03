@@ -99,7 +99,8 @@
 
 .post-operations button{
     border: none;
-    background-color: white;
+    background-color: rgb(44,44,44);
+    color: white;
 }
 
 .trashcan{
