@@ -40,21 +40,21 @@ function Navigation({ isLoaded }) {
 						<NavLink exact to='/'><i class="fa-solid fa-house"><span className="icontext">Home</span></i></NavLink>
 					</div>
 
-					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
+					{/* <div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-compass"><span className="icontext">Explore</span></i>
-					</div>
+					</div> */}
 
 					{/* <div className="iconsandtext">
 						<i class="fa-solid fa-video"><span className="icontext">Live</span></i>
 					</div> */}
 
-					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
+					{/* <div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-bolt"><span className="icontext">Activity</span></i>
 					</div>
 
 					<div className="iconsandtext" onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-comment-dots"><span className="icontext">Messages</span></i>
-					</div>
+					</div> */}
 
 					{/* <div className="iconsandtext">
 						<i class="fa-solid fa-envelope-circle-check"><span className="icontext">Inbox</span></i>
@@ -64,9 +64,9 @@ function Navigation({ isLoaded }) {
 						<NavLink exact to={`/user/${sessionUser.id}`}><i class="fa-solid fa-user"><span className="icontext">Account</span></i></NavLink>
 					</div>
 					}
-					<div className="iconsandtext"onClick={() => alert('Feature coming soon!')}>
+					{/* <div className="iconsandtext"onClick={() => alert('Feature coming soon!')}>
 						<i class="fa-solid fa-gear"><span className="icontext">Settings</span></i>
-					</div>
+					</div> */}
 
 					{sessionUser &&
 					<div className="iconsandtext" id="logoutIcon" onClick={handleLogout}>
@@ -80,9 +80,9 @@ function Navigation({ isLoaded }) {
 				<div className='followingandicons'>
 
 					<div className='following' >
-						{sessionUser && <div className='followingtag' onClick={() => alert('Feature Coming Soon…')} >Following</div> || <div className='followingtag' onClick={() => alert('Feature Coming Soon…')}>Trending</div>  }
+						{/* {sessionUser && <div className='followingtag' onClick={() => alert('Feature Coming Soon…')} >Following</div> || <div className='followingtag' onClick={() => alert('Feature Coming Soon…')}>Trending</div>  }
 						{sessionUser && <div className='foryou' onClick={() => alert('Feature Coming Soon…')}>For you</div> || <div className='foryou' onClick={() => alert('Feature Coming Soon…')}>Staff Picks</div>}
-						{sessionUser && <div className='yourtags' onClick={() => alert('Feature Coming Soon…')}>Your tags</div> || <div className='yourtags' onClick={() => alert('Feature Coming Soon…')}>More...</div>}
+						{sessionUser && <div className='yourtags' onClick={() => alert('Feature Coming Soon…')}>Your tags</div> || <div className='yourtags' onClick={() => alert('Feature Coming Soon…')}>More...</div>} */}
 					</div>
 
 
@@ -114,7 +114,7 @@ function Navigation({ isLoaded }) {
 							<p>Link</p>
 						</div>
 
-						<div className="Navicons" onClick={() => alert('Feature coming soon!')}>
+						{/* <div className="Navicons" onClick={() => alert('Feature coming soon!')}>
 							<i class="fa-solid fa-comment-sms allnavicon" style={{ color: "lightblue" }}></i>
 							<span>Chat</span>
 						</div> 
@@ -127,7 +127,7 @@ function Navigation({ isLoaded }) {
 						<div className="Navicons video" onClick={() => alert('Feature coming soon!')}>
 							<i class="fa-solid fa-video allnavicon" style={{ color: "pink" }}></i>
 							<span>video</span>
-						</div>
+						</div> */}
 
 					</div> || <></>
 					}
