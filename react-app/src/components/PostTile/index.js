@@ -121,7 +121,7 @@ const PostTile = ({ post }) => {
         {post.user && post.user.username ? post.user.username : "loading"}
       </div>
       <div className="post-title">{post.title}</div>
-      <div className="post-textContent">
+      <div className="post-textContent" onClick={() => handlePostClick(post.id)}>
         {post.second_content ? (
           <img
             className="postimages"
