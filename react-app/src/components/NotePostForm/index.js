@@ -102,9 +102,11 @@ function NoteForm({ post_id }) {
               ) : (
                 // Render the comments if there are any
                 blak.map((comment, index) => (
+                  <>
+                     <div> {comment.user.username}</div>
                   <div className="comment-items" key={index} id={`item${index}`}>
+                   
                     <div className="comment-content">
-
                       {comment.content}</div>
 
                     {/* Render the DeleteNote component in a separate div if the condition is met */}
@@ -115,12 +117,17 @@ function NoteForm({ post_id }) {
                         {/* {sessionUser.username} */}
                         <DeleteNote comment={comment} key={index} />
                       </div>
+                    
                     )}
 
                   </div>
+                  </>
                 ))
+              
               )}
+            
             </div>
+          
 
 
 

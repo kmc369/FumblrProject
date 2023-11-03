@@ -179,6 +179,7 @@ const PostTile = ({ post }) => {
               </button>
               <LikeShow className="likes-show" post_id={post.id} />
               {openComments && (
+              
                 <NotePostForm className="NoteformDrop" post_id={post.id} />
               )}
             </div>
