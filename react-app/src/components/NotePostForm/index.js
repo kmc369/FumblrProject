@@ -17,7 +17,7 @@ function NoteForm({ post_id }) {
   const sessionUser = useSelector(state => state.session.user);
   // const blak = useSelector(state => state.note.singlePost.comment);  // Adjust this selector to match your state structure
   const comments = useSelector(state => state.note.comments); //edited by WL for Note bug: use comments in state to aviod overwirte
-  console.log("the session user", sessionUser)
+  // console.log("the session user", sessionUser)
   let blak;
   const [content, setContent] = useState("")
   const [postComments, setPostComments] = useState({})
@@ -58,7 +58,7 @@ function NoteForm({ post_id }) {
     fetchData();
   }, [dispatch, post_id]);
 
-  console.log("the post commens are", postComments)
+  // ("the post commens are", postComments)
 
   if (blak === undefined) {
     return null
@@ -103,31 +103,31 @@ function NoteForm({ post_id }) {
                 // Render the comments if there are any
                 blak.map((comment, index) => (
                   <>
-                     <div> {comment.user.username}</div>
-                  <div className="comment-items" key={index} id={`item${index}`}>
-                   
-                    <div className="comment-content">
-                      {comment.content}</div>
+                    <div> {comment.user.username}</div>
+                    <div className="comment-items" key={index} id={`item${index}`}>
 
-                    {/* Render the DeleteNote component in a separate div if the condition is met */}
+                      <div className="comment-content">
+                        {comment.content}</div>
 
-                    {sessionUser && comment.user_id === sessionUser.id && (
+                      {/* Render the DeleteNote component in a separate div if the condition is met */}
 
-                      <div className="delete-note-containerbor">
-                        {/* {sessionUser.username} */}
-                        <DeleteNote comment={comment} key={index} />
-                      </div>
-                    
-                    )}
+                      {sessionUser && comment.user_id === sessionUser.id && (
 
-                  </div>
+                        <div className="delete-note-containerbor">
+                          {/* {sessionUser.username} */}
+                          <DeleteNote comment={comment} key={index} />
+                        </div>
+
+                      )}
+
+                    </div>
                   </>
                 ))
-              
+
               )}
-            
+
             </div>
-          
+
 
 
 
